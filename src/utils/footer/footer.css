@@ -1,14 +1,18 @@
 ul {
+  position: fixed;
+  bottom: 0;
   display: flex;
-  list-style: none;
   background-color: #061c1a;
   justify-content: center;
+  width: 100%;
+  height: 60px;
 }
-.footer {
+li {
   display: flex;
+  align-items: center;
+  padding-right: 30px;
 }
 .footer-icon {
-  padding-right: 30px;
   width: 30px;
   height: 30px;
 }

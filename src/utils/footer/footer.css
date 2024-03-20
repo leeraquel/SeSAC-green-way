@@ -1,0 +1,14 @@
+ul {
+  display: flex;
+  list-style: none;
+  background-color: #061c1a;
+  justify-content: center;
+}
+.footer {
+  display: flex;
+}
+.footer-icon {
+  padding-right: 30px;
+  width: 30px;
+  height: 30px;
+}

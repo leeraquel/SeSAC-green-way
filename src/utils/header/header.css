@@ -5,11 +5,11 @@
   height: 100px;
   background-color: #a8d8b5;
 }
-a {
+.header-logo {
   display: flex;
   align-items: center;
 }
-img {
+.header-logo-img {
   width: 56px;
   height: 56px;
 }

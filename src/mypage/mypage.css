@@ -1,3 +1,42 @@
 body {
   background-color: var(--main-color);
+  width: 390px;
+  border: 1px solid gold;
+}
+header {
+  width: auto;
+  height: 80px;
+  text-align: center;
+}
+.my-page-title {
+  font-size: var(--font-main);
+  text-align: center;
+  margin-bottom: 20px;
+}
+.profile-pic {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-pic img {
+  border-radius: 50%;
+  border: 2px solid black;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+.UserName {
+  text-align: center;
+}
+.btn-primary {
+  background-color: forestgreen; /* 원하는 색상으로 변경 */
+  color: #ffffff;
+  border: 1px solid forestgreen;
+}
+
+.btn-primary:hover {
+  background-color: forestgreen;
+  color: #ffffff;
+  border: 1px solid forestgreen;
 }

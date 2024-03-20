@@ -1,0 +1,15 @@
+.headerDiv {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+  background-color: #a8d8b5;
+}
+a {
+  display: flex;
+  align-items: center;
+}
+img {
+  width: 56px;
+  height: 56px;
+}

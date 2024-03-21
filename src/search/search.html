@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <link rel="stylesheet" href="../styles/globals.css" />
+
+    <link rel="stylesheet" href="./search.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="./search.js"></script>
+</head>
+<body>
+    <header></header>
+    <footer></footer>
+    <div class="search">
+        <form>
+            <input type="text" name="" placeholder="장소를 입력해주세요.">
+            <button type="submit"><i class="fa fa-search"
+            aria-hidden="true">
+            </i></button>
+        </form>
+    </div>
+    <div>
+        <button class="current-location-button" onclick="getCurrentLocation()">
+        <img src="../assets/icon/location.svg" alt="Current Location Icon" class="current-location-icon">현 위치로 검색</button>
+    </div>
+
+    <div class="nosearch">검색 결과가 없습니다.</div>
+
+</body>
+</html>

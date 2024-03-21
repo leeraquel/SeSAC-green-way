@@ -20,6 +20,8 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="./header.css" />
+    <link rel="stylesheet" href="../footer/footer.css" />
   </head>
   <body>
     <header>header</header>
@@ -29,17 +31,18 @@
     </div>
     <div class="UserName">username</div>
 
+    <!-- 비밀번호 변경 모달 -->
     <div
       class="modal fade"
-      id="exampleModalToggle"
+      id="passwordChangeModal"
       aria-hidden="true"
-      aria-labelledby="exampleModalToggleLabel"
+      aria-labelledby="passwordChangeModalLabel"
       tabindex="-1"
     >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+            <h1 class="modal-title fs-5" id="passwordChangeModalLabel">
               비밀번호 변경
             </h1>
             <button
@@ -52,33 +55,40 @@
           <div class="modal-body">
             <input
               type="password"
+              id="currentPassword"
               placeholder="현재 비밀번호를 입력해주세요."
             />
           </div>
           <div class="modal-footer">
-            <button
-              class="btn btn-primary"
-              data-bs-target="#exampleModalToggle2"
-              data-bs-toggle="modal"
-            >
+            <button class="btn btn-primary" onclick="checkPassword()">
               확인하기
             </button>
           </div>
         </div>
       </div>
     </div>
+
+    <button
+      class="btn btn-primary"
+      data-bs-target="#passwordChangeModal"
+      data-bs-toggle="modal"
+    >
+      비밀번호 수정
+    </button>
+
+    <!-- 새 비밀번호 변경 모달 -->
     <div
       class="modal fade"
-      id="exampleModalToggle2"
+      id="newPasswordModal"
       aria-hidden="true"
-      aria-labelledby="exampleModalToggleLabel2"
+      aria-labelledby="newPasswordModalLabel"
       tabindex="-1"
     >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">
-              비밀번호 변경
+            <h1 class="modal-title fs-5" id="newPasswordModalLabel">
+              새 비밀번호 설정
             </h1>
             <button
               type="button"
@@ -88,29 +98,21 @@
             ></button>
           </div>
           <div class="modal-body">
-            <input type="password" placeholder="새 비밀번호" />
-            <input type="password" placeholder="새 비밀번호 확인" />
+            <input type="password" id="newPassword" placeholder="새 비밀번호" />
+            <input
+              type="password"
+              id="confirmNewPassword"
+              placeholder="새 비밀번호 확인"
+            />
           </div>
           <div class="modal-footer">
-            <button
-              onclick="success()"
-              class="btn btn-primary"
-              aria-label="Close"
-              data-bs-dismiss="modal"
-            >
+            <button class="btn btn-primary" onclick="changePassword()">
               비밀번호 변경
             </button>
           </div>
         </div>
       </div>
     </div>
-    <button
-      class="btn btn-primary"
-      data-bs-target="#exampleModalToggle"
-      data-bs-toggle="modal"
-    >
-      비밀번호 수정
-    </button>
     <!-- ------------------------------------------------------ -->
     <div
       class="modal fade"
@@ -154,5 +156,6 @@
     >
       로그아웃
     </button>
+    <footer></footer>
   </body>
 </html>

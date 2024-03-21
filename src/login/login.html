@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+    <script type="module" src="../utils/utils.js"></script>
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <script type="module" defer src="./login.js"></script>
+    <link rel="stylesheet" href="../styles/globals.css" />
+    <link rel="stylesheet" href="../utils/header/header.css" />
+    <link rel="stylesheet" href="../utils/footer/footer.css" />
+    <link rel="stylesheet" href="../login/login.css" />
+  </head>
+  <body>
+    <img
+      class="login-logo"
+      src="../assets/img/logo_greenway_01.png"
+      alt="logo_greenway_01"
+    />
+    <section class="login-container">
+      <form action="/" class="login-form">
+        <h4>로그인</h4>
+        <input
+          type="text"
+          placeholder="아이디"
+          name="userId"
+          required
+          id="userId"
+        />
+        <input
+          type="password"
+          placeholder="비밀번호"
+          name="password"
+          required
+          id="password"
+        />
+        <p></p>
+        <button type="submit" class="login-btn">로그인</button>
+      </form>
+      <div class="login-option">
+        <input type="checkbox" id="autoLogin" />
+        <label for="autoLogin">자동로그인</label>
+        <div class="login-finding">
+          <a>아이디 찾기</a>
+          <a>비밀번호 찾기</a>
+        </div>
+      </div>
+      <hr />
+      <button type="button" class="join-btn">회원가입</button>
+    </section>
+    <footer></footer>
+  </body>
+</html>

@@ -114,17 +114,15 @@
     <!-- ------------------------------------------------------ -->
     <div
       class="modal fade"
-      id="logoutConfirmationModal"
-      tabindex="-1"
-      aria-labelledby="logoutConfirmationModalLabel"
+      id="logoutModal"
       aria-hidden="true"
+      aria-labelledby="logoutModalLabel"
+      tabindex="-1"
     >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="logoutConfirmationModalLabel">
-              로그아웃 확인
-            </h5>
+            <h1 class="modal-title fs-5" id="logoutModalLabel">로그아웃</h1>
             <button
               type="button"
               class="btn-close"
@@ -137,30 +135,22 @@
           </div>
           <div class="modal-footer">
             <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              취소
-            </button>
-            <button
-              type="button"
+              onclick="logout()"
               class="btn btn-primary"
+              aria-label="Close"
               data-bs-dismiss="modal"
             >
-              로그아웃
+              확인
             </button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Button to trigger Logout Confirmation Modal -->
     <button
-      type="button"
       class="btn btn-primary"
+      data-bs-target="#logoutModal"
       data-bs-toggle="modal"
-      data-bs-target="#logoutConfirmationModal"
     >
       로그아웃
     </button>

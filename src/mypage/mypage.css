@@ -33,6 +33,9 @@ header {
   background-color: forestgreen; /* 원하는 색상으로 변경 */
   color: #ffffff;
   border: 1px solid forestgreen;
+  width: 40%; /* 버튼 너비 설정 */
+  height: 40px; /* 버튼 높이 설정 */
+  margin-top: 20px;
 }
 
 .btn-primary:hover {

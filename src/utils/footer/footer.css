@@ -1,5 +1,5 @@
 ul {
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   display: flex;
   background-color: #061c1a;
@@ -14,5 +14,5 @@ li {
 }
 .footer-icon {
   width: 30px;
-  height: 30px;
+  height: 0px;
 }

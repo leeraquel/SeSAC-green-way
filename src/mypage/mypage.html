@@ -14,148 +14,158 @@
 
     <link rel="stylesheet" href="../styles/globals.css" />
     <link rel="stylesheet" href="./mypage.css" />
-    <script src="./mypage.js"></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="./header.css" />
-    <link rel="stylesheet" href="../footer/footer.css" />
+    <link rel="stylesheet" href="../utils/header/header.css" />
+    <link rel="stylesheet" href="..//utils/footer/footer.css" />
+
+    <script defer src="../utils/utils.js"></script>
+    <script src="./mypage.js"></script>
   </head>
   <body>
-    <header>header</header>
-    <div class="my-page-title">마이 페이지</div>
-    <div class="profile-pic">
-      <img src="../assets/img/profile-pic.svg" alt="profile-pic" />
-    </div>
-    <div class="UserName">username</div>
+    <!-- <header>header</header> -->
+    <main>
+      <div class="my-page-title">마이 페이지</div>
+      <div class="profile-pic">
+        <img src="../assets/img/profile-pic.svg" alt="profile-pic" />
+      </div>
+      <div class="UserName">username</div>
 
-    <!-- 비밀번호 변경 모달 -->
-    <div
-      class="modal fade"
-      id="passwordChangeModal"
-      aria-hidden="true"
-      aria-labelledby="passwordChangeModalLabel"
-      tabindex="-1"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="passwordChangeModalLabel">
-              비밀번호 변경
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <input
-              type="password"
-              id="currentPassword"
-              placeholder="현재 비밀번호를 입력해주세요."
-            />
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary" onclick="checkPassword()">
-              확인하기
-            </button>
+      <!-- 비밀번호 변경 모달 -->
+      <div
+        class="modal fade"
+        id="passwordChangeModal"
+        aria-hidden="true"
+        aria-labelledby="passwordChangeModalLabel"
+        tabindex="-1"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="passwordChangeModalLabel">
+                비밀번호 변경
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <input
+                type="password"
+                id="currentPassword"
+                placeholder="현재 비밀번호를 입력해주세요."
+              />
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" onclick="checkPassword()">
+                확인하기
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <button
-      class="btn btn-primary"
-      data-bs-target="#passwordChangeModal"
-      data-bs-toggle="modal"
-    >
-      비밀번호 수정
-    </button>
+      <button
+        class="btn btn-primary"
+        data-bs-target="#passwordChangeModal"
+        data-bs-toggle="modal"
+      >
+        비밀번호 수정
+      </button>
 
-    <!-- 새 비밀번호 변경 모달 -->
-    <div
-      class="modal fade"
-      id="newPasswordModal"
-      aria-hidden="true"
-      aria-labelledby="newPasswordModalLabel"
-      tabindex="-1"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="newPasswordModalLabel">
-              새 비밀번호 설정
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <input type="password" id="newPassword" placeholder="새 비밀번호" />
-            <input
-              type="password"
-              id="confirmNewPassword"
-              placeholder="새 비밀번호 확인"
-            />
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-primary" onclick="changePassword()">
-              비밀번호 변경
-            </button>
+      <!-- 새 비밀번호 변경 모달 -->
+      <div
+        class="modal fade"
+        id="newPasswordModal"
+        aria-hidden="true"
+        aria-labelledby="newPasswordModalLabel"
+        tabindex="-1"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="newPasswordModalLabel">
+                새 비밀번호 설정
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <input
+                type="password"
+                id="newPassword"
+                placeholder="새 비밀번호"
+              />
+              <input
+                type="password"
+                id="confirmNewPassword"
+                placeholder="새 비밀번호 확인"
+              />
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" onclick="changePassword()">
+                비밀번호 변경
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- ------------------------------------------------------ -->
-    <div
-      class="modal fade"
-      id="logoutModal"
-      aria-hidden="true"
-      aria-labelledby="logoutModalLabel"
-      tabindex="-1"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="logoutModalLabel">로그아웃</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <p>정말 로그아웃 하시겠습니까?</p>
-          </div>
-          <div class="modal-footer">
-            <button
-              onclick="logout()"
-              class="btn btn-primary"
-              aria-label="Close"
-              data-bs-dismiss="modal"
-            >
-              확인
-            </button>
+      <!-- ------------------------------------------------------ -->
+      <div
+        class="modal fade"
+        id="logoutModal"
+        aria-hidden="true"
+        aria-labelledby="logoutModalLabel"
+        tabindex="-1"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="logoutModalLabel">로그아웃</h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p>정말 로그아웃 하시겠습니까?</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                onclick="logout()"
+                class="btn btn-primary"
+                aria-label="Close"
+                data-bs-dismiss="modal"
+              >
+                확인
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <button
-      class="btn btn-primary"
-      data-bs-target="#logoutModal"
-      data-bs-toggle="modal"
-    >
-      로그아웃
-    </button>
-    <footer></footer>
+      <button
+        class="btn btn-primary"
+        data-bs-target="#logoutModal"
+        data-bs-toggle="modal"
+      >
+        로그아웃
+      </button>
+    </main>
+
+    <!-- <footer></footer> -->
   </body>
 </html>

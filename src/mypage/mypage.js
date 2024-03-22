@@ -52,3 +52,15 @@ function changePassword() {
   }
 }
 // ---------로그아웃에서 확인 시 로그인 페이지로 이동
+function logout() {
+  // 로그아웃 확인을 받기 위한 인풋창 표시
+  var confirmation = confirm('정말 로그아웃 하시겠습니까?');
+  if (confirmation) {
+    // 세션 스토리지에서 is로그인 값을 false로 설정
+    sessionStorage.setItem('is로그인', 'false');
+    // 로그아웃 알림창 표시
+    alert('로그아웃 되었습니다.');
+    // 로그인 페이지로 이동
+    window.location.href = '로그인페이지주소';
+  }
+}

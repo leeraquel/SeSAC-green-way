@@ -1,12 +1,33 @@
+import {
+  headerDiv,
+  footerDiv,
+  isLoginMyPage,
+  isloginFavoritePage,
+} from '../utils/utils.js';
+
+const hd = document.querySelector('header');
+hd.innerHTML = headerDiv;
+
+const fd = document.querySelector('footer');
+fd.innerHTML = footerDiv;
+
+// 방법 1
+const pageName = document.getElementById('mypage');
+pageName.addEventListener('click', isLoginMyPage);
+
+// 방법 2
+document
+  .getElementById('favorite')
+  .addEventListener('click', isloginFavoritePage);
+
 function getCurrentLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
         
-        // 사용자의 현재 위치 정보를 이용하여 추가 작업을 수행할 수 있습니다.
-        console.log('현재 위도:', latitude);
-        console.log('현재 경도:', longitude);
+        var input = document.getElementById("searchInput");
+        input.value = "현재 위치: 위도 " + latitude + " , 경도" + longitude;
       }, function() {
         console.log('Geolocation service failed.');
       });
@@ -14,6 +35,10 @@ function getCurrentLocation() {
       console.log('Geolocation is not supported by this browser.');
     }
   }
+
+
+
+
 
 
 // const getlocation = () => {

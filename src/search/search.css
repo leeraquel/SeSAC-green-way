@@ -91,11 +91,13 @@ button:hover i {
 }
 
 .current-location-button {
+    /* width: 150px;
+    height: 100px; */
     margin-left: -100px;
-    width: 100px;
-    height: 100px;
+    text-transform: lowercase;
     position: relative;
-    font-size: var(--font-sub);
+    
+    
 }
 .current-location-icon {
     width: 14px;

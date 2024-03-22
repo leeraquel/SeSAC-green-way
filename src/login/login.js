@@ -40,8 +40,8 @@ form.addEventListener('submit', async (event) => {
 
     if (userData.id === userId && userData.password === password) {
       sessionStorage.setItem('islogin', 'true');
-      // window.location.href = '../../../index.html';
-      histroy.go(-1);
+      window.location.href = '../../../index.html';
+      // histroy.go(-1);
     } else {
       const p = document.getElementById('message');
       p.innerText = '아이디 혹은 비밀번호가 일치하지 않습니다.';

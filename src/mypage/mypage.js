@@ -51,3 +51,4 @@ function changePassword() {
     modalInstance.hide();
   }
 }
+// ---------로그아웃에서 확인 시 로그인 페이지로 이동

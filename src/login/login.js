@@ -5,21 +5,6 @@
 // html에서 js를 연결할 때 type="module" 필수 작성!
 // <script type="module" src="../js/login.js"></script>
 
-import {
-  footerDiv,
-  isLoginMyPage,
-  isloginFavoritePage,
-} from '../utils/utils.js';
-
-const fd = document.querySelector('footer');
-fd.innerHTML = footerDiv;
-
-document.getElementById('mypage').addEventListener('click', isLoginMyPage);
-
-document
-  .getElementById('favorite')
-  .addEventListener('click', isloginFavoritePage);
-
 const inputId = document.getElementById('userId');
 const inputPw = document.getElementById('password');
 

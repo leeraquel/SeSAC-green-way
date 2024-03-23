@@ -13,8 +13,10 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <!-- 헤더 css 선언 -->
     <link rel="stylesheet" href="../utils/header/header.css" />
-    <link rel="stylesheet" href="../utils/footer/footer.css" />
+    <!-- 텝바 css 선언 -->
+    <link rel="stylesheet" href="../utils/tabBar/tabBar.css" />
     <link rel="stylesheet" href="../login/login.css" />
 
     <!-- js 선언 -->
@@ -23,7 +25,10 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script type="module" defer src="./login.js"></script>
+    <!-- util js선언 -->
+    <script src="../utils/utils.js"></script>
+    <!-- 각자 작업 페이지 js 선언 -->
+    <script defer src="./login.js"></script>
   </head>
   <body>
     <img
@@ -68,6 +73,46 @@
       <hr />
       <button type="button" class="join-btn">회원가입</button>
     </section>
-    <footer></footer>
+    <!-- 텝바 추가 -->
+    <nav>
+      <ul class="tab-bar">
+        <li class="tab">
+          <a href="../../index.html"
+            ><img
+              class="tab-icon"
+              src="../assets/icon/map.svg"
+              alt="지도 아이콘"
+          /></a>
+        </li>
+        <li class="tab">
+          <a href="../search/search.html"
+            ><img
+              class="tab-icon"
+              src="../assets/icon/search.svg"
+              alt="검색 아이콘"
+          /></a>
+        </li>
+        <li class="tab">
+          <a onclick="isloginFavoritePage()">
+            <img
+              id="favorite"
+              class="tab-icon"
+              src="../assets/icon/favorite.svg"
+              alt="즐겨찾기 아이콘"
+            />
+          </a>
+        </li>
+        <li class="tab">
+          <a onclick="isLoginMyPage()">
+            <img
+              id="mypage"
+              class="tab-icon"
+              src="../assets/icon/my.svg"
+              alt="마이페이지 아이콘"
+            />
+          </a>
+        </li>
+      </ul>
+    </nav>
   </body>
 </html>

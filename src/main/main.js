@@ -6,9 +6,9 @@ import {
 } from '../api/seoul.js';
 
 let nowLo = {
-  address: '서울 서대문구 신촌역로 30 신촌민자역사',
-  x: 126.942387,
-  y: 37.5598242,
+  address: '서울특별시 마포구 양화로 72',
+  x: 126.916493990351,
+  y: 37.5508138163956,
 };
 
 // 객체를 문자열로 변환하여 저장
@@ -34,24 +34,14 @@ const kickgoingMarkerImageSrc = 'src/assets/icon/kickgoingMarker.svg';
 const elecleMarkerImageSrc = 'src/assets/icon/elecleMarker.svg';
 const clickedMarkerImageSrc = 'src/assets/icon/clickedMarker.svg';
 
-const normalSize = new kakao.maps.Size(36, 36);
-const clickedSize = new kakao.maps.Size(52, 52);
+const normalSize = new kakao.maps.Size(32, 32);
+const clickedSize = new kakao.maps.Size(40, 40);
 
 var currentClickedMarker = null; // 현재 클릭된 마커를 추적할 변수
 var markersMap = new Map();
 
 function createAndAddMarker(position, imageSrc, map, info, brand) {
-  // var imageSize = new kakao.maps.Size(36, 36); // 마커 이미지의 크기
-  // var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-  // var marker = new kakao.maps.Marker({
-  //   position: position,
-  //   image: markerImage,
-  // });
   var markerImage = new kakao.maps.MarkerImage(imageSrc, normalSize);
-  var clickedMarkerImage = new kakao.maps.MarkerImage(
-    clickedMarkerImageSrc,
-    clickedSize
-  );
 
   var marker = new kakao.maps.Marker({
     position: position,
@@ -59,42 +49,22 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
   });
 
   // 마커 객체와 원본 이미지 소스를 Map 객체에 저장
-  markersMap.set(marker, imageSrc);
-
-  // // 원래 마커 이미지
-  // var markerImage = new kakao.maps.MarkerImage(imageSrc, normalSize);
-  // // 클릭 시 변경할 마커 이미지
-  // var clickedMarkerImage = new kakao.maps.MarkerImage(
-  //   clickedMarkerImageSrc,
-  //   clickedSize
-  // );
-
-  // var marker = new kakao.maps.Marker({
-  //   position: position,
-  //   image: markerImage,
-  // });
+  // markersMap.set(marker, imageSrc);
+  markersMap.set(marker, { src: imageSrc, size: normalSize });
 
   kakao.maps.event.addListener(marker, 'click', function () {
-    // 이전에 클릭된 마커가 있으면 크기를 원래대로 돌림
-    // if (currentClickedMarker && currentClickedMarker !== marker) {
-    //   currentClickedMarker.setImage(markerImage); // 이전 마커 이미지를 원래대로
-    // }
-
-    // // 현재 클릭된 마커의 이미지를 변경
-    // marker.setImage(clickedMarkerImage);
-
-    // // 현재 클릭된 마커를 추적
-    // currentClickedMarker = marker;
+    // 이전에 클릭된 마커가 있으면 그 마커의 크기를 원래대로 돌림
     if (currentClickedMarker && currentClickedMarker !== marker) {
-      var originalImageSrc = markersMap.get(currentClickedMarker);
+      var originalMarkerData = markersMap.get(currentClickedMarker);
       var originalMarkerImage = new kakao.maps.MarkerImage(
-        originalImageSrc,
-        normalSize
+        originalMarkerData.src,
+        originalMarkerData.size
       );
       currentClickedMarker.setImage(originalMarkerImage);
     }
 
-    // 현재 클릭된 마커의 이미지를 변경
+    // 현재 클릭된 마커의 크기를 변경
+    var clickedMarkerImage = new kakao.maps.MarkerImage(imageSrc, clickedSize);
     marker.setImage(clickedMarkerImage);
 
     // 현재 클릭된 마커를 추적

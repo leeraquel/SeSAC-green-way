@@ -114,18 +114,25 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
 }
 
 function filterMarkers(category) {
+  let displayedMarkersCount = 0; // 표시된 마커의 수를 추적하는 변수
+
   markersMap.forEach((value, marker) => {
-    // 카테고리가 'user'이거나, 모두 보기 선택 시 또는 마커의 카테고리가 선택된 카테고리와 일치하는 경우
     if (
       value.category === 'user' ||
       category === 'all' ||
       value.category === category
     ) {
       marker.setMap(map); // 마커를 지도에 표시
+      displayedMarkersCount++; // 표시된 마커의 수 증가
     } else {
       marker.setMap(null); // 그렇지 않으면 마커를 지도에서 제거
     }
   });
+
+  // 모든 마커의 처리가 끝난 후, 표시된 마커가 없는 경우 알림 표시
+  if (displayedMarkersCount === 0) {
+    alert('이용 가능한 수단이 없습니다.');
+  }
 }
 
 document.getElementById('allFilter').addEventListener('click', function () {

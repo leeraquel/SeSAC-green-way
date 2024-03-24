@@ -5,23 +5,21 @@ import {
   getElecleStatusWithin500m,
 } from '../api/seoul.js';
 
-let nowLo = {
-  address: '서울특별시 마포구 양화로 72',
-  x: 126.916493990351,
-  y: 37.5508138163956,
-};
+let storedAddress;
 
-// 객체를 문자열로 변환하여 저장
-sessionStorage.setItem(
-  'address',
-  JSON.stringify({
-    addressName: nowLo.address,
-    x: nowLo.x,
-    y: nowLo.y,
-  })
-);
+// sessionStorage에 'address' 항목이 있는지 확인하고, 있으면 사용하고, 없으면 기본 값을 설정
+if (sessionStorage.getItem('address')) {
+  storedAddress = JSON.parse(sessionStorage.getItem('address'));
+} else {
+  let nowLo = {
+    address: '서울특별시 마포구 양화로 72',
+    x: 126.916493990351,
+    y: 37.5508138163956,
+  };
 
-const storedAddress = JSON.parse(sessionStorage.getItem('address'));
+  sessionStorage.setItem('address', JSON.stringify(nowLo));
+  storedAddress = nowLo;
+}
 
 //상단에 현재 주소 정보 띄우기
 document.getElementById('nowLocationName').textContent =

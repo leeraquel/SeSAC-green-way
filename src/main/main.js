@@ -43,13 +43,13 @@ const elecleMarkerImageSrc = 'src/assets/icon/elecleMarker.svg';
 const normalSize = new kakao.maps.Size(32, 32);
 const clickedSize = new kakao.maps.Size(40, 40);
 
-var currentClickedMarker = null; // 현재 클릭된 마커를 추적할 변수
-var markersMap = new Map();
+let currentClickedMarker = null; // 현재 클릭된 마커를 추적할 변수
+let markersMap = new Map();
 
 function createAndAddMarker(position, imageSrc, map, info, brand) {
-  var markerImage = new kakao.maps.MarkerImage(imageSrc, normalSize);
+  let markerImage = new kakao.maps.MarkerImage(imageSrc, normalSize);
 
-  var marker = new kakao.maps.Marker({
+  let marker = new kakao.maps.Marker({
     position: position,
     image: markerImage,
   });
@@ -60,8 +60,8 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
   kakao.maps.event.addListener(marker, 'click', function () {
     // 이전에 클릭된 마커가 있으면 그 마커의 크기를 원래대로 돌림
     if (currentClickedMarker && currentClickedMarker !== marker) {
-      var originalMarkerData = markersMap.get(currentClickedMarker);
-      var originalMarkerImage = new kakao.maps.MarkerImage(
+      let originalMarkerData = markersMap.get(currentClickedMarker);
+      let originalMarkerImage = new kakao.maps.MarkerImage(
         originalMarkerData.src,
         originalMarkerData.size
       );
@@ -69,7 +69,7 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
     }
 
     // 현재 클릭된 마커의 크기를 변경
-    var clickedMarkerImage = new kakao.maps.MarkerImage(imageSrc, clickedSize);
+    let clickedMarkerImage = new kakao.maps.MarkerImage(imageSrc, clickedSize);
     marker.setImage(clickedMarkerImage);
 
     // 현재 클릭된 마커를 추적
@@ -149,9 +149,9 @@ document
 
 //유저 마커 찍는 함수
 function createAndAddUserMarker(position, imageSrc, map) {
-  var imageSize = new kakao.maps.Size(36, 36); // 마커 이미지의 크기
-  var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-  var marker = new kakao.maps.Marker({
+  let imageSize = new kakao.maps.Size(36, 36); // 마커 이미지의 크기
+  let markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+  let marker = new kakao.maps.Marker({
     position: position,
     image: markerImage,
   });
@@ -170,7 +170,7 @@ let mapContainer = document.getElementById('map'), // 지도를 표시할 div
 let map = new kakao.maps.Map(mapContainer, mapOption);
 
 // 지도 생성 후 사용자의 현재 위치에 마커 추가
-var userPosition = new kakao.maps.LatLng(storedAddress.y, storedAddress.x);
+let userPosition = new kakao.maps.LatLng(storedAddress.y, storedAddress.x);
 createAndAddUserMarker(userPosition, userMarkerSrc, map);
 
 // Promise.all을 사용하여 모든 API 호출을 동시에 실행
@@ -193,7 +193,7 @@ Promise.all([
     } else {
       // 결과가 빈 배열이 아닌 경우, 각 수단에 대한 마커를 지도에 추가
       seoulBikeStations.forEach((station) => {
-        var position = new kakao.maps.LatLng(
+        let position = new kakao.maps.LatLng(
           station.stationLatitude,
           station.stationLongitude
         );
@@ -207,7 +207,7 @@ Promise.all([
       });
 
       kickgoingLocations.forEach((location) => {
-        var position = new kakao.maps.LatLng(location.y, location.x);
+        let position = new kakao.maps.LatLng(location.y, location.x);
         createAndAddMarker(
           position,
           kickgoingMarkerImageSrc,
@@ -218,7 +218,7 @@ Promise.all([
       });
 
       elecleLocations.forEach((location) => {
-        var position = new kakao.maps.LatLng(location.y, location.x);
+        let position = new kakao.maps.LatLng(location.y, location.x);
         createAndAddMarker(
           position,
           elecleMarkerImageSrc,
@@ -233,98 +233,6 @@ Promise.all([
     // 에러 처리
     console.error('API 호출 중 오류 발생:', error);
   });
-
-// getSeoulBikeStatusWithin500m().then((stations) => {
-//   console.log(stations);
-//   stations.forEach((station) => {
-//     var position = new kakao.maps.LatLng(
-//       station.stationLatitude,
-//       station.stationLongitude
-//     );
-//     createAndAddMarker(
-//       position,
-//       seoulBikeMarkerImageSrc,
-//       map,
-//       station,
-//       'seoulBike'
-//     );
-//   });
-// });
-
-// getKickgoingStatusWithin500m().then((locations) => {
-//   locations.forEach((location) => {
-//     var position = new kakao.maps.LatLng(location.y, location.x);
-//     createAndAddMarker(
-//       position,
-//       kickgoingMarkerImageSrc,
-//       map,
-//       location,
-//       'kickgoing'
-//     );
-//   });
-// });
-
-// getElecleStatusWithin500m().then((locations) => {
-//   locations.forEach((location) => {
-//     var position = new kakao.maps.LatLng(location.y, location.x);
-//     createAndAddMarker(position, elecleMarkerImageSrc, map, location, 'elecle');
-//   });
-// });
-
-// async function reloadMarkers() {
-//   // 모든 기존 마커 제거
-//   markersMap.forEach((_, marker) => {
-//     marker.setMap(null);
-//   });
-//   markersMap.clear();
-
-//   // 세션 스토리지에서 사용자의 현재 위치 정보 가져오기
-//   const storedAddress = JSON.parse(sessionStorage.getItem('address'));
-//   console.log(storedAddress);
-
-//   // 사용자의 현재 위치에 마커 추가
-//   const userPosition = new kakao.maps.LatLng(storedAddress.y, storedAddress.x);
-//   createAndAddUserMarker(userPosition, userMarkerSrc, map);
-
-//   // 지도의 중심을 사용자의 현재 위치로 이동
-//   map.setCenter(userPosition);
-
-//   // 서울 자전거 대여소 마커 로드
-//   const seoulBikeStations = await getSeoulBikeStatusWithin500m();
-//   seoulBikeStations.forEach((station) => {
-//     const position = new kakao.maps.LatLng(
-//       station.stationLatitude,
-//       station.stationLongitude
-//     );
-//     createAndAddMarker(
-//       position,
-//       seoulBikeMarkerImageSrc,
-//       map,
-//       station,
-//       'seoulBike'
-//     );
-//   });
-
-//   // 킥고잉 마커 로드
-//   const kickgoingLocations = await getKickgoingStatusWithin500m();
-//   kickgoingLocations.forEach((location) => {
-//     const position = new kakao.maps.LatLng(location.y, location.x);
-//     createAndAddMarker(
-//       position,
-//       kickgoingMarkerImageSrc,
-//       map,
-//       location,
-//       'kickgoing'
-//     );
-//   });
-
-//   // 일레클 마커 로드
-//   const elecleLocations = await getElecleStatusWithin500m();
-//   elecleLocations.forEach((location) => {
-//     const position = new kakao.maps.LatLng(location.y, location.x);
-//     createAndAddMarker(position, elecleMarkerImageSrc, map, location, 'elecle');
-//   });
-// }
 
 async function reloadMarkers() {
   // 지도 상의 모든 마커를 제거합니다.
@@ -394,23 +302,11 @@ async function reloadMarkers() {
             'elecle'
           );
         });
-        //     // 결과가 빈 배열이 아닌 경우, 각 수단에 대한 마커를 지도에 추가
-        //     [...seoulBikeStations, ...kickgoingLocations, ...elecleLocations].forEach(item => {
-        //         const position = new kakao.maps.LatLng(item.y, item.x);
-        //         const imageSrc = item.type === 'seoulBike' ? seoulBikeMarkerImageSrc :
-        //                          item.type === 'kickgoing' ? kickgoingMarkerImageSrc :
-        //                          elecleMarkerImageSrc; // 여기서 item.type은 예시입니다. 실제 속성명을 사용하세요.
-        //         createAndAddMarker(position, imageSrc, map, item, item.type);
-        //     });
       }
     })
     .catch((error) => {
       console.error('API 호출 중 오류 발생:', error);
     });
-
-  // 사용자의 현재 위치에 마커를 추가합니다.
-  // const userPosition = new kakao.maps.LatLng(storedAddress.y, storedAddress.x);
-  // createAndAddUserMarker(userPosition, userMarkerSrc, map);
 }
 
 async function getCurrentLocation() {
@@ -418,9 +314,9 @@ async function getCurrentLocation() {
     navigator.geolocation.getCurrentPosition(
       async function (position) {
         // 이 함수 내에서 비동기 로직을 사용하기 때문에 async 추가
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        var geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${googleKey}&language=ko`;
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
+        let geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${googleKey}&language=ko`;
 
         try {
           // Geocoding API 호출 및 결과 대기

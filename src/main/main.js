@@ -47,9 +47,8 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
     image: markerImage,
   });
 
-  // 마커 객체와 원본 이미지 소스를 Map 객체에 저장
-  // markersMap.set(marker, imageSrc);
-  markersMap.set(marker, { src: imageSrc, size: normalSize });
+  // 마커 객체와 원본 이미지 소스, 크기, 필터링구분 브랜드 Map 객체에 저장
+  markersMap.set(marker, { src: imageSrc, size: normalSize, category: brand });
 
   kakao.maps.event.addListener(marker, 'click', function () {
     // 이전에 클릭된 마커가 있으면 그 마커의 크기를 원래대로 돌림
@@ -106,6 +105,40 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
 
   marker.setMap(map);
 }
+
+function filterMarkers(category) {
+  markersMap.forEach((value, marker) => {
+    // 카테고리가 'user'이거나, 모두 보기 선택 시 또는 마커의 카테고리가 선택된 카테고리와 일치하는 경우
+    if (
+      value.category === 'user' ||
+      category === 'all' ||
+      value.category === category
+    ) {
+      marker.setMap(map); // 마커를 지도에 표시
+    } else {
+      marker.setMap(null); // 그렇지 않으면 마커를 지도에서 제거
+    }
+  });
+}
+
+document.getElementById('allFilter').addEventListener('click', function () {
+  filterMarkers('all');
+});
+document
+  .getElementById('FilterSeoulBikeOnly')
+  .addEventListener('click', function () {
+    filterMarkers('seoulBike');
+  });
+document
+  .getElementById('FilterElecleOnly')
+  .addEventListener('click', function () {
+    filterMarkers('elecle');
+  });
+document
+  .getElementById('FilterKickgoingOnly')
+  .addEventListener('click', function () {
+    filterMarkers('kickgoing');
+  });
 
 //유저 마커 찍는 함수
 function createAndAddUserMarker(position, imageSrc, map) {

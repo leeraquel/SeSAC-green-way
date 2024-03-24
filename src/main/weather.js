@@ -1,5 +1,6 @@
 import { openWeatherKey } from '../../config.js';
-import { fetchWeatherInfo } from '../api/weatherApi.js';
+import { seoulKey } from '../../config.js';
+import { fetchWeatherInfo, fetchDustForecast } from '../api/weatherApi.js';
 
 let storedAddress;
 
@@ -22,6 +23,9 @@ const icon = document.getElementById('weatherIcon');
 const weatherTemp = document.getElementById('weatherTemp');
 const weatherDesc = document.getElementById('weatherDesc');
 
+//미세먼지 관련 dom 조작 코드
+const dustContent = document.getElementById('dustContent');
+
 // import 해온 패치 함수로 openweatherAPI 호출
 fetchWeatherInfo(
   `${storedAddress.y}`,
@@ -34,5 +38,9 @@ fetchWeatherInfo(
   );
   weatherTemp.textContent = `${weatherInfo.main.temp} °C`;
   weatherDesc.textContent = weatherInfo.weather[0].description;
-  // 여기에 날씨 정보를 처리하는 로직을 추가하세요.
+});
+
+// 미세먼지 대기 환경 api 호출
+fetchDustForecast(seoulKey).then((grade) => {
+  dustContent.textContent = `${grade}`;
 });

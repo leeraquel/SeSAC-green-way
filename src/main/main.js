@@ -8,14 +8,6 @@ import { googleKey } from '../../config.js';
 
 let storedAddress;
 
-let defaultLocation = {
-  address: '서울특별시 마포구 양화로 72',
-  x: 126.916493990351,
-  y: 37.5508138163956,
-};
-
-sessionStorage.setItem('address', JSON.stringify(defaultLocation));
-
 // sessionStorage에 'address' 항목이 있는지 확인하고, 있으면 사용하고, 없으면 기본 값을 설정
 if (sessionStorage.getItem('address')) {
   storedAddress = JSON.parse(sessionStorage.getItem('address'));
@@ -31,8 +23,8 @@ if (sessionStorage.getItem('address')) {
 }
 
 //상단에 현재 주소 정보 띄우기
-document.getElementById('nowLocationName').textContent =
-  storedAddress.addressName;
+
+document.getElementById('nowLocationName').textContent = storedAddress.address;
 
 // 사용자 정의 마커 이미지의 경로입니다.
 const userMarkerSrc = 'src/assets/icon/userMarker.svg';
@@ -111,6 +103,47 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
   });
 
   marker.setMap(map);
+}
+
+// 별에 토글기능 넣는 함수
+function toggleFavoriteIcon() {
+  const isFavoriteImg = document.getElementById('isFavorite');
+
+  const isStar =
+    isFavoriteImg.getAttribute('src') === 'src/assets/icon/star.svg';
+
+  if (isStar) {
+    isFavoriteImg.setAttribute('src', 'src/assets/icon/emptyStar.svg');
+  } else {
+    isFavoriteImg.setAttribute('src', 'src/assets/icon/star.svg');
+  }
+}
+
+//별 띄우는 함수
+async function fetchFavoritesAndUpdateIcon() {
+  const currentLocation = JSON.parse(sessionStorage.getItem('address'));
+  if (!currentLocation) return;
+
+  // favorite.json에서 데이터 가져오기
+  const response = await fetch('src/api/favorite.json');
+  const favorites = await response.json();
+
+  // 현재 위치와 즐겨찾기 위치 비교
+  let isFavorite = favorites.some((favorite) => {
+    return (
+      favorite.stationLatitude === currentLocation.y &&
+      favorite.stationLongitude === currentLocation.x
+    );
+  });
+
+  // HTML 업데이트
+  const isFavoriteImg = document.getElementById('isFavorite');
+  if (isFavorite) {
+    isFavoriteImg.setAttribute('src', 'src/assets/icon/star.svg');
+  } else {
+    isFavoriteImg.setAttribute('src', 'src/assets/icon/emptyStar.svg');
+  }
+  isFavoriteImg.onclick = toggleFavoriteIcon;
 }
 
 function filterMarkers(category) {
@@ -196,7 +229,9 @@ Promise.all([
       kickgoingLocations.length === 0 &&
       elecleLocations.length === 0
     ) {
-      alert('해당 지역에서 이용 가능한 수단이 없습니다.');
+      alert(
+        '해당 지역에서 이용 가능한 수단이 없습니다.\n본 프로젝트는 마포구, 서대문구, 영등포구를 기준으로 제작되었습니다.'
+      );
     } else {
       // 결과가 빈 배열이 아닌 경우, 각 수단에 대한 마커를 지도에 추가
       seoulBikeStations.forEach((station) => {
@@ -356,9 +391,12 @@ async function getCurrentLocation() {
   } else {
     console.log('Geolocation is not supported by this browser.');
   }
+  await fetchFavoritesAndUpdateIcon();
 }
 
 // 현재위치 아이콘 클릭시 실행
 document
   .getElementById('findCurrentLocation')
   .addEventListener('click', getCurrentLocation);
+
+fetchFavoritesAndUpdateIcon();

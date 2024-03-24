@@ -8,18 +8,42 @@
       type="text/javascript"
       src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=501ce2874cb0fbaf11fc7e0dbdae1c99"
     ></script>
+    <script defer src="./src/utils/utils.js"></script>
     <script type="module" defer src="./src/main/main.js"></script>
+    <script type="module" defer src="./src/main/weather.js"></script>
     <link rel="stylesheet" type="text/css" href="./src/styles/reset.css" />
     <link rel="stylesheet" type="text/css" href="./src/styles/globals.css" />
+    <!-- 헤더 css 불러오기 -->
+    <link rel="stylesheet" href="./src/utils/header/header.css" />
+    <!-- 텝바 css 불러오기 -->
+    <link rel="stylesheet" href="./src/utils/tabBar/tabBar.css" />
     <link rel="stylesheet" type="text/css" href="./src/main/main.css" />
   </head>
   <body>
-    <header></header>
+    <header class="header">
+      <a class="header-logo" href="./"
+        ><img
+          class="header-logo-img"
+          src="./src/assets/img/logo_greenway_01.png"
+      /></a>
+    </header>
     <main>
       <div id="map" style="width: 390px; height: 800px"></div>
       <div class="nowLocaitonInfo">
         <div id="nowLocationName"></div>
-        <img id="isFavorite" src="/" alt="star"></img>
+        <img id="isFavorite" src="/" alt="star" />
+      </div>
+      <div class="weatherWrapper flexRow">
+        <div class="weatherTextWrapper">
+          <p class="weatherText">현재 날씨 :</p>
+          <img id="weatherIcon" src="/" alt="weatherIcon" />
+          <p class="weatherText" id="weatherTemp"></p>
+          <p class="weatherText" id="weatherDesc"></p>
+        </div>
+        <div class="weatherTextWrapper">
+          <p class="weatherText">통합대기환경 등급 :</p>
+          <p class="weatherText" id="dustContent"></p>
+        </div>
       </div>
       <div class="categoryFilter">
         <ul>
@@ -77,6 +101,45 @@
         </div>
       </div>
     </main>
-    <footer></footer>
+    <nav>
+      <ul class="tab-bar">
+        <li class="tab">
+          <a href="./"
+            ><img
+              class="tab-icon"
+              src="./src/assets/icon/map.svg"
+              alt="지도 아이콘"
+          /></a>
+        </li>
+        <li class="tab">
+          <a href="./src/search/search.html"
+            ><img
+              class="tab-icon"
+              src="./src/assets/icon/search.svg"
+              alt="검색 아이콘"
+          /></a>
+        </li>
+        <li class="tab">
+          <a onclick="isloginFavoritePage()">
+            <img
+              id="favorite"
+              class="tab-icon"
+              src="./src/assets/icon/favorite.svg"
+              alt="즐겨찾기 아이콘"
+            />
+          </a>
+        </li>
+        <li class="tab">
+          <a onclick="isLoginMyPage()">
+            <img
+              id="mypage"
+              class="tab-icon"
+              src="./src/assets/icon/my.svg"
+              alt="마이페이지 아이콘"
+            />
+          </a>
+        </li>
+      </ul>
+    </nav>
   </body>
 </html>

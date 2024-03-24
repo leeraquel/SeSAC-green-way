@@ -2,7 +2,7 @@ import {
   getSeoulBikeStatusWithin500m,
   getKickgoingStatusWithin500m,
   getElecleStatusWithin500m,
-} from '../api/seoul.js';
+} from '../api/mapApi.js';
 
 import { googleKey } from '../../config.js';
 

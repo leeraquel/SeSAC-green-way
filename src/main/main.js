@@ -1,12 +1,27 @@
-//session storage에 임의의 값 넣기
 import {
   getSeoulBikeStatusWithin500m,
   getKickgoingStatusWithin500m,
   getElecleStatusWithin500m,
 } from '../api/seoul.js';
+
 import { googleKey } from '../../config.js';
 
+// session storage 불러올 변수 선언
 let storedAddress;
+
+// 사용자 정의 마커 이미지의 경로
+const userMarkerSrc = 'src/assets/icon/userMarker.svg';
+const seoulBikeMarkerImageSrc = 'src/assets/icon/seoulBikeMarker.svg';
+const kickgoingMarkerImageSrc = 'src/assets/icon/kickgoingMarker.svg';
+const elecleMarkerImageSrc = 'src/assets/icon/elecleMarker.svg';
+
+// 마커 사이즈 선언
+const normalSize = new kakao.maps.Size(32, 32);
+const clickedSize = new kakao.maps.Size(40, 40);
+
+// 마커 추적 변수 및 관련 map 객체 생성
+let currentClickedMarker = null;
+let markersMap = new Map();
 
 // sessionStorage에 'address' 항목이 있는지 확인하고, 있으면 사용하고, 없으면 기본 값을 설정
 if (sessionStorage.getItem('address')) {
@@ -23,21 +38,9 @@ if (sessionStorage.getItem('address')) {
 }
 
 //상단에 현재 주소 정보 띄우기
-
 document.getElementById('nowLocationName').textContent = storedAddress.address;
 
-// 사용자 정의 마커 이미지의 경로입니다.
-const userMarkerSrc = 'src/assets/icon/userMarker.svg';
-const seoulBikeMarkerImageSrc = 'src/assets/icon/seoulBikeMarker.svg';
-const kickgoingMarkerImageSrc = 'src/assets/icon/kickgoingMarker.svg';
-const elecleMarkerImageSrc = 'src/assets/icon/elecleMarker.svg';
-
-const normalSize = new kakao.maps.Size(32, 32);
-const clickedSize = new kakao.maps.Size(40, 40);
-
-let currentClickedMarker = null; // 현재 클릭된 마커를 추적할 변수
-let markersMap = new Map();
-
+// 마커 만들고 브랜드 별로 이미지 다르게 넣고 onClick에 정보 띄우는 것 까지 넣음
 function createAndAddMarker(position, imageSrc, map, info, brand) {
   let markerImage = new kakao.maps.MarkerImage(imageSrc, normalSize);
 
@@ -72,7 +75,6 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
     let logo = document.getElementById('logo');
     let title = document.getElementById('title');
     let count = document.getElementById('count');
-    // let subTitle = document.getElementById('subTitle');
     let reservation = document.getElementById('reservation');
 
     //카드 띄우기
@@ -136,7 +138,6 @@ async function fetchFavoritesAndUpdateIcon() {
     );
   });
 
-  // HTML 업데이트
   const isFavoriteImg = document.getElementById('isFavorite');
   if (isFavorite) {
     isFavoriteImg.setAttribute('src', 'src/assets/icon/star.svg');
@@ -146,6 +147,7 @@ async function fetchFavoritesAndUpdateIcon() {
   isFavoriteImg.onclick = toggleFavoriteIcon;
 }
 
+//markersMap 객체에서 카테고리 받아서 마커 필터링하는 함수
 function filterMarkers(category) {
   let displayedMarkersCount = 0; // 표시된 마커의 수를 추적하는 변수
 
@@ -162,30 +164,11 @@ function filterMarkers(category) {
     }
   });
 
-  // 모든 마커의 처리가 끝난 후, 표시된 마커가 없는 경우 알림 표시
+  // 마커 없으면 예외처리
   if (displayedMarkersCount === 0) {
     alert('이용 가능한 수단이 없습니다.');
   }
 }
-
-document.getElementById('allFilter').addEventListener('click', function () {
-  filterMarkers('all');
-});
-document
-  .getElementById('FilterSeoulBikeOnly')
-  .addEventListener('click', function () {
-    filterMarkers('seoulBike');
-  });
-document
-  .getElementById('FilterElecleOnly')
-  .addEventListener('click', function () {
-    filterMarkers('elecle');
-  });
-document
-  .getElementById('FilterKickgoingOnly')
-  .addEventListener('click', function () {
-    filterMarkers('kickgoing');
-  });
 
 //유저 마커 찍는 함수
 function createAndAddUserMarker(position, imageSrc, map) {
@@ -199,6 +182,153 @@ function createAndAddUserMarker(position, imageSrc, map) {
   marker.setMap(map);
 }
 
+// 현재 위치 잡으면 마커 다시 찍는 함수
+async function reloadMarkers() {
+  // 지도 상의 모든 마커를 제거합니다.
+  markersMap.forEach((_, marker) => marker.setMap(null));
+  markersMap.clear();
+  // 세션 스토리지에서 사용자의 현재 위치 정보 가져오기
+  const storedAddress = JSON.parse(sessionStorage.getItem('address'));
+  console.log(storedAddress);
+
+  // 사용자의 현재 위치에 마커 추가
+  const userPosition = new kakao.maps.LatLng(storedAddress.y, storedAddress.x);
+  createAndAddUserMarker(userPosition, userMarkerSrc, map);
+
+  // 지도의 중심을 사용자의 현재 위치로 이동
+  map.setCenter(userPosition);
+
+  // 모든 서비스의 상태를 확인합니다.
+  Promise.all([
+    getSeoulBikeStatusWithin500m(),
+    getKickgoingStatusWithin500m(),
+    getElecleStatusWithin500m(),
+  ])
+    .then(([seoulBikeStations, kickgoingLocations, elecleLocations]) => {
+      // 모든 호출 결과가 빈 배열인 경우
+      if (
+        seoulBikeStations.length === 0 &&
+        kickgoingLocations.length === 0 &&
+        elecleLocations.length === 0
+      ) {
+        alert('해당 지역에서 이용 가능한 수단이 없습니다.');
+      } else {
+        // 서울 자전거 대여소 마커 로드
+        [...seoulBikeStations].forEach((station) => {
+          const position = new kakao.maps.LatLng(
+            station.stationLatitude,
+            station.stationLongitude
+          );
+          createAndAddMarker(
+            position,
+            seoulBikeMarkerImageSrc,
+            map,
+            station,
+            'seoulBike'
+          );
+        });
+
+        // 킥고잉 마커 로드
+        [...kickgoingLocations].forEach((location) => {
+          const position = new kakao.maps.LatLng(location.y, location.x);
+          createAndAddMarker(
+            position,
+            kickgoingMarkerImageSrc,
+            map,
+            location,
+            'kickgoing'
+          );
+        });
+
+        // 일레클 마커 로드
+        [...elecleLocations].forEach((location) => {
+          const position = new kakao.maps.LatLng(location.y, location.x);
+          createAndAddMarker(
+            position,
+            elecleMarkerImageSrc,
+            map,
+            location,
+            'elecle'
+          );
+        });
+      }
+    })
+    .catch((error) => {
+      console.error('API 호출 중 오류 발생:', error);
+    });
+}
+
+// 현재 위치 잡아서 결과 반영하는 함수
+async function getCurrentLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      async function (position) {
+        // 이 함수 내에서 비동기 로직을 사용하기 때문에 async 추가
+        let latitude = position.coords.latitude;
+        let longitude = position.coords.longitude;
+        let geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${googleKey}&language=ko`;
+
+        try {
+          // Geocoding API 호출 및 결과 대기
+          const response = await fetch(geocodingUrl);
+          const data = await response.json();
+          const addressName = data.results[0].formatted_address;
+          console.log(data.results[0].formatted_address);
+
+          // 세션 스토리지 업데이트
+          let currentLocation = {
+            address: addressName, // 비동기 호출 결과로 얻은 주소 사용
+            x: longitude,
+            y: latitude,
+          };
+
+          sessionStorage.setItem('address', JSON.stringify(currentLocation));
+          storedAddress = currentLocation;
+
+          // 지도 중심 재설정 및 마커 다시 로드
+          map.setCenter(new kakao.maps.LatLng(latitude, longitude));
+          reloadMarkers();
+        } catch (error) {
+          console.log('Geocoding API 호출 실패:', error);
+        }
+      },
+      function () {
+        console.log('Geolocation service failed.');
+      }
+    );
+  } else {
+    console.log('Geolocation is not supported by this browser.');
+  }
+  await fetchFavoritesAndUpdateIcon();
+}
+
+//필터 관련 dom 선언
+const allFilter = document.getElementById('allFilter');
+const filterSeoulBike = document.getElementById('FilterSeoulBikeOnly');
+const filterElecle = document.getElementById('FilterElecleOnly');
+const filterKickgoing = document.getElementById('FilterKickgoingOnly');
+
+// 현재위치 관련 dom 지정
+const findCurrentLocation = document.getElementById('findCurrentLocation');
+
+// 현재위치 온클릭 이벤트 추가
+findCurrentLocation.addEventListener('click', getCurrentLocation);
+
+//필터링 온클릭 이벤트 추가
+allFilter.addEventListener('click', function () {
+  filterMarkers('all');
+});
+filterSeoulBike.addEventListener('click', function () {
+  filterMarkers('seoulBike');
+});
+filterElecle.addEventListener('click', function () {
+  filterMarkers('elecle');
+});
+filterKickgoing.addEventListener('click', function () {
+  filterMarkers('kickgoing');
+});
+
+// 카카오 지도 생성 및 마커링 관련 기능들
 // 지도 컨테이너를 선택합니다.
 let mapContainer = document.getElementById('map'), // 지도를 표시할 div
   mapOption = {
@@ -276,127 +406,5 @@ Promise.all([
     console.error('API 호출 중 오류 발생:', error);
   });
 
-async function reloadMarkers() {
-  // 지도 상의 모든 마커를 제거합니다.
-  markersMap.forEach((_, marker) => marker.setMap(null));
-  markersMap.clear();
-  // 세션 스토리지에서 사용자의 현재 위치 정보 가져오기
-  const storedAddress = JSON.parse(sessionStorage.getItem('address'));
-  console.log(storedAddress);
-
-  // 사용자의 현재 위치에 마커 추가
-  const userPosition = new kakao.maps.LatLng(storedAddress.y, storedAddress.x);
-  createAndAddUserMarker(userPosition, userMarkerSrc, map);
-
-  // 지도의 중심을 사용자의 현재 위치로 이동
-  map.setCenter(userPosition);
-
-  // 모든 서비스의 상태를 확인합니다.
-  Promise.all([
-    getSeoulBikeStatusWithin500m(),
-    getKickgoingStatusWithin500m(),
-    getElecleStatusWithin500m(),
-  ])
-    .then(([seoulBikeStations, kickgoingLocations, elecleLocations]) => {
-      // 모든 호출 결과가 빈 배열인 경우
-      if (
-        seoulBikeStations.length === 0 &&
-        kickgoingLocations.length === 0 &&
-        elecleLocations.length === 0
-      ) {
-        alert('해당 지역에서 이용 가능한 수단이 없습니다.');
-      } else {
-        // 서울 자전거 대여소 마커 로드
-        [...seoulBikeStations].forEach((station) => {
-          const position = new kakao.maps.LatLng(
-            station.stationLatitude,
-            station.stationLongitude
-          );
-          createAndAddMarker(
-            position,
-            seoulBikeMarkerImageSrc,
-            map,
-            station,
-            'seoulBike'
-          );
-        });
-
-        // 킥고잉 마커 로드
-        [...kickgoingLocations].forEach((location) => {
-          const position = new kakao.maps.LatLng(location.y, location.x);
-          createAndAddMarker(
-            position,
-            kickgoingMarkerImageSrc,
-            map,
-            location,
-            'kickgoing'
-          );
-        });
-
-        // 일레클 마커 로드
-        [...elecleLocations].forEach((location) => {
-          const position = new kakao.maps.LatLng(location.y, location.x);
-          createAndAddMarker(
-            position,
-            elecleMarkerImageSrc,
-            map,
-            location,
-            'elecle'
-          );
-        });
-      }
-    })
-    .catch((error) => {
-      console.error('API 호출 중 오류 발생:', error);
-    });
-}
-
-async function getCurrentLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      async function (position) {
-        // 이 함수 내에서 비동기 로직을 사용하기 때문에 async 추가
-        let latitude = position.coords.latitude;
-        let longitude = position.coords.longitude;
-        let geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${googleKey}&language=ko`;
-
-        try {
-          // Geocoding API 호출 및 결과 대기
-          const response = await fetch(geocodingUrl);
-          const data = await response.json();
-          const addressName = data.results[0].formatted_address;
-          console.log(data.results[0].formatted_address);
-
-          // 세션 스토리지 업데이트
-          let currentLocation = {
-            address: addressName, // 비동기 호출 결과로 얻은 주소 사용
-            x: longitude,
-            y: latitude,
-          };
-
-          sessionStorage.setItem('address', JSON.stringify(currentLocation));
-          storedAddress = currentLocation;
-
-          // 지도 중심 재설정 및 마커 다시 로드
-          map.setCenter(new kakao.maps.LatLng(latitude, longitude));
-          reloadMarkers();
-        } catch (error) {
-          console.log('Geocoding API 호출 실패:', error);
-        }
-      },
-      function () {
-        console.log('Geolocation service failed.');
-      }
-    );
-  } else {
-    console.log('Geolocation is not supported by this browser.');
-  }
-  await fetchFavoritesAndUpdateIcon();
-}
-
-// 현재위치 아이콘 클릭시 실행
-document
-  .getElementById('findCurrentLocation')
-  .addEventListener('click', getCurrentLocation);
-
+// 즐겨찾기 초기 로딩 함수
 fetchFavoritesAndUpdateIcon();

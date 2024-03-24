@@ -1,0 +1,91 @@
+body {
+  background-color: var(--main-color);
+  margin-top: 15vh;
+}
+
+.login-logo {
+  display: block;
+  width: 184px;
+  height: 184px;
+  margin: 0 auto;
+}
+
+.login-container {
+  background-color: #fff;
+  width: 308px;
+  margin: 10vh auto;
+  height: 344px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.login-form h4 {
+  font-size: var(--font-main);
+}
+
+.login-form input {
+  display: block;
+  width: 100%;
+  height: 28px;
+  border: none;
+}
+
+#userId {
+  border-bottom: 1px solid #132f2d;
+}
+
+.div-password {
+  display: flex;
+  margin-top: 12px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #132f2d;
+}
+
+.info {
+  font-size: var(--font-content);
+  color: #808080;
+}
+#message {
+  height: 20px;
+  color: #ff2626;
+  font-size: var(--font-content);
+  text-align: left;
+}
+
+button {
+  font-size: var(--font-content);
+  width: 100%;
+  height: 28px;
+}
+
+button[type='submit'] {
+  background-color: #132f2d;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.login-option {
+  display: flex;
+  margin-top: 16px;
+  margin-bottom: 20px;
+  font-size: var(--font-content);
+  color: #808080;
+}
+
+.login-option label {
+  padding-left: 3px;
+}
+.login-finding {
+  margin-left: 30%;
+}
+
+.login-finding a:first-child {
+  border-right: 1px solid #808080;
+  padding-right: 3px;
+}
+button[type='button'] {
+  color: #132f2d;
+  background-color: #fff;
+  border-radius: 5px;
+}

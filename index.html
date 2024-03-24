@@ -9,6 +9,7 @@
       src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=501ce2874cb0fbaf11fc7e0dbdae1c99"
     ></script>
     <script type="module" defer src="./src/main/main.js"></script>
+    <script type="module" defer src="./src/main/weather.js"></script>
     <link rel="stylesheet" type="text/css" href="./src/styles/reset.css" />
     <link rel="stylesheet" type="text/css" href="./src/styles/globals.css" />
     <link rel="stylesheet" type="text/css" href="./src/main/main.css" />
@@ -19,7 +20,19 @@
       <div id="map" style="width: 390px; height: 800px"></div>
       <div class="nowLocaitonInfo">
         <div id="nowLocationName"></div>
-        <img id="isFavorite" src="/" alt="star"></img>
+        <img id="isFavorite" src="/" alt="star" />
+      </div>
+      <div class="weatherWrapper flexRow">
+        <div class="weatherTextWrapper">
+          <p class="weatherText">현재 날씨 :</p>
+          <img id="weatherIcon" src="/" alt="weatherIcon" />
+          <p class="weatherText" id="weatherTemp"></p>
+          <p class="weatherText" id="weatherDesc"></p>
+        </div>
+        <div class="weatherTextWrapper">
+          <p class="weatherText">미세먼지 :</p>
+          <p class="weatherText" id="dustContnet"></p>
+        </div>
       </div>
       <div class="categoryFilter">
         <ul>

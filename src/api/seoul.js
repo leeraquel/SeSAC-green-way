@@ -31,7 +31,7 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
   return distance;
 }
 
-export async function fetchSeoulBikeStatusWithin1Km() {
+export async function getSeoulBikeStatusWithin500m() {
   try {
     const stations = await fetchBikeStatus(); // 위에서 정의한 fetchBikeStatus 함수 호출
     const userLocation = JSON.parse(sessionStorage.getItem('address')); // 세션 스토리지에서 사용자 위치 가져오기
@@ -43,7 +43,7 @@ export async function fetchSeoulBikeStatusWithin1Km() {
         parseFloat(station.stationLatitude),
         parseFloat(station.stationLongitude)
       );
-      return distance <= 1; // 1km 이내의 대여소만 필터링
+      return distance <= 0.5; // 1km 이내의 대여소만 필터링
     });
 
     return nearbyStations; // 필터링된 대여소 배열 반환
@@ -64,7 +64,7 @@ async function fetchKickgoingStatus() {
   }
 }
 
-export async function fetchKickgoingStatusWithin1Km() {
+export async function getKickgoingStatusWithin500m() {
   try {
     const stations = await fetchKickgoingStatus(); // 위에서 정의한 fetchBikeStatus 함수 호출
     const userLocation = JSON.parse(sessionStorage.getItem('address')); // 세션 스토리지에서 사용자 위치 가져오기
@@ -73,10 +73,10 @@ export async function fetchKickgoingStatusWithin1Km() {
       const distance = haversineDistance(
         userLocation.y,
         userLocation.x,
-        parseFloat(station.x),
-        parseFloat(station.y)
+        parseFloat(station.y),
+        parseFloat(station.x)
       );
-      return distance <= 1; // 1km 이내의 대여소만 필터링
+      return distance <= 0.5; // 1km 이내의 대여소만 필터링
     });
 
     return nearbyStations; // 필터링된 대여소 배열 반환
@@ -97,7 +97,7 @@ async function fetchElecleStatus() {
   }
 }
 
-export async function fetchElecleStatusWithin1Km() {
+export async function getElecleStatusWithin500m() {
   try {
     const stations = await fetchElecleStatus(); // 위에서 정의한 fetchBikeStatus 함수 호출
     const userLocation = JSON.parse(sessionStorage.getItem('address')); // 세션 스토리지에서 사용자 위치 가져오기
@@ -106,10 +106,10 @@ export async function fetchElecleStatusWithin1Km() {
       const distance = haversineDistance(
         userLocation.y,
         userLocation.x,
-        parseFloat(station.x),
-        parseFloat(station.y)
+        parseFloat(station.y),
+        parseFloat(station.x)
       );
-      return distance <= 1; // 1km 이내의 대여소만 필터링
+      return distance <= 0.5; // 500m 이내의 대여소만 필터링
     });
 
     return nearbyStations; // 필터링된 대여소 배열 반환
@@ -118,8 +118,3 @@ export async function fetchElecleStatusWithin1Km() {
     return [];
   }
 }
-
-// 이 함수를 호출하면, 사용자 위치 기준 1km 이내에 있는 대여소 정보를 포함한 배열을 얻을 수 있습니다.
-// fetchBikeStatusWithin1Km().then((nearbyStations) => {
-//   console.log(nearbyStations); // 필터링된 대여소 정보 출력
-// });

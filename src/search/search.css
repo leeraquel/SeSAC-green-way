@@ -1,31 +1,4 @@
-/* body {
-    width: 390px;
-    background-color: var(--main-color);
-} */
-/* .search {
-    position: relative;
-    width: 250px; */
-    /* display: flex; */
-    /* align-items: center;
-    justify-content: center;
-} */
-/* input {
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 30px;
-    padding: 10px 12px;
-    font-size: var(--font-sub);
-} */
-/* img {
-    position: absolute;
-    width: 17px;
-    top: 10px;
-    right: -15px;
-    margin: 0;
-} */
-
-
-*{
+ *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -36,16 +9,21 @@ body {
     width: 390px;
     margin-top: 20px;
     background-color: var(--main-color);
-    display: flex;
     justify-content: center;
 }
 .search {
-    width: 50%;
-    min-width: 250px;
-    max-width: 300px;
-    height: 180px;
     text-align: center;
+    margin-top: 50px;
+    width: 80%;
+    margin: 0 auto;
 }
+
+.searchIcon{
+    width: 20px;
+    height: 30px;
+    margin: 8px;
+}
+
 form {
     background-color: grey;
     border-radius: 25px;
@@ -57,29 +35,20 @@ input {
     display: block;
     border-radius: 25px;
     font-size: var(--font-sub);
-    padding: 8px 40px 8px 20px;
+    padding: 10px 20px 10px 20px;
     border: 1px solid black;
-}
-input:focus {
-    outline: none;
 }
 button {
     position: absolute;
     top: 0;
     right: 0;
-    width: 50px;
+    /* width: 50px; */
     height: 100%;
     border-radius: 50%;
     cursor: pointer;
     border: none;
     background: none;
     font-size: 18px;
-}
-button i {
-    color: rgb(21, 21, 22);
-}
-button:hover i {
-    color: rgb(162,163,163);
 }
 .nosearch {
     position: absolute;
@@ -91,15 +60,16 @@ button:hover i {
 }
 
 .current-location-button {
-    /* width: 150px;
-    height: 100px; */
-    margin-left: -100px;
     text-transform: lowercase;
     position: relative;
-    
-    
+    margin-top: 10px;
+    margin-left: 220px;
 }
-.current-location-icon {
-    width: 14px;
-    height: 14px;
+ .current-location-icon {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
 }
+
+
+

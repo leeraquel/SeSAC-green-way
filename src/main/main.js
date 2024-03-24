@@ -32,7 +32,6 @@ const userMarkerSrc = 'src/assets/icon/userMarker.svg';
 const seoulBikeMarkerImageSrc = 'src/assets/icon/seoulBikeMarker.svg';
 const kickgoingMarkerImageSrc = 'src/assets/icon/kickgoingMarker.svg';
 const elecleMarkerImageSrc = 'src/assets/icon/elecleMarker.svg';
-const clickedMarkerImageSrc = 'src/assets/icon/clickedMarker.svg';
 
 const normalSize = new kakao.maps.Size(32, 32);
 const clickedSize = new kakao.maps.Size(40, 40);

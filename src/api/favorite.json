@@ -1,0 +1,65 @@
+[
+  {
+    "addressName": "서울시 마포구 합정역 2호선",
+    "stationLatitude": 37.549461,
+    "stationLongitude": 126.913924,
+    "seoulBike": 12,
+    "kickgoing": 8,
+    "elecle": 5,
+    "totalQuantity": 25
+  },
+  {
+    "addressName": "서울시 마포구 망원역 6호선",
+    "stationLatitude": 37.5560826563712,
+    "stationLongitude": 126.910094329982,
+    "seoulBike": 10,
+    "kickgoing": 7,
+    "elecle": 6,
+    "totalQuantity": 23
+  },
+  {
+    "addressName": "서울시 마포구 홍대입구역 2호선",
+    "stationLatitude": 37.557192,
+    "stationLongitude": 126.925381,
+    "seoulBike": 15,
+    "kickgoing": 10,
+    "elecle": 7,
+    "totalQuantity": 32
+  },
+  {
+    "addressName": "서울시 마포구 서강대역 경의중앙선",
+    "stationLatitude": 37.551881,
+    "stationLongitude": 126.935711,
+    "seoulBike": 8,
+    "kickgoing": 5,
+    "elecle": 4,
+    "totalQuantity": 17
+  },
+  {
+    "addressName": "서울시 서대문구 신촌역 2호선",
+    "stationLatitude": 37.559778,
+    "stationLongitude": 126.942325,
+    "seoulBike": 14,
+    "kickgoing": 9,
+    "elecle": 8,
+    "totalQuantity": 31
+  },
+  {
+    "addressName": "서울시 마포구 공덕역 2호선, 5호선, 6호선, 공항철도",
+    "stationLatitude": 37.544018,
+    "stationLongitude": 126.951592,
+    "seoulBike": 11,
+    "kickgoing": 6,
+    "elecle": 5,
+    "totalQuantity": 22
+  },
+  {
+    "addressName": "서울시 서대문구 이화여대역 2호선",
+    "stationLatitude": 37.561103,
+    "stationLongitude": 126.945869,
+    "seoulBike": 9,
+    "kickgoing": 8,
+    "elecle": 3,
+    "totalQuantity": 20
+  }
+]

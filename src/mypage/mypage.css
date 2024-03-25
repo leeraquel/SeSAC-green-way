@@ -1,7 +1,7 @@
 body {
   background-color: var(--main-color);
   width: 390px;
-  border: 1px solid gold;
+
   position: relative;
 }
 
@@ -44,7 +44,7 @@ header {
 
 .btn-primary:hover {
   background-color: forestgreen;
-  color: #ffffff;
+
   border: 1px solid forestgreen;
 }
 /* 가로 선 */
@@ -62,10 +62,13 @@ header {
 }
 
 .bookmark-btn {
-  width: 90%;
-  background-color: white;
-  color: black;
+  width: 95%; /* 너비를 더 넓은 값으로 조정 */
+  max-width: 350px; /* 최대 너비를 350px로 설정하여 너비가 너무 커지지 않도록 제한 */
+  background-color: forestgreen; /* 배경색을 포레스트 그린으로 변경 */
+  color: white; /* 텍스트 색상을 흰색으로 변경 */
+  cursor: pointer; /* 커서를 포인터로 변경 */
 }
+
 .btn-wrap {
   display: flex;
   justify-content: space-around;
@@ -85,21 +88,83 @@ header {
 
 /*  즐겨찾기 리스트 */
 /* 즐겨찾기 지도 색상 */
-.first-line h2 {
+.text-warp section {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 0.5px solid gray;
+  margin: 10px;
+}
+
+.container {
+  text-align: left;
+}
+
+.card {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  width: 350px;
+  height: 140px;
+  background-color: white;
+  border-radius: 15px;
+  border: 0.5px solid black;
+  align-content: center;
+}
+
+h2 {
   font-size: var(--font-main);
+  margin: 10px;
+  white-space: nowrap; /* 줄 바꿈 금지 */
+  overflow: hidden; /* 넘치는 부분을 숨김 */
+  text-overflow: ellipsis; /* 넘치는 부분을 ... 으로 표시 */
 }
-.first-line h3 {
+
+h3 {
   font-size: var(--font-large);
+  margin: 10px;
+  font-weight: 500px;
 }
-.first-line {
-  display: flex;
-  justify-content: space-between;
-}
-.brand {
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-around;
-}
+
 .click-icon {
   display: flex;
+  flex-direction: row;
+  margin: 10px;
 }
+
+.mark-up {
+  margin-right: 10px;
+}
+
+img.favorite,
+img.map {
+  width: 20px;
+  height: 20px;
+}
+
+.text-warp .first-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.container {
+  padding-bottom: 40px;
+}
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary.active {
+  box-shadow: none !important;
+  background-color: forestgreen !important;
+  border-color: forestgreen !important;
+}
+/* 즐겨찾기 리스트를 오른쪽으로 정렬 */
+.bookmark-list {
+  text-align: right;
+}
+
+/* 부트스트랩의 collapse 요소가 왼쪽으로 이동하는 현상을 없애는 CSS */
+.collapse {
+  display: block;
+}
+
+/* 추가적인 커스텀 스타일링이 필요한 경우 여기에 추가 */

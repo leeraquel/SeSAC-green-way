@@ -107,4 +107,8 @@ button {
     color: gold;
   }
 
+  
+  #nowLocationInfo{
+    display: none;
+  }
 

@@ -1,4 +1,9 @@
 import { googleKey } from '../../config.js';
+import {
+  getSeoulBikeStatusWithin500m,
+  getKickgoingStatusWithin500m,
+  getElecleStatusWithin500m,
+} from '../api/mapApi.js';
 
 let storedAddress
 
@@ -45,80 +50,9 @@ let storedAddress
 
 const currentLocationBtn = document.getElementById("current-location-button")
 
+
 currentLocationBtn.addEventListener('click',getCurrentLocation)
 
-
-// function searchPlaces() {
-//     var searchInput = document.getElementById("searchInput").value;
-//     if (searchInput.trim() == "") {
-//         alert("검색어를 입력해주세요.");
-//         return;
-//     }
-//     var kakaoApiKey ='';
-//     var apiUrl = 'https://dapi.kakao.com/v2/local/search/keyword.json';
-//     var headers = {
-//         'Authorization': 'KakaoAK' + kakaoApiKey
-//     };
-
-//     var params = {
-//         query: searchInput
-//     };
-//     axios.get(apiUrl, { params: params, headers: headers })
-//         .then(function (response) {
-//             var places = response.data.document;
-//             if (places.length > 0) {
-//                 // 검색 결과를 처리하는 코드를 여기에 추가합니다.
-//                 console.log('검색 결과:', places);
-//             } else {
-//                 alert('검색 결과가 없습니다.');
-//             }
-//         })
-//         .catch(function (error) {
-//             console.error('API호출 중 오류 발생:', error);
-//         });
-// }
-
-// 검색 입력 창에서 Enter 키가 눌렸을 때 검색 실행
-// document.getElementById("searchInput").addEventListener("keyup", function(event) {
-//     if (event.key === "Enter") {
-//       searchPlaces();
-//     }
-//   });
-// 장소 검색 객체를 생성합니다
-var ps = new kakao.maps.services.Places(); 
-
-
-// const searchIcon = document.getElementById("searchIcon")
-
-// searchIcon.addEventListener('click', loadList(keyword))
-
-// function loadList() {
-//     const keyword= document.getElementById("searchInput").value
-//     console.log(keyword)
-//     ps.keywordSearch(`${keyword}`, placesSearchCB); 
-
-//     function placesSearchCB (data, status, pagination) {
-//         if (status === kakao.maps.services.Status.OK) {
-    
-//             console.log(data)
-        
-//         } 
-//     }
-
-// }
-
-
-
-// 키워드로 장소를 검색합니다
-// ps.keywordSearch("경복궁", placesSearchCB); 
-
-// function placesSearchCB (data, status, pagination) {
-//     if (status === kakao.maps.services.Status.OK) {
-
-//         console.log(data)
-    
-//     } 
-// }
 
 if (window.kakao && kakao.maps) {
   kakao.maps.load(function() {
@@ -152,17 +86,29 @@ if (window.kakao && kakao.maps) {
                   name.textContent = place.place_name; // 장소 이름 출력
                   resultsDiv.appendChild(name);
 
-                  name.addEventListener('click', function() {
+                  name.addEventListener('click', async function() {
                     let defaultLocation = {
-                      address: place.road_address_name,
+                      address: place.address_name,
                       y: place.y,
                       x: place.x,
                     };
             
                     sessionStorage.setItem('address', JSON.stringify(defaultLocation));
+                    storedAddress = defaultLocation;
+                    document.getElementById("nowLocationInfo").style.display = 'block';
+                    document.getElementById('nowLocationName').textContent = storedAddress.address;
 
+                    
+                    await fetchFavoritesAndUpdateIcon();
+                    
+                    
+                    
+                    
+                    
                   })
+
               }); 
+              
           } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
               alert('검색 결과가 없습니다.');
           } else if (status === kakao.maps.services.Status.ERROR) {
@@ -172,4 +118,42 @@ if (window.kakao && kakao.maps) {
   });
 } else {
   console.error("카카오 지도 JavaScript SDK가 로드되지 않았습니다.");
+}
+
+async function fetchFavoritesAndUpdateIcon() {
+  const currentLocation = JSON.parse(sessionStorage.getItem('address'));
+  if (!currentLocation) return;
+
+  // favorite.json에서 데이터 가져오기
+  const response = await fetch('../api/favorite.json');
+  const favorites = await response.json();
+
+  // 현재 위치와 즐겨찾기 위치 비교
+  let isFavorite = favorites.some((favorite) => {
+    return (
+      favorite.stationLatitude === currentLocation.y &&
+      favorite.stationLongitude === currentLocation.x
+    );
+  });
+
+  const isFavoriteImg = document.getElementById('isFavorite');
+  if (isFavorite) {
+    isFavoriteImg.setAttribute('src', '../assets/icon/star.svg');
+  } else {
+    isFavoriteImg.setAttribute('src', '../assets/icon/emptyStar.svg');
+  }
+  isFavoriteImg.onclick = toggleFavoriteIcon;
+}
+
+function toggleFavoriteIcon() {
+  const isFavoriteImg = document.getElementById('isFavorite');
+
+  const isStar =
+    isFavoriteImg.getAttribute('src') === '../assets/icon/star.svg';
+
+  if (isStar) {
+    isFavoriteImg.setAttribute('src', '../assets/icon/emptyStar.svg');
+  } else {
+    isFavoriteImg.setAttribute('src', '../assets/icon/star.svg');
+  }
 }

@@ -110,12 +110,66 @@ var ps = new kakao.maps.services.Places();
 
 
 // 키워드로 장소를 검색합니다
-ps.keywordSearch("경복궁", placesSearchCB); 
+// ps.keywordSearch("경복궁", placesSearchCB); 
 
-function placesSearchCB (data, status, pagination) {
-    if (status === kakao.maps.services.Status.OK) {
+// function placesSearchCB (data, status, pagination) {
+//     if (status === kakao.maps.services.Status.OK) {
 
-        console.log(data)
+//         console.log(data)
     
-    } 
+//     } 
+// }
+
+if (window.kakao && kakao.maps) {
+  kakao.maps.load(function() {
+      // 장소 검색 객체 생성
+      var ps = new kakao.maps.services.Places(); 
+
+      // 검색 버튼 클릭 이벤트 리스너 추가
+      document.getElementById('searchIcon').addEventListener('click', function() {
+          var keyword = document.getElementById('searchInput').value;
+
+          if (!keyword.replace(/^\s+|\s+$/g, '')) {
+              alert('검색 키워드를 입력해주세요.');
+              return false;
+          }
+
+          // 키워드로 장소 검색 실행
+          ps.keywordSearch(keyword, placesSearchCB);
+      });
+
+      // 장소 검색 완료 시 호출되는 콜백 함수
+      function placesSearchCB(data, status) {
+          if (status === kakao.maps.services.Status.OK) {
+              // 검색 결과가 있으면 콘솔에 출력
+              console.log(data);
+              
+              // 검색 결과를 div에 표시 (예시)
+              var resultsDiv = document.getElementById('searchResults');
+              resultsDiv.innerHTML = ''; // 이전 결과 초기화
+              data.forEach(function(place) {
+                  var name = document.createElement('p');
+                  name.textContent = place.place_name; // 장소 이름 출력
+                  resultsDiv.appendChild(name);
+
+                  name.addEventListener('click', function() {
+                    let defaultLocation = {
+                      address: place.road_address_name,
+                      y: place.y,
+                      x: place.x,
+                    };
+            
+                    sessionStorage.setItem('address', JSON.stringify(defaultLocation));
+
+                  })
+              }); 
+          } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+              alert('검색 결과가 없습니다.');
+          } else if (status === kakao.maps.services.Status.ERROR) {
+              alert('검색 중 오류가 발생했습니다.');
+          }
+      }
+  });
+} else {
+  console.error("카카오 지도 JavaScript SDK가 로드되지 않았습니다.");
 }

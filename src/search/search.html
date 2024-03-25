@@ -26,17 +26,19 @@
       </header> 
       
     <div class="search">
-        <form id="searchForm">
-            <input id="searchInput" type="text" name="" placeholder="장소를 입력해주세요.">
-            <button class="searchIcon" id="searchIcon"><img src="../assets/icon/searchBlack.svg" alt="Search Icon"></button>
-        </form>
+        <!-- <form id="searchForm">
+        </form> -->
+        <input id="searchInput" type="text" name="" placeholder="장소를 입력해주세요.">
+        <button class="searchIcon" id="searchIcon"><img src="../assets/icon/searchBlack.svg" alt="Search Icon"></button>
     </div>
     <ul id="resultsList"></ul>
     <button class="current-location-button" id="current-location-button">
         <img src="../assets/icon/location.svg" alt="Current Location Icon" 
         class="current-location-icon"/>
         현 위치로 검색</button>
+        <div id="searchResults"></div>
     <div class="nosearch">검색 결과가 없습니다.</div>
+    <div id="resultList" class="result-favorite"><img src="../assets/icon/star.svg" alt=""></div>
 
     <nav>
         <ul class="tab-bar">

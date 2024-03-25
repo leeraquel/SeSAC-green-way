@@ -150,4 +150,4 @@ function moveToLocation(latitude, longitude) {
 
   alert(`Moving to coordinates: Latitude ${latitude}, Longitude ${longitude}`);
 }
-//---------------프로필 이미지
+//--------------즐겨찾기 화살표

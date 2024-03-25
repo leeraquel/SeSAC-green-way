@@ -6,6 +6,9 @@ import {
 
 import { googleKey } from '../../config.js';
 
+const elecleURL = 'src/api/elecle.json';
+const kickgoingURL = 'src/api/kickgoing.json';
+
 // session storage 불러올 변수 선언
 let storedAddress;
 
@@ -201,8 +204,8 @@ async function reloadMarkers() {
   // 모든 서비스의 상태를 확인.
   Promise.all([
     getSeoulBikeStatusWithin500m(),
-    getKickgoingStatusWithin500m(),
-    getElecleStatusWithin500m(),
+    getKickgoingStatusWithin500m(kickgoingURL),
+    getElecleStatusWithin500m(elecleURL),
   ])
     .then(([seoulBikeStations, kickgoingLocations, elecleLocations]) => {
       // 모든 호출 결과가 빈 배열인 경우
@@ -346,8 +349,8 @@ createAndAddUserMarker(userPosition, userMarkerSrc, map);
 // Promise.all을 사용하여 모든 API 호출을 동시에 실행
 Promise.all([
   getSeoulBikeStatusWithin500m(),
-  getKickgoingStatusWithin500m(),
-  getElecleStatusWithin500m(),
+  getKickgoingStatusWithin500m(kickgoingURL),
+  getElecleStatusWithin500m(elecleURL),
 ])
   .then((results) => {
     // results는 각 함수 호출 결과를 담은 배열

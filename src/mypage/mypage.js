@@ -62,3 +62,65 @@ function logout() {
     window.location.href = '../login/login.html';
   }
 }
+//----------------------------------------------즐겨찾기 항목----------------------
+/// 즐겨찾기 버튼을 클릭했을 때 데이터를 가져와서 카드를 생성하는 로직
+
+const container = document.querySelector('.container');
+
+document.querySelector('#bookmark-btn').addEventListener('click', () => {
+  fetch('../api/favorite.json')
+    .then((response) => response.json()) // 읽어온 데이터를 JSON으로 변환
+    .then((json) => {
+      console.log(json);
+      json.forEach((element, index) => {
+        const div = document.createElement('div');
+        div.classList.add('card');
+
+        div.innerHTML = `
+          <div class="card card-body">
+            <div class="first-line">
+              <h2>${element.addressName}</h2>
+              <h3>${element.totalQuantity}</h3>
+            </div>
+            <section class="brand">
+              <p>따릉이 ${element.seoulBike}</p>
+              <p>킥고잉 ${element.kickgoing}</p>
+              <p>일레클 ${element.elecle}</p>
+            </section>
+          </div>
+          <div class="click-icon">
+            <div class="mark-up">
+              <img
+                src="../assets/icon/Star.svg"
+                class="favorite"
+                alt="favorite-marked"
+                
+              />
+            </div>
+            <div class="map-click">
+              <img
+                src="../assets/icon/map.svg"
+                class="map"
+                alt="map-marked"
+              />
+            </div>
+          </div>`;
+
+        container.append(div);
+
+        document
+          .querySelectorAll('.favorite')
+          [index].addEventListener('click', () => {
+            hideCard(index);
+          });
+
+        document
+          .querySelectorAll('.map')
+          [index].addEventListener('click', () => {
+            const latitude = element.stationLatitude;
+            const longitude = element.stationLongitude;
+            moveToLocation(latitude, longitude);
+          });
+      });
+    });
+});

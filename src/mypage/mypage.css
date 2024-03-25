@@ -82,3 +82,24 @@ header {
   justify-content: center;
   width: 100%;
 }
+
+/*  즐겨찾기 리스트 */
+/* 즐겨찾기 지도 색상 */
+.first-line h2 {
+  font-size: var(--font-main);
+}
+.first-line h3 {
+  font-size: var(--font-large);
+}
+.first-line {
+  display: flex;
+  justify-content: space-between;
+}
+.brand {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.click-icon {
+  display: flex;
+}

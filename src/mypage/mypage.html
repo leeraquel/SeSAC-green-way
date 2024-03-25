@@ -13,24 +13,30 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <!-- css -->
-    <link rel="stylesheet" href="../styles/globals.css" />
-    <link rel="stylesheet" href="./mypage.css" />
     <!-- bootstrap js 링크 -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <!-- css -->
+    <link rel="stylesheet" href="../styles/globals.css" />
     <!-- header & footer css -->
     <link rel="stylesheet" href="../utils/header/header.css" />
-    <link rel="stylesheet" href="..//utils/footer/footer.css" />
+    <link rel="stylesheet" href="../utils/tabBar/tabBar.css" />
+    <link rel="stylesheet" href="./mypage.css" />
+
     <!-- untils.js & mypage.js 링크 -->
     <script defer src="../utils/utils.js"></script>
-    <script src="./mypage.js"></script>
+    <script defer src="./mypage.js"></script>
   </head>
   <body>
     <!-- <header>header</header> -->
+    <header class="header">
+      <a class="header-logo" href="../../index.html"
+        ><img class="header-logo-img" src="../assets/img/logo_greenway_01.png"
+      /></a>
+    </header>
     <main>
       <!-- 마이 페이지 제목 텍스트 -->
       <div class="my-page-title">마이 페이지</div>
@@ -177,9 +183,11 @@
         <div class="line"></div>
       </div>
       <!-- bookmark(즐겨찾기) -->
+
       <div class="bookmark">
         <p>
           <button
+            id="bookmark-btn"
             class="btn btn-primary bookmark-btn"
             type="button"
             data-bs-toggle="collapse"
@@ -193,19 +201,54 @@
 
         <div class="bookmark-list">
           <div class="collapse" id="collapseWidthExample">
-            <div class="card card-body" style="width: 350px">너무 어렵다.</div>
-            <div class="card card-body" style="width: 350px">
-              진짜 너무 어렵다.
-            </div>
-            <div class="card card-body" style="width: 350px">
-              진짜 상당히 너무 어렵다.
-            </div>
+            <div class="container"></div>
+            <div class="card card-body" style="width: 350px"></div>
           </div>
         </div>
       </div>
     </main>
-
-    <!-- <footer></footer> -->
+    <footer>
+      <!-- 텝바 html 코드 입니다.(아래 부분 복사하기) -->
+      <nav>
+        <ul class="tab-bar">
+          <li class="tab">
+            <a href="../../index.html"
+              ><img
+                class="tab-icon"
+                src="../assets/icon/map.svg"
+                alt="지도 아이콘"
+            /></a>
+          </li>
+          <li class="tab">
+            <a href="../search/search.html"
+              ><img
+                class="tab-icon"
+                src="../assets/icon/search.svg"
+                alt="검색 아이콘"
+            /></a>
+          </li>
+          <li class="tab">
+            <a onclick="isloginFavoritePage()">
+              <img
+                id="favorite"
+                class="tab-icon"
+                src="../assets/icon/favorite.svg"
+                alt="즐겨찾기 아이콘"
+              />
+            </a>
+          </li>
+          <li class="tab">
+            <a onclick="isLoginMyPage()">
+              <img
+                id="mypage"
+                class="tab-icon"
+                src="../assets/icon/my.svg"
+                alt="마이페이지 아이콘"
+              />
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </footer>
   </body>
 </html>
-<link rel="stylesheet" href="../login/login.html" />

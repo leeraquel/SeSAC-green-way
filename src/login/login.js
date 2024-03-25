@@ -5,21 +5,6 @@
 // html에서 js를 연결할 때 type="module" 필수 작성!
 // <script type="module" src="../js/login.js"></script>
 
-import {
-  footerDiv,
-  isLoginMyPage,
-  isloginFavoritePage,
-} from '../utils/utils.js';
-
-const fd = document.querySelector('footer');
-fd.innerHTML = footerDiv;
-
-document.getElementById('mypage').addEventListener('click', isLoginMyPage);
-
-document
-  .getElementById('favorite')
-  .addEventListener('click', isloginFavoritePage);
-
 const inputId = document.getElementById('userId');
 const inputPw = document.getElementById('password');
 
@@ -40,8 +25,8 @@ form.addEventListener('submit', async (event) => {
 
     if (userData.id === userId && userData.password === password) {
       sessionStorage.setItem('islogin', 'true');
-      // window.location.href = '../../../index.html';
-      histroy.go(-1);
+      window.location.href = '../../../index.html';
+      // histroy.go(-1);
     } else {
       const p = document.getElementById('message');
       p.innerText = '아이디 혹은 비밀번호가 일치하지 않습니다.';

@@ -1,62 +1,40 @@
-// kakaoApi
-import { kakaoKey } from '../../config.js';
-document.addEventListener('DOMContentLoaded', function () {
-    // 입력 폼과 결과 리스트 요소 가져오기
-    const searchForm = document.getElementById('searchForm');
-    const searchInput = document.getElementById('searchInput');
-    const resultsList = document.getElementById('resultsList');
+import { googleKey } from '../../config.js';
 
-    // 검색 폼 이벤트 처리
-    searchForm.addEventListener('submit', function (event) {
-        event.preventDefault(); // 기본 동작 중단
+let storedAddress
 
-        const keyword = searchInput.value.trim(); // 입력값 얻기
-
-        // 검색어가 있을 경우에만 실행
-        if (keyword !== '') {
-            // 카카오 지도 API 호출하여 주소 검색
-            const geocoder = new kakao.maps.services.Geocoder();
-            geocoder.addressSearch(keyword, function (result, status) {
-                if (status === kakao.maps.services.Status.OK) {
-                    // 결과를 순회하며 리스트에 추가
-                    resultsList.innerHTML = ''; // 결과 리스트 초기화
-                    result.forEach(function (item) {
-                        const li = document.createElement('li');
-                        li.textContent = item.address_name;
-                        resultsList.appendChild(li);
-                    });
-                } else {
-                    console.error('카카오 지도 API 호출 실패:', status);
-                }
-            });
-        }
-    });
-});
   // currentLocation
-  import { googleKey } from '../../config.js';
-  function getCurrentLocation() {
+ async function getCurrentLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
+        navigator.geolocation.getCurrentPosition(
+            async function(position) {
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude;
 
             // Google Maps Geocoding API 호출을 위한 URL
-            var geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyB04CBmtAPQ-ZJwZu6LjdCwVdS-LKFSchE&language=ko`;
+            var geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${googleKey}&language=ko`;
 
-            // Geocoding API 호출
-            fetch(geocodingUrl)
-                .then(response => response.json())
-                .then(data => {
-                    // 결과에서 주소 추출
-                    var address = data.results[0].formatted_address;
+           try {
+                // Geocoding API 호출 및 결과 대기
+                const response = await fetch(geocodingUrl);
+                const data = await response.json();
+                const addressName = data.results[0].formatted_address;
+                console.log(data.results[0].formatted_address);
+      
+                // 세션 스토리지 업데이트
+                let currentLocation = {
+                  address: addressName, // 비동기 호출 결과로 얻은 주소 사용
+                  x: longitude,
+                  y: latitude,
+                }; 
 
-                    // 주소를 입력창에 표시
-                    var input = document.getElementById("searchInput");
-                    input.value = "" + address;
-                })
-                .catch(error => {
-                    console.log('Geocoding API 호출 실패:', error);
-                });
+          sessionStorage.setItem('address', JSON.stringify(currentLocation));
+          storedAddress = currentLocation;
+
+          const input = document.getElementById("searchInput");
+          input.value = "" + addressName;} catch (error) {
+            console.log('Geocoding API 호출 실패:', error);
+          }
+            
         }, function() {
             console.log('Geolocation service failed.');
         });
@@ -65,8 +43,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 }
 
-getCurrentLocation();
+const currentLocationBtn = document.getElementById("current-location-button")
 
+currentLocationBtn.addEventListener('click',getCurrentLocation)
 
 
 // function searchPlaces() {
@@ -105,3 +84,38 @@ getCurrentLocation();
 //       searchPlaces();
 //     }
 //   });
+// 장소 검색 객체를 생성합니다
+var ps = new kakao.maps.services.Places(); 
+
+
+// const searchIcon = document.getElementById("searchIcon")
+
+// searchIcon.addEventListener('click', loadList(keyword))
+
+// function loadList() {
+//     const keyword= document.getElementById("searchInput").value
+//     console.log(keyword)
+//     ps.keywordSearch(`${keyword}`, placesSearchCB); 
+
+//     function placesSearchCB (data, status, pagination) {
+//         if (status === kakao.maps.services.Status.OK) {
+    
+//             console.log(data)
+        
+//         } 
+//     }
+
+// }
+
+
+
+// 키워드로 장소를 검색합니다
+ps.keywordSearch("경복궁", placesSearchCB); 
+
+function placesSearchCB (data, status, pagination) {
+    if (status === kakao.maps.services.Status.OK) {
+
+        console.log(data)
+    
+    } 
+}

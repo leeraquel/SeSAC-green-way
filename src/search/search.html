@@ -6,15 +6,17 @@
     <title>Search Page</title>
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/globals.css" />
+    <link rel="stylesheet" href="../utils/header/header.css" />
     <link rel="stylesheet" href="../utils/tabBar/tabBar.css" />
     <link rel="stylesheet" href="./search.css" />
     
     <script type="module" src="../utils/utils.js"></script>
     <script
-      type="text/javascrift"
+      type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=501ce2874cb0fbaf11fc7e0dbdae1c99&libraries=services" 
       ></script>
     <script type="module" defer src="./search.js"></script>
+    <script type="module" defer src="../../config.js"></script>
 </head>
 <body>
     <header class="header">
@@ -24,13 +26,13 @@
       </header> 
       
     <div class="search">
-        <form>
+        <form id="searchForm">
             <input id="searchInput" type="text" name="" placeholder="장소를 입력해주세요.">
-            <button class="searchIcon"><img src="../assets/icon/searchBlack.svg" alt="Search Icon"></button>
+            <button class="searchIcon" id="searchIcon"><img src="../assets/icon/searchBlack.svg" alt="Search Icon"></button>
         </form>
     </div>
     <ul id="resultsList"></ul>
-    <button class="current-location-button" onclick="getCurrentLocation()">
+    <button class="current-location-button" id="current-location-button">
         <img src="../assets/icon/location.svg" alt="Current Location Icon" 
         class="current-location-icon"/>
         현 위치로 검색</button>

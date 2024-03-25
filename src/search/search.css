@@ -50,6 +50,28 @@ button {
     background: none;
     font-size: 18px;
 }
+
+#resultsList {
+    list-style-type: none;
+    padding: 0;
+
+    margin-top: 50px;
+    width: 80%;
+    margin: 0 auto;
+}
+#resultsList li {
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #f7f5f5;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#resultsList li:hover {
+    background-color: #f7f5f5;
+}
+#resultsList.hide {
+    display: none;
+}
 .nosearch {
     position: absolute;
     top: 50%;

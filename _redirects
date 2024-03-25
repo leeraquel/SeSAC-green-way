@@ -1,4 +1,4 @@
-/src/mypage/mypage.html /src/mypage/mypage
-/src/login/login.html /src/login/login
-/src/bookmark/bookmark.html /src/bookmark/bookmark
-/src/search/search.html /src/search/search
+mypage/mypage.html /src/mypage/mypage
+login/login.html /src/login/login
+bookmark/bookmark.html /src/bookmark/bookmark
+search/search.html /src/search/search

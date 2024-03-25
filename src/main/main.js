@@ -198,7 +198,7 @@ async function reloadMarkers() {
   // 지도의 중심을 사용자의 현재 위치로 이동
   map.setCenter(userPosition);
 
-  // 모든 서비스의 상태를 확인합니다.
+  // 모든 서비스의 상태를 확인.
   Promise.all([
     getSeoulBikeStatusWithin500m(),
     getKickgoingStatusWithin500m(),

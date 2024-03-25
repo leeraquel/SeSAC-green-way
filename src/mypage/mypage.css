@@ -16,6 +16,7 @@ header {
   text-align: center;
   margin-bottom: 20px;
   margin-top: 20px;
+  font-weight: 700;
 }
 .profile-pic {
   display: flex;
@@ -35,17 +36,17 @@ header {
   padding: 20px;
 }
 .btn-primary {
-  background-color: forestgreen; /* 원하는 색상으로 변경 */
+  background-color: #132f2d; /* 원하는 색상으로 변경 */
   color: #ffffff;
-  border: 1px solid forestgreen;
+  border: 1px solid #132f2d;
   width: 40%; /* 버튼 너비 설정 */
   height: 40px; /* 버튼 높이 설정 */
 }
 
 .btn-primary:hover {
-  background-color: forestgreen;
+  background-color: #132f2d;
 
-  border: 1px solid forestgreen;
+  border: 1px solid #132f2d;
 }
 /* 가로 선 */
 .line-wrap {
@@ -64,7 +65,7 @@ header {
 .bookmark-btn {
   width: 95%; /* 너비를 더 넓은 값으로 조정 */
   max-width: 350px; /* 최대 너비를 350px로 설정하여 너비가 너무 커지지 않도록 제한 */
-  background-color: forestgreen; /* 배경색을 포레스트 그린으로 변경 */
+  background-color: #132f2d; /* 배경색을 포레스트 그린으로 변경 */
   color: white; /* 텍스트 색상을 흰색으로 변경 */
   cursor: pointer; /* 커서를 포인터로 변경 */
 }
@@ -154,8 +155,8 @@ img.map {
 .btn-primary:active,
 .btn-primary.active {
   box-shadow: none !important;
-  background-color: forestgreen !important;
-  border-color: forestgreen !important;
+  background-color: #132f2d !important;
+  border-color: #132f2d !important;
 }
 /* 즐겨찾기 리스트를 오른쪽으로 정렬 */
 .bookmark-list {

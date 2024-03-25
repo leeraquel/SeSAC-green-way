@@ -16,6 +16,9 @@ body {
     margin-top: 50px;
     width: 80%;
     margin: 0 auto;
+    background-color: grey;
+    border-radius: 25px;
+    position: relative;
 }
 
 .searchIcon{
@@ -24,11 +27,6 @@ body {
     margin: 8px;
 }
 
-form {
-    background-color: grey;
-    border-radius: 25px;
-    position: relative;
-}
 input {
     width: 100%;
     height: 100%;
@@ -92,22 +90,7 @@ button {
     height: 18px;
     vertical-align: middle;
 }
-.card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .card p {
-    margin: 5px 0;
-  }
-  
-  .star {
-    color: gold;
-  }
 
-  
   #nowLocationInfo{
     display: none;
   }

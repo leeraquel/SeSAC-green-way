@@ -83,7 +83,7 @@ if (window.kakao && kakao.maps) {
         console.log(data);
 
         // 검색 결과를 div에 표시 (예시)
-        var resultsDiv = document.getElementById('searchResults');
+        var resultsDiv = document.getElementById('searchResults') ;
         resultsDiv.innerHTML = ''; // 이전 결과 초기화
         data.forEach(function (place) {
           var name = document.createElement('p');
@@ -96,7 +96,7 @@ if (window.kakao && kakao.maps) {
               y: place.y,
               x: place.x,
             };
-
+            resultsDiv.style.display = 'none';
             sessionStorage.setItem('address', JSON.stringify(defaultLocation));
             storedAddress = defaultLocation;
             document.getElementById('nowLocationInfo').style.display = 'block';

@@ -1,0 +1,114 @@
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: var(--font-sub);
+}
+
+body {
+    width: 390px;
+    margin-top: 20px;
+    background-color: var(--main-color);
+    justify-content: center;
+}
+.search {
+    text-align: center;
+    margin-top: 50px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.searchIcon{
+    width: 20px;
+    height: 30px;
+    margin: 8px;
+}
+
+form {
+    background-color: grey;
+    border-radius: 25px;
+    position: relative;
+}
+input {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 25px;
+    font-size: var(--font-sub);
+    padding: 10px 20px 10px 20px;
+    border: 1px solid black;
+}
+button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* width: 50px; */
+    height: 100%;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 18px;
+}
+
+#resultsList {
+    list-style-type: none;
+    padding: 0;
+
+    margin-top: 50px;
+    width: 80%;
+    margin: 0 auto;
+}
+#resultsList li {
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #f7f5f5;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#resultsList li:hover {
+    background-color: #f7f5f5;
+}
+#resultsList.hide {
+    display: none;
+}
+.nosearch {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    color: grey;
+    font-size: var(--font-sub);
+}
+
+.current-location-button {
+    text-transform: lowercase;
+    position: relative;
+    margin-top: 10px;
+    margin-left: 220px;
+}
+ .current-location-icon {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    margin: 5px 0;
+  }
+  
+  .star {
+    color: gold;
+  }
+
+  
+  #nowLocationInfo{
+    display: none;
+  }
+

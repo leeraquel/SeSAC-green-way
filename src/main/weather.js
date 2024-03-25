@@ -34,7 +34,7 @@ fetchWeatherInfo(
 ).then((weatherInfo) => {
   icon.setAttribute(
     'src',
-    `http://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}.png`
+    `https://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}.png`
   );
   weatherTemp.textContent = `${weatherInfo.main.temp} °C`;
   weatherDesc.textContent = weatherInfo.weather[0].description;

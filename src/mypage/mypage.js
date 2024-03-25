@@ -150,4 +150,20 @@ function moveToLocation(latitude, longitude) {
 
   alert(`Moving to coordinates: Latitude ${latitude}, Longitude ${longitude}`);
 }
-//--------------즐겨찾기 화살표
+//-----------사용자 아이디 표시
+// 사용자의 ID 값을 표시하는 함수
+function displayUsername(userId) {
+  var usernameElement = document.querySelector('.UserName');
+  usernameElement.textContent = userId;
+}
+
+// JSON 파일에서 사용자 정보 가져와서 ID 값 표시
+fetch('../api/user.json')
+  .then((response) => response.json())
+  .then((user) => {
+    var userId = user.id;
+    displayUsername(userId);
+  })
+  .catch((error) => {
+    console.error('Error fetching user data:', error);
+  });

@@ -6,6 +6,10 @@
   font-style: normal;
 }
 
+body {
+  background-color: #5c8e7c;
+}
+
 :root {
   --main-color: #a8d8b5;
   --font-main: 16px;

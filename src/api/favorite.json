@@ -9,9 +9,9 @@
     "totalQuantity": 25
   },
   {
-    "addressName": "서울시 마포구 망원역 2호선",
-    "stationLatitude": 37.556,
-    "stationLongitude": 126.910022,
+    "addressName": "서울시 마포구 망원역 6호선",
+    "stationLatitude": 37.5560826563712,
+    "stationLongitude": 126.910094329982,
     "seoulBike": 10,
     "kickgoing": 7,
     "elecle": 6,
@@ -27,7 +27,7 @@
     "totalQuantity": 32
   },
   {
-    "addressName": "서울시 마포구 서강대역 2호선",
+    "addressName": "서울시 마포구 서강대역 경의중앙선",
     "stationLatitude": 37.551881,
     "stationLongitude": 126.935711,
     "seoulBike": 8,

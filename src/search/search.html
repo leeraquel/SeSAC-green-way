@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/globals.css" />
+    <link rel="stylesheet" href="../utils/header/header.css" />
+    <link rel="stylesheet" href="../utils/tabBar/tabBar.css" />
+    <link rel="stylesheet" href="./search.css" />
+    
+    <script type="module" src="../utils/utils.js"></script>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=501ce2874cb0fbaf11fc7e0dbdae1c99&libraries=services" 
+      ></script>
+    <script type="module" defer src="./search.js"></script>
+    <script type="module" defer src="../../config.js"></script>
+</head>
+<body>
+    <header class="header">
+        <a class="header-logo" href="../../index.html"
+          ><img class="header-logo-img" src="../assets/img/logo_greenway_01.png"
+        /></a>
+      </header> 
+      
+    <div class="search">
+        <!-- <form id="searchForm">
+        </form> -->
+        <input id="searchInput" type="text" name="" placeholder="장소를 입력해주세요.">
+        <button class="searchIcon" id="searchIcon"><img src="../assets/icon/searchBlack.svg" alt="Search Icon"></button>
+    </div>
+    <ul id="resultsList"></ul>
+    <button class="current-location-button" id="current-location-button">
+        <img src="../assets/icon/location.svg" alt="Current Location Icon" 
+        class="current-location-icon"/>
+        현 위치로 검색</button>
+        <div id="searchResults"></div>
+    <div class="nosearch">검색 결과가 없습니다.</div>
+    <div class="nowLocationInfo" id="nowLocationInfo">
+      <div id="nowLocationName"></div>
+      <img id="isFavorite" src="/" alt="star" />
+    </div>
+    
+
+    <nav>
+        <ul class="tab-bar">
+          <li class="tab">
+            <a href="../../index.html"
+              ><img
+                class="tab-icon"
+                src="../assets/icon/map.svg"
+                alt="지도 아이콘"
+            /></a>
+          </li>
+          <li class="tab">
+            <a href="../search/search.html"
+              ><img
+                class="tab-icon"
+                src="../assets/icon/search.svg"
+                alt="검색 아이콘"
+            /></a>
+          </li>
+          <li class="tab">
+            <a onclick="isloginFavoritePage()">
+              <img
+                id="favorite"
+                class="tab-icon"
+                src="../assets/icon/favorite.svg"
+                alt="즐겨찾기 아이콘"
+              />
+            </a>
+          </li>
+          <li class="tab">
+            <a onclick="isLoginMyPage()">
+              <img
+                id="mypage"
+                class="tab-icon"
+                src="../assets/icon/my.svg"
+                alt="마이페이지 아이콘"
+              />
+            </a>
+          </li>
+        </ul>
+      </nav>
+  
+</body>
+
+</html>

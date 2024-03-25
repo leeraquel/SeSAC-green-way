@@ -1,0 +1,69 @@
+body {
+  width: 390px;
+  background-color: var(--main-color);
+}
+
+p {
+  font-size: var(--font-sub);
+  flex-direction: row;
+  margin: 10px;
+}
+
+.text-warp section {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 0.5px solid gray;
+  margin: 10px;
+}
+
+.container {
+  text-align: left;
+}
+
+.card {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  width: 350px;
+  height: 140px;
+  background-color: white;
+  border-radius: 15px;
+  border: 0.5px solid black;
+  align-content: center;
+}
+
+h2 {
+  font-size: var(--font-main);
+  margin: 10px;
+  white-space: nowrap; /* 줄 바꿈 금지 */
+  overflow: hidden; /* 넘치는 부분을 숨김 */
+  text-overflow: ellipsis; /* 넘치는 부분을 ... 으로 표시 */
+}
+
+h3 {
+  font-size: var(--font-large);
+  margin: 10px;
+  font-weight: 500px;
+}
+
+.click-icon {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.mark-up {
+  margin-right: 10px;
+}
+
+img.favorite,
+img.map {
+  width: 20px;
+  height: 20px;
+}
+
+.text-warp .first-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

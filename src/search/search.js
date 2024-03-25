@@ -53,7 +53,7 @@ const currentLocationBtn = document.getElementById("current-location-button")
 
 currentLocationBtn.addEventListener('click',getCurrentLocation)
 
-
+// 카카오 지도api
 if (window.kakao && kakao.maps) {
   kakao.maps.load(function() {
       // 장소 검색 객체 생성
@@ -101,10 +101,6 @@ if (window.kakao && kakao.maps) {
                     
                     await fetchFavoritesAndUpdateIcon();
                     
-                    
-                    
-                    
-                    
                   })
 
               }); 
@@ -119,6 +115,8 @@ if (window.kakao && kakao.maps) {
 } else {
   console.error("카카오 지도 JavaScript SDK가 로드되지 않았습니다.");
 }
+
+
 
 async function fetchFavoritesAndUpdateIcon() {
   const currentLocation = JSON.parse(sessionStorage.getItem('address'));

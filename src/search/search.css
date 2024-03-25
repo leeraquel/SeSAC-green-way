@@ -95,3 +95,32 @@ button {
     display: none;
   }
 
+
+  .flexRow {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .flexColumn {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .spaceBetween {
+    justify-content: space-between;
+  }
+  
+  .vehicleImg {
+    width: 150px;
+  }
+  
+  .logo {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .searchResult {
+    background-color: white;
+    margin-bottom: 20px;
+    border-radius: 20px;
+  }

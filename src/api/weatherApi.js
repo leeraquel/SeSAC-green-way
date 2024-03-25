@@ -1,4 +1,7 @@
 import { seoulKey } from '../../config.js';
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+const URL = `${PROXY}/${seoulKey}/json/ListAirQualityByDistrictService/1/5/`;
+const LocalURL = `http://openapi.seoul.go.kr:8088/${seoulKey}/json/ListAirQualityByDistrictService/1/5/`;
 
 export async function fetchWeatherInfo(y, x, openWeatherKey) {
   const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${y}&lon=${x}&appid=${openWeatherKey}&units=metric&lang=kr`;
@@ -15,11 +18,9 @@ export async function fetchWeatherInfo(y, x, openWeatherKey) {
 }
 
 // 비동기 함수로 API 호출 및 결과 출력
-export async function fetchDustForecast(seoulKey) {
-  const apiUrl = `https://openAPI.seoul.go.kr:8088/${seoulKey}/json/ListAirQualityByDistrictService/1/5/`;
-
+export async function fetchDustForecast() {
   try {
-    const response = await fetch(apiUrl); // API 호출
+    const response = await fetch(LocalURL); // API 호출
     if (!response.ok) {
       throw new Error('API 호출에 실패했습니다.');
     }

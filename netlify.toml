@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/proxy/*"
+  to = "http://openapi.seoul.go.kr:8088/:splat"
+  status = 200
+  force = true

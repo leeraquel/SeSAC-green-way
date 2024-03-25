@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/globals.css" />
+    <link rel="stylesheet" href="../utils/tabBar/tabBar.css" />
+    <link rel="stylesheet" href="./join.css" />
+    <script src="../utils/utils.js"></script>
+    <script defer src="./join.js"></script>
+  </head>
+  <body>
+    <img
+      class="join-logo"
+      src="../assets/img/logo_greenway_01.png"
+      alt="logo_greenway_01"
+    />
+    <section class="join-id">
+      <img
+        class="first-step-img"
+        src="../assets/img/join_step_01.png"
+        alt="회원 가입 1단계 진행 중 이미지"
+      />
+      <form action="/" class="join-form id-form">
+        <h4>회원 가입</h4>
+        <div class="div-id">
+          <input
+            type="text"
+            placeholder="아이디"
+            name="userId"
+            required
+            id="userId"
+          />
+          <span>
+            <img
+              src="../assets/icon/check-circle.png"
+              alt="사용 가능 표기 아이콘"
+              id="toggleImg"
+              hidden
+            />
+          </span>
+        </div>
+        <p id="errMessage" class="err-message"></p>
+        <button type="button" class="login-btn next">다음</button>
+      </form>
+    </section>
+    <section class="join-pw">
+      <img
+        class="first-step-img"
+        src="../assets/img/join_step_02.png"
+        alt="회원 가입 2단계 진행 중 이미지"
+      />
+      <form action="/" class="join-form pw-form">
+        <h4>회원 가입</h4>
+        <div class="div-pw">
+          <input
+            type="password"
+            placeholder="비밀번호"
+            name="password"
+            required
+            id="password"
+          />
+          <span
+            ><img
+              src="../assets/icon/eye.png"
+              alt="눈"
+              id="eyeIcon"
+              onclick="showPassword()"
+          /></span>
+        </div>
+        <div class="div-pw" id="div-pw">
+          <input
+            type="password"
+            placeholder="비밀번호 확인"
+            name="password"
+            required
+            id="passwordCheck"
+          />
+          <span>
+            <img
+              src="../assets/icon/check-circle.png"
+              alt="사용 가능 표기 아이콘"
+              id="PwToggleImg"
+              hidden
+            />
+          </span>
+        </div>
+        <p id="errMessagePw" class="err-message"></p>
+        <button type="button" class="login-btn pw-next next">다음</button>
+      </form>
+    </section>
+    <section class="join-agree">
+      <img
+        class="first-step-img"
+        src="../assets/img/join_step_03.png"
+        alt="회원 가입 3단계 진행 중 이미지"
+      />
+      <form action="/" class="join-form agree-form">
+        <h4>회원가입</h4>
+        <p class="agree-text">
+          <p>(필수)</p>서비스 이용약관 동의 (상세내용 보기)</p>
+        <input type="checkbox" id="service" />
+        <p class="agree-text">
+          <p >(필수)</p> 개인정보 수집ㆍ이용 동의 (상세내용 보기)
+        </p>
+        <input type="checkbox" id="service" />
+        <p class="agree-text">
+          <p>(필수)</p>  위치기반 서비스 이용약관에 동의 (상세내용 보기)
+        </p>
+        <input type="checkbox" id="service" />
+        <p class="agree-text">
+          <p>(선택)</p>  수집한 개인정보의 제 3자 정보제공 동의 (상세내용 보기)
+        </p>
+        <input type="checkbox" id="service" />
+      </form>
+    </section>
+    <nav>
+      <ul class="tab-bar">
+        <li class="tab">
+          <a href="../../index.html"
+            ><img
+              class="tab-icon"
+              src="../assets/icon/map.svg"
+              alt="지도 아이콘"
+          /></a>
+        </li>
+        <li class="tab">
+          <a href="../search/search.html"
+            ><img
+              class="tab-icon"
+              src="../assets/icon/search.svg"
+              alt="검색 아이콘"
+          /></a>
+        </li>
+        <li class="tab">
+          <a onclick="isloginFavoritePage()">
+            <img
+              id="favorite"
+              class="tab-icon"
+              src="../assets/icon/favorite.svg"
+              alt="즐겨찾기 아이콘"
+            />
+          </a>
+        </li>
+        <li class="tab">
+          <a onclick="isLoginMyPage()">
+            <img
+              id="mypage"
+              class="tab-icon"
+              src="../assets/icon/my.svg"
+              alt="마이페이지 아이콘"
+            />
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </body>
+</html>

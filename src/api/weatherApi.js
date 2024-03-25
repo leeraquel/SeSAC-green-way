@@ -16,7 +16,7 @@ export async function fetchWeatherInfo(y, x, openWeatherKey) {
 
 // 비동기 함수로 API 호출 및 결과 출력
 export async function fetchDustForecast(seoulKey) {
-  const apiUrl = `http://openAPI.seoul.go.kr:8088/${seoulKey}/json/ListAirQualityByDistrictService/1/5/`;
+  const apiUrl = `https://openAPI.seoul.go.kr:8088/${seoulKey}/json/ListAirQualityByDistrictService/1/5/`;
 
   try {
     const response = await fetch(apiUrl); // API 호출

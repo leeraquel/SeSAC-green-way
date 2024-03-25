@@ -4,7 +4,7 @@ import { seoulKey } from '../../config.js';
 async function fetchBikeStatus() {
   try {
     const response = await fetch(
-      `http://openapi.seoul.go.kr:8088/${seoulKey}/json/bikeList/1/100/`
+      `https://openapi.seoul.go.kr:8088/${seoulKey}/json/bikeList/1/100/`
     );
     const data = await response.json();
 

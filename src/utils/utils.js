@@ -8,8 +8,7 @@ const isLoginMyPage = function () {
     window.location.href = '../login/login.html';
   }
 };
-
-// 로그인 여부 확인 후 즐겨찾기 페이지로 이동
+// footer - favorite 로그인 여부 확인 후 페이지 이동 함수
 const isloginFavoritePage = function () {
   var value = sessionStorage.getItem('islogin');
   if (value === 'true') {

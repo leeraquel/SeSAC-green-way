@@ -16,7 +16,7 @@ body {
     margin-top: 50px;
     width: 80%;
     margin: 0 auto;
-    background-color: grey;
+    background-color: rgb(249, 248, 248);
     border-radius: 25px;
     position: relative;
 }
@@ -57,17 +57,17 @@ button {
     width: 80%;
     margin: 0 auto;
 }
-#resultsList li {
-    margin-bottom: 5px;
-    padding: 10px;
-    background-color: #f7f5f5;
-    border-radius: 5px;
+.result-box ul {
+    border-top: 1px solid rgb(249, 248, 248);
+    padding: 15px 10px;
+}
+.result-box ul li {
+    list-style: none;
+    border-radius: -1px;
+    padding: 15px 10px;
     cursor: pointer;
 }
-#resultsList li:hover {
-    background-color: #f7f5f5;
-}
-#resultsList.hide {
+.result-box {
     display: none;
 }
 .nosearch {
@@ -75,7 +75,7 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%);
-    color: grey;
+    color: rgb(228, 226, 226);
     font-size: var(--font-sub);
 }
 

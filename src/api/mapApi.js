@@ -1,11 +1,11 @@
 import { seoulKey } from '../../config.js';
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+const URL = `${PROXY}/${seoulKey}/json/bikeList/1/100/`;
 
 // 따릉이 api 호출에서 자전거 정보 배열만 받아오는 함수
 async function fetchBikeStatus() {
   try {
-    const response = await fetch(
-      `https://openapi.seoul.go.kr:8088/${seoulKey}/json/bikeList/1/100/`
-    );
+    const response = await fetch(URL);
     const data = await response.json();
 
     return data.rentBikeStatus.row;

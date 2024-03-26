@@ -51,7 +51,7 @@ main {
   padding: 4px 8px;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .nowLocationInfoWrapper {
@@ -84,7 +84,7 @@ main {
   min-width: 100px;
   background-color: white;
   /* padding: 8px; */
-  border-radius: 4px;
+  border-radius: 8px;
   border: solid 1px rgb(235, 235, 235);
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
 }
@@ -110,6 +110,15 @@ main {
   width: calc(100vw - 10px);
   bottom: 70px;
   padding: 0 10px;
+}
+
+#findCurrentLocation {
+  margin-bottom: 8px;
+}
+
+#findCurrentLocation > img {
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 #infoCardWrapper {

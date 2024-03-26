@@ -40,10 +40,24 @@
     <main>
       <!-- 마이 페이지 제목 텍스트 -->
       <div class="my-page-title">마이 페이지</div>
-      <!-- 사용자 프로필 -->
-      <div class="profile-pic">
-        <img src="../assets/img/profile-pic.svg" alt="profile-pic" />
+      <!-- 프로필 사진과 플러스 버튼 -->
+      <div class="profile-pic-container">
+        <div class="profile-pic">
+          <img
+            id="profile-image"
+            src="../assets/img/profile-pic.svg"
+            alt="profile-pic"
+          />
+        </div>
+        <input
+          type="file"
+          id="file-input"
+          style="display: none"
+          accept="image/*"
+        />
+        <button class="add-button" onclick="handleProfilePicChange()">+</button>
       </div>
+
       <!-- 닉네임 텍스트 -->
       <div class="UserName">UserName</div>
 

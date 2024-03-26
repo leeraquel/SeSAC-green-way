@@ -18,7 +18,8 @@ body {
     text-align: center;
     width: 90%;
     margin: 0 auto;
-    background-color: rgb(249, 248, 248);
+    font-size: var(--font-sub);
+    background-color: rgb(240, 240, 240);
     border-radius: 25px;
     position: relative;
 }
@@ -65,12 +66,13 @@ button {
     text-transform: lowercase;
     position: relative;
     margin-top: 10px;
-    margin-left: 220px;
+    margin-left: 240px;
 }
  .current-location-icon {
     width: 18px;
     height: 18px;
     vertical-align: middle;
+    margin-top: -5px;
 }
 
   #nowLocationInfo{
@@ -146,19 +148,18 @@ a:hover {
   width: 90%;
   height: 40px;
   text-align: center;
-  
   margin: 0 auto;
   background-color: rgb(249, 248, 248);
-  border-radius: 25px;
+  border-radius: 10px;
   position: relative;
-  box-shadow: 0 7px 4px rgb(51, 47, 47); /* 그림자 설정 */
+  box-shadow: 0 5px 6px rgb(100, 95, 95); /* 그림자 설정 */
 }
 
 
 #nowLocationName {
   width: 200px;
   justify-content: space-around;
-  padding: 10px;
+  padding: 10px 10px 0 0;
   margin-top: 15px;
 }
 
@@ -191,3 +192,15 @@ a:hover {
   justify-content: center;
 }
 
+.searchResults {
+  background-color: rgb(240, 240, 240);
+  text-align: left;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 10px;
+  border-radius: 25px;
+}
+.searchResults p {
+  padding: 5px;
+  overflow-x: hidden;
+}

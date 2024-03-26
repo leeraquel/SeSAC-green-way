@@ -12,7 +12,7 @@ header {
 }
 /* 마이페이지 제목 텍스트 */
 .my-page-title {
-  font-size: var(--font-main);
+  font-size: 30px;
   text-align: center;
   margin-bottom: 20px;
   margin-top: 20px;
@@ -34,7 +34,8 @@ header {
 /* 유저 닉네임 */
 .UserName {
   text-align: center;
-  padding: 20px;
+  padding: 30px;
+  font-size: 30px;
 }
 .btn-primary {
   background-color: #132f2d; /* 원하는 색상으로 변경 */
@@ -66,8 +67,8 @@ header {
 .bookmark-btn {
   width: 95%; /* 너비를 더 넓은 값으로 조정 */
   max-width: 350px; /* 최대 너비를 350px로 설정하여 너비가 너무 커지지 않도록 제한 */
-  background-color: #132f2d; /* 배경색을 포레스트 그린으로 변경 */
-  color: white; /* 텍스트 색상을 흰색으로 변경 */
+  background-color: white; /* 배경색을 포레스트 그린으로 변경 */
+  color: black; /* 텍스트 색상을 흰색으로 변경 */
   cursor: pointer; /* 커서를 포인터로 변경 */
 }
 
@@ -186,4 +187,34 @@ img.map {
 /* 기존의 인풋창 테두리 스타일 유지 */
 .modal-body input[type='password'] {
   border-color: initial; /* 기존의 테두리 색상 유지 */
+}
+.bookmark-btn:focus,
+.bookmark-btn:hover,
+.bookmark-btn:active,
+.bookmark-btn.active {
+  background-color: #ffffff !important; /* 배경색을 흰색으로 변경 */
+  color: #000000 !important; /* 글자 색상을 검정색으로 변경 */
+}
+/* 프로필 사진 위 +버튼 */
+/* 프로필 사진 컨테이너 */
+.profile-pic-container {
+  position: relative;
+}
+
+/* 플러스 버튼 */
+.add-button {
+  position: absolute;
+  top: 20px;
+  right: 140px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: #132f2d;
+  border: 1px solid #132f2d;
+  color: white;
+  border-radius: 50%;
+  font-size: 16px;
+  line-height: 20px; /* 버튼 높이와 동일하게 조정 */
+  text-align: center;
+  cursor: pointer;
 }

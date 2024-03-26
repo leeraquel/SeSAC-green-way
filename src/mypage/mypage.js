@@ -167,3 +167,31 @@ fetch('../api/user.json')
   .catch((error) => {
     console.error('Error fetching user data:', error);
   });
+//------------------프로필 사진
+// JavaScript
+function handleProfilePicChange() {
+  // 파일 선택(input type="file") 요소 선택
+  var fileInput = document.getElementById('file-input');
+
+  // 파일 선택 요소를 클릭하여 파일 선택 다이얼로그 열기
+  fileInput.click();
+
+  // 파일 선택(input type="file") 요소의 변경 이벤트 리스너 추가
+  fileInput.addEventListener('change', function (event) {
+    // 선택한 파일 가져오기
+    var selectedFile = event.target.files[0];
+
+    // 파일을 읽기 위한 FileReader 객체 생성
+    var reader = new FileReader();
+
+    // 파일을 읽기
+    reader.onload = function (event) {
+      // 읽은 데이터를 이미지로 설정하여 프로필 사진 요소에 표시
+      var profilePic = document.querySelector('.profile-pic img');
+      profilePic.src = event.target.result;
+    };
+
+    // 선택한 파일을 읽기
+    reader.readAsDataURL(selectedFile);
+  });
+}

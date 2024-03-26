@@ -1,6 +1,7 @@
 body {
   background-color: var(--main-color);
   margin-top: 15vh;
+  padding-bottom: 60px;
 }
 
 .login-logo {
@@ -13,7 +14,7 @@ body {
 .login-container {
   background-color: #fff;
   width: 308px;
-  margin: 10vh auto;
+  margin: 7vh auto;
   height: 344px;
   border-radius: 10px;
   text-align: center;
@@ -26,8 +27,8 @@ body {
 }
 
 .login-form input {
+  width: calc(100% - 4px);
   display: block;
-  width: 100%;
   height: 28px;
   border: none;
 }
@@ -79,6 +80,7 @@ button[type='submit'] {
   font-size: var(--font-content);
   color: #808080;
   justify-content: space-between;
+  align-items: center;
 }
 
 .login-option div:first-child {

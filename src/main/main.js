@@ -316,7 +316,9 @@ const filterElecle = document.getElementById('FilterElecleOnly');
 const filterKickgoing = document.getElementById('FilterKickgoingOnly');
 
 // 현재위치 관련 dom 지정
-const findCurrentLocation = document.getElementById('findCurrentLocation');
+const findCurrentLocation = document.querySelector(
+  '#findCurrentLocation > img'
+);
 
 // 현재위치 온클릭 이벤트 추가
 findCurrentLocation.addEventListener('click', getCurrentLocation);

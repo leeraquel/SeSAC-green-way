@@ -19,6 +19,21 @@ main {
   background-color: var(--main-color);
 }
 
+a {
+  text-decoration: none;
+}
+
+/* 아직 방문하지 않은 링크의 글자색 정의 */
+a:link {
+  color: white;
+}
+
+/* 사용자가 방문한 적이 있는(클릭한 이후) 링크의 글자색
+정의 */
+a:visited {
+  color: white;
+}
+
 #map {
   position: relative;
   border-top-left-radius: 10px;
@@ -132,6 +147,10 @@ main {
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
 
+#infoCard {
+  align-items: flex-start;
+}
+
 .imgWrapper {
   width: 30%;
   padding-right: 8px;
@@ -143,10 +162,15 @@ main {
 
 .infoTextWrapper {
   width: 70%;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .vehicleIcon {
-  width: 24px;
+  width: 20px;
+  height: 20px;
 }
 
 #title {
@@ -161,6 +185,8 @@ main {
 
 .firstLine {
   width: 100%;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .titleLogoTextWrapper {
@@ -169,4 +195,10 @@ main {
 
 #brand {
   font-size: var(--font-sub);
+}
+
+#reservation {
+  background-color: var(--btn-color);
+  padding: 4px 8px;
+  border-radius: 4px;
 }

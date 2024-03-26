@@ -1,4 +1,7 @@
  *{
+  box-sizing: border-box;
+ }
+ *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -15,7 +18,7 @@ body {
     text-align: center;
     margin-top: 50px;
 
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     background-color: rgb(249, 248, 248);
     border-radius: 25px;
@@ -50,27 +53,6 @@ button {
     font-size: 18px;
 }
 
-#resultsList {
-    list-style-type: none;
-    padding: 0;
-
-    margin-top: 50px;
-    width: 80%;
-    margin: 0 auto;
-}
-.result-box ul {
-    border-top: 1px solid rgb(249, 248, 248);
-    padding: 15px 10px;
-}
-.result-box ul li {
-    list-style: none;
-    border-radius: -1px;
-    padding: 15px 10px;
-    cursor: pointer;
-}
-.result-box {
-    display: none;
-}
 .nosearch {
     position: absolute;
     top: 50%;
@@ -137,6 +119,11 @@ button {
     border-radius: 20px;
   }
  
+  /* 검색 결과를 숨김 */
+/* .searchResultWrapper {
+  display: none;
+} */
+
 .reservation-btn {
     width: 100px;
     height: 30px;
@@ -149,6 +136,7 @@ button {
     border: 1px solid #ccc; /* 테두리 설정 */
     border-radius: 25px; /* 모서리 둥글게 설정 */
     text-decoration: none; /* 밑줄 제거 */
+    margin-left: 110px;
 }
 
 a:hover {
@@ -159,6 +147,7 @@ a:hover {
   width: 90%;
   height: 40px;
   text-align: center;
+  
   margin: 0 auto;
   background-color: rgb(249, 248, 248);
   border-radius: 25px;
@@ -176,6 +165,7 @@ a:hover {
 }
 
 #isFavorite {
+  
   width: 20px; /* 너비 설정 */
   height: 20px; /* 높이 설정 */
   margin-left: 300px;

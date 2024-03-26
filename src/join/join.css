@@ -1,0 +1,168 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--main-color);
+  margin-top: 15vh;
+  padding-bottom: 60px;
+}
+
+body * {
+  font-family: 'Pretendard-Regular';
+}
+
+.join-logo {
+  display: block;
+  width: 184px;
+  height: 184px;
+  margin: 0 auto;
+}
+
+.join-id {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.first-step-img {
+  display: block;
+  width: 308px;
+  margin: auto;
+  margin-top: 5vh;
+}
+
+.join-form {
+  background-color: #fff;
+  width: 308px;
+  margin: auto;
+  margin-top: 25px;
+  height: 252px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.join-form h4 {
+  font-size: var(--font-main);
+}
+
+.div-id {
+  display: flex;
+  margin-top: 38px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #808080;
+}
+
+.div-pw {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #808080;
+}
+
+.join-form input {
+  display: block;
+  width: 100%;
+  height: 28px;
+  border: none;
+}
+
+.success {
+  border-bottom: 1px solid #132f2d;
+}
+
+.err {
+  border-bottom: 1px solid #ff2626;
+}
+
+.err-message {
+  height: 10px;
+  color: #ff2626;
+  font-size: var(--font-content);
+  text-align: left;
+}
+
+.next {
+  background-color: #132f2d;
+  color: #fff;
+  border-radius: 5px;
+  font-size: var(--font-content);
+  width: 100%;
+  height: 28px;
+  margin-top: 76px;
+  cursor: pointer;
+}
+
+.join-pw {
+  display: none;
+}
+
+.pw-next {
+  background-color: #132f2d;
+  color: #fff;
+  border-radius: 5px;
+  font-size: var(--font-content);
+  width: 100%;
+  height: 28px;
+  margin-top: 48px;
+  cursor: pointer;
+}
+
+.join-agree {
+  display: none;
+}
+
+.agree-text {
+  position: relative;
+  color: #132f2d;
+  font-size: var(--font-content);
+  text-align: left;
+  width: 100%;
+}
+
+.agree-form {
+  background-color: #fff;
+  width: 308px;
+  margin: auto;
+  margin-top: 25px;
+  height: 252px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.agree-form h4 {
+  margin-bottom: 25px;
+}
+
+.necessary {
+  color: #ff3a00;
+}
+
+.choice {
+  color: #808080;
+}
+
+.all {
+  margin-top: 20px;
+  color: #132f2d;
+}
+.finish-btn {
+  background-color: #132f2d;
+  color: #fff;
+  border-radius: 5px;
+  font-size: var(--font-content);
+  width: 100%;
+  height: 28px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.agree-checkbox {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#eyeIcon {
+  cursor: pointer;
+}

@@ -16,8 +16,6 @@ body {
 }
 .search {
     text-align: center;
-    margin-top: 50px;
-
     width: 90%;
     margin: 0 auto;
     background-color: rgb(249, 248, 248);
@@ -37,6 +35,7 @@ input {
     display: block;
     border-radius: 25px;
     font-size: var(--font-sub);
+    margin-top: 30px;
     padding: 10px 20px 10px 20px;
     border: 1px solid black;
 }
@@ -120,9 +119,9 @@ button {
   }
  
   /* 검색 결과를 숨김 */
-/* .searchResultWrapper {
+.searchResultWrapper {
   display: none;
-} */
+}
 
 .reservation-btn {
     width: 100px;
@@ -157,11 +156,10 @@ a:hover {
 
 
 #nowLocationName {
-
- justify-content: space-around;
- padding: 10px;
- margin-right: 160px;
- margin-top: 10px;
+  width: 200px;
+  justify-content: space-around;
+  padding: 10px;
+  margin-top: 15px;
 }
 
 #isFavorite {

@@ -74,13 +74,27 @@ if (window.kakao && kakao.maps) {
 
         // 키워드로 장소 검색 실행
         ps.keywordSearch(keyword, placesSearchCB);
+      
+      ps.keywordSearch(keyword, function(data, status, pagination) {
+        // 검색 결과가 있을 때
+        if (status === kakao.maps.services.Status.OK) {
+            // 검색 결과를 처리하는 코드
+            
+            // nosearch 숨기기
+            document.querySelector(".nosearch").style.display = "none";
+        } else {
+            // 검색 결과가 없을 때
+            // nosearch 표시하기
+            document.querySelector(".nosearch").style.display = "block";
+        }
       });
-
+    });
     // 장소 검색 완료 시 호출되는 콜백 함수
     function placesSearchCB(data, status) {
       if (status === kakao.maps.services.Status.OK) {
         // 검색 결과가 있으면 콘솔에 출력
         console.log(data);
+
 
         // 검색 결과를 div에 표시 (예시)
         var resultsDiv = document.getElementById('searchResults') ;

@@ -14,6 +14,7 @@ body {
 .search {
     text-align: center;
     margin-top: 50px;
+
     width: 80%;
     margin: 0 auto;
     background-color: rgb(249, 248, 248);
@@ -95,13 +96,16 @@ button {
     display: none;
   }
 
-
   .flexRow {
+    padding: -1px;
     display: flex;
     flex-direction: row;
   }
   
   .flexColumn {
+    padding: 15px;
+    width: 200px;
+    height: 100px;
     display: flex;
     flex-direction: column;
   }
@@ -111,16 +115,91 @@ button {
   }
   
   .vehicleImg {
-    width: 150px;
+    width: 100px;
+    height: 80px;
+    padding: 5px;
   }
   
   .logo {
     width: 24px;
     height: 24px;
+    margin-top: -5px;
+    margin-right: 5px;
   }
   
   .searchResult {
+    width: 90%;
+    height: 100px;
+    padding: 10px;
+    margin: 20px;
     background-color: white;
     margin-bottom: 20px;
     border-radius: 20px;
   }
+ 
+.reservation-btn {
+    width: 100px;
+    height: 30px;
+    display: inline-block;
+    align-content: center;
+    padding: 10px; /* 원하는 패딩값 설정 */
+    font-size: var(--font-sub);
+    background-color: #132F2D; /* 배경색 설정 */
+    color: #fff; /* 텍스트 색상 설정 */
+    border: 1px solid #ccc; /* 테두리 설정 */
+    border-radius: 25px; /* 모서리 둥글게 설정 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+a:hover {
+    background-color: #173634; /* 마우스 호버시 배경색 변경 */
+}
+
+.nowLocationInfo {
+  width: 90%;
+  height: 40px;
+  text-align: center;
+  margin: 0 auto;
+  background-color: rgb(249, 248, 248);
+  border-radius: 25px;
+  position: relative;
+  box-shadow: 0 7px 4px rgb(51, 47, 47); /* 그림자 설정 */
+}
+
+
+#nowLocationName {
+
+ justify-content: space-around;
+ padding: 10px;
+ margin-right: 160px;
+ margin-top: 10px;
+}
+
+#isFavorite {
+  width: 20px; /* 너비 설정 */
+  height: 20px; /* 높이 설정 */
+  margin-left: 300px;
+  margin-top: 0;
+}
+
+.searchMap {
+  width: 180px;
+  display: inline-block; /* 인라인 요소로 표시하여 텍스트와 같은 줄에 표시되도록 함 */
+  padding: 8px; /* 내부 여백 설정 */
+  text-align: center;
+  background-color: #132F2D; /* 배경색 설정 */
+  color: #fff; /* 텍스트 색상 설정 */
+  border: 1px solid #132F2D; /* 테두리 설정 */
+  border-radius: 15px; /* 모서리 둥글게 설정 */
+
+  text-decoration: none; /* 밑줄 제거 */
+  margin-top: 20px;
+  margin-left: 100px;
+}
+
+.searchMap:hover {
+  background-color: #173634; /* 마우스 호버시 배경색 변경 */
+  border-color: #173634; /* 마우스 호버시 테두리 색상 변경 */
+  justify-content: center;
+}
+

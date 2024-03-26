@@ -14,13 +14,13 @@
   <body>
     <img
       class="join-logo"
-      src="../assets/img/logo_greenway_01.png"
+      src="../assets/logo/logo_greenway_01.svg"
       alt="logo_greenway_01"
     />
     <section class="join-id">
       <img
         class="first-step-img"
-        src="../assets/img/join_step_01.png"
+        src="../assets/logo/join_step_01.svg"
         alt="회원 가입 1단계 진행 중 이미지"
       />
       <form action="/" class="join-form id-form">
@@ -49,7 +49,7 @@
     <section class="join-pw">
       <img
         class="first-step-img"
-        src="../assets/img/join_step_02.png"
+        src="../assets/logo/join_step_02.svg"
         alt="회원 가입 2단계 진행 중 이미지"
       />
       <form action="/" class="join-form pw-form">
@@ -88,19 +88,19 @@
           </span>
         </div>
         <p id="errMessagePw" class="err-message"></p>
-        <button type="button" class="pw-next next">다음</button>
+        <button type="button" class="pw-next">다음</button>
       </form>
     </section>
     <section class="join-agree">
       <img
         class="first-step-img"
-        src="../assets/img/join_step_03.png"
+        src="../assets/logo/join_step_03.svg"
         alt="회원 가입 3단계 진행 중 이미지"
       />
       <form action="/" class="agree-form">
         <h4>회원가입</h4>
         <div class="agree-text">
-          <span class="necessary">(필수)</span>서비스 이용약관 동의 (상세보기)
+          <span class="necessary">(필수)</span> 서비스 이용약관 동의 (상세보기)
           <input
             type="checkbox"
             class="agree-checkbox nec-item"
@@ -160,24 +160,24 @@
           /></a>
         </li>
         <li class="tab">
-          <a onclick="isloginFavoritePage()">
+          <div onclick="isloginFavoritePage()">
             <img
               id="favorite"
               class="tab-icon"
               src="../assets/icon/favorite.svg"
               alt="즐겨찾기 아이콘"
             />
-          </a>
+          </div>
         </li>
         <li class="tab">
-          <a onclick="isLoginMyPage()">
+          <div onclick="isLoginMyPage()">
             <img
               id="mypage"
               class="tab-icon"
               src="../assets/icon/my.svg"
               alt="마이페이지 아이콘"
             />
-          </a>
+          </div>
         </li>
       </ul>
     </nav>

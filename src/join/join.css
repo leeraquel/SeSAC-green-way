@@ -1,6 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--main-color);
   margin-top: 15vh;
+  padding-bottom: 60px;
+}
+
+body * {
+  font-family: 'Pretendard-Regular';
 }
 
 .join-logo {
@@ -79,12 +88,23 @@ body {
   font-size: var(--font-content);
   width: 100%;
   height: 28px;
-  margin-top: 60px;
+  margin-top: 76px;
   cursor: pointer;
 }
 
 .join-pw {
   display: none;
+}
+
+.pw-next {
+  background-color: #132f2d;
+  color: #fff;
+  border-radius: 5px;
+  font-size: var(--font-content);
+  width: 100%;
+  height: 28px;
+  margin-top: 48px;
+  cursor: pointer;
 }
 
 .join-agree {

@@ -78,6 +78,7 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
     let logo = document.getElementById('logo');
     let title = document.getElementById('title');
     let count = document.getElementById('count');
+    let brandName = document.getElementById('brand');
     let reservation = document.getElementById('reservation');
 
     //카드 띄우기
@@ -88,12 +89,14 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
       logo.setAttribute('src', 'src/assets/img/seoulBikeLogo.png');
       title.textContent = info.stationName;
       count.textContent = info.parkingBikeTotCnt;
+      brandName.textContent = '따릉이';
       reservation.setAttribute('href', 'https://www.bikeseoul.com/main.do');
     } else if (brand === 'elecle') {
       bikeImg.setAttribute('src', 'src/assets/img/elecleImg.png');
       logo.setAttribute('src', 'src/assets/img/elecleLogo.png');
       title.textContent = info.road_address_name;
       count.textContent = 1;
+      brandName.textContent = '일레클';
       reservation.setAttribute(
         'href',
         'https://play.google.com/store/apps/details?id=org.nine2one.elecle'
@@ -103,6 +106,7 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
       logo.setAttribute('src', 'src/assets/img/kickgoingLogo.png');
       title.textContent = info.road_address_name;
       count.textContent = 1;
+      brandName.textContent = '킥고잉';
       reservation.setAttribute('href', 'https://kickgoing.io/');
     }
   });

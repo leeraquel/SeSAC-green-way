@@ -133,13 +133,21 @@ main {
 }
 
 .imgWrapper {
-  width: 50%;
+  width: 30%;
+  padding-right: 8px;
 }
 
 #bikeImg {
   width: 100%;
 }
 
+.infoTextWrapper {
+  width: 70%;
+}
 .vehicleIcon {
   width: 24px;
+}
+
+.firstLine {
+  width: 100%;
 }

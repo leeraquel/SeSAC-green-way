@@ -6,7 +6,7 @@ const LocalURL = `http://openapi.seoul.go.kr:8088/${seoulKey}/json/bikeList/1/10
 // 따릉이 api 호출에서 자전거 정보 배열만 받아오는 함수
 async function fetchBikeStatus() {
   try {
-    const response = await fetch(LocalURL);
+    const response = await fetch(URL);
     const data = await response.json();
 
     return data.rentBikeStatus.row;

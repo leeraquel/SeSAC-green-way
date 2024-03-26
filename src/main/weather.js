@@ -41,6 +41,7 @@ fetchWeatherInfo(
 });
 
 // 미세먼지 대기 환경 api 호출
-fetchDustForecast(seoulKey).then((grade) => {
+fetchDustForecast().then((grade) => {
+  console.log(grade);
   dustContent.textContent = `${grade}`;
 });

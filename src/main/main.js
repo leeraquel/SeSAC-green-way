@@ -78,6 +78,7 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
     let logo = document.getElementById('logo');
     let title = document.getElementById('title');
     let count = document.getElementById('count');
+    let brandName = document.getElementById('brand');
     let reservation = document.getElementById('reservation');
 
     //카드 띄우기
@@ -88,12 +89,14 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
       logo.setAttribute('src', 'src/assets/img/seoulBikeLogo.png');
       title.textContent = info.stationName;
       count.textContent = info.parkingBikeTotCnt;
+      brandName.textContent = '따릉이';
       reservation.setAttribute('href', 'https://www.bikeseoul.com/main.do');
     } else if (brand === 'elecle') {
       bikeImg.setAttribute('src', 'src/assets/img/elecleImg.png');
       logo.setAttribute('src', 'src/assets/img/elecleLogo.png');
       title.textContent = info.road_address_name;
       count.textContent = 1;
+      brandName.textContent = '일레클';
       reservation.setAttribute(
         'href',
         'https://play.google.com/store/apps/details?id=org.nine2one.elecle'
@@ -103,6 +106,7 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
       logo.setAttribute('src', 'src/assets/img/kickgoingLogo.png');
       title.textContent = info.road_address_name;
       count.textContent = 1;
+      brandName.textContent = '킥고잉';
       reservation.setAttribute('href', 'https://kickgoing.io/');
     }
   });
@@ -312,7 +316,9 @@ const filterElecle = document.getElementById('FilterElecleOnly');
 const filterKickgoing = document.getElementById('FilterKickgoingOnly');
 
 // 현재위치 관련 dom 지정
-const findCurrentLocation = document.getElementById('findCurrentLocation');
+const findCurrentLocation = document.querySelector(
+  '#findCurrentLocation > img'
+);
 
 // 현재위치 온클릭 이벤트 추가
 findCurrentLocation.addEventListener('click', getCurrentLocation);
@@ -332,14 +338,14 @@ filterKickgoing.addEventListener('click', function () {
 });
 
 // 카카오 지도 생성 및 마커링 관련 기능들
-// 지도 컨테이너를 선택합니다.
+// 지도 컨테이너를 선택.
 let mapContainer = document.getElementById('map'), // 지도를 표시할 div
   mapOption = {
     center: new kakao.maps.LatLng(storedAddress.y, storedAddress.x), // 지도의 중심좌표
-    level: 3, // 지도의 확대 레벨
+    level: 4, // 지도의 확대 레벨
   };
 
-// 지도를 생성합니다.
+// 지도를 생성.
 let map = new kakao.maps.Map(mapContainer, mapOption);
 
 // 지도 생성 후 사용자의 현재 위치에 마커 추가
@@ -411,3 +417,34 @@ Promise.all([
 
 // 즐겨찾기 초기 로딩 함수
 fetchFavoritesAndUpdateIcon();
+
+//카테고리 토글 관련 DOM
+const categoryToggle = document.getElementById('categoryToggle');
+const filterOptions = document.querySelectorAll(
+  '.categoryFilterList > li:not(:first-child)'
+); // 첫 번째 li를 제외한 나머지 li 선택
+
+//카테고리 토글에 display 변환효과
+categoryToggle.addEventListener('click', function () {
+  filterOptions.forEach(function (option) {
+    if (option.style.display === 'none' || option.style.display === '') {
+      option.style.display = 'flex';
+    } else {
+      option.style.display = 'none';
+    }
+  });
+
+  // 토글 아이콘을 180도 회전
+  if (categoryToggle.classList.contains('rotated')) {
+    categoryToggle.style.transform = 'rotate(0deg)';
+    categoryToggle.classList.remove('rotated');
+  } else {
+    categoryToggle.style.transform = 'rotate(180deg)';
+    categoryToggle.classList.add('rotated');
+  }
+});
+
+// 초기 상태에서는 하위 li 태그들을 숨깁니다.
+filterOptions.forEach(function (option) {
+  option.style.display = 'none';
+});

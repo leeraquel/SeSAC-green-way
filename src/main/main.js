@@ -412,7 +412,7 @@ Promise.all([
 // 즐겨찾기 초기 로딩 함수
 fetchFavoritesAndUpdateIcon();
 
-const categoryToggle = document.getElementById('catagoryToggle');
+const categoryToggle = document.getElementById('categoryToggle');
 const filterOptions = document.querySelectorAll(
   '.categoryFilterList > li:not(:first-child)'
 ); // 첫 번째 li를 제외한 나머지 li 선택

@@ -80,6 +80,7 @@ body {
   width: 100%;
   height: 28px;
   margin-top: 60px;
+  cursor: pointer;
 }
 
 .join-pw {
@@ -91,11 +92,57 @@ body {
 }
 
 .agree-text {
-  color: #808080;
+  position: relative;
+  color: #132f2d;
   font-size: var(--font-content);
   text-align: left;
+  width: 100%;
 }
 
-.agree-form input {
-  display: inline;
+.agree-form {
+  background-color: #fff;
+  width: 308px;
+  margin: auto;
+  margin-top: 25px;
+  height: 252px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.agree-form h4 {
+  margin-bottom: 25px;
+}
+
+.necessary {
+  color: #ff3a00;
+}
+
+.choice {
+  color: #808080;
+}
+
+.all {
+  margin-top: 20px;
+  color: #132f2d;
+}
+.finish-btn {
+  background-color: #132f2d;
+  color: #fff;
+  border-radius: 5px;
+  font-size: var(--font-content);
+  width: 100%;
+  height: 28px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.agree-checkbox {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#eyeIcon {
+  cursor: pointer;
 }

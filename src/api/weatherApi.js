@@ -20,7 +20,7 @@ export async function fetchWeatherInfo(y, x, openWeatherKey) {
 // 비동기 함수로 API 호출 및 결과 출력
 export async function fetchDustForecast() {
   try {
-    const response = await fetch(LocalURL); // API 호출
+    const response = await fetch(URL); // API 호출
     if (!response.ok) {
       throw new Error('API 호출에 실패했습니다.');
     }

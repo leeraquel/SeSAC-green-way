@@ -14,9 +14,9 @@ body {
 .search {
     text-align: center;
     margin-top: 50px;
-
     width: 80%;
-    margin: 0 auto;
+    margin: 20px 10px 5px 20px;
+    margin-left: 40px;
     background-color: rgb(249, 248, 248);
     border-radius: 25px;
     position: relative;

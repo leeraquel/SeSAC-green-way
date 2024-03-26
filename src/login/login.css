@@ -22,6 +22,7 @@ body {
 
 .login-form h4 {
   font-size: var(--font-main);
+  margin-top: 20px;
 }
 
 .login-form input {
@@ -42,6 +43,9 @@ body {
   border-bottom: 1px solid #132f2d;
 }
 
+.div-password img {
+  cursor: pointer;
+}
 .info {
   font-size: var(--font-content);
   color: #808080;
@@ -57,12 +61,15 @@ button {
   font-size: var(--font-content);
   width: 100%;
   height: 28px;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
 button[type='submit'] {
   background-color: #132f2d;
   color: #fff;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .login-option {
@@ -71,13 +78,19 @@ button[type='submit'] {
   margin-bottom: 20px;
   font-size: var(--font-content);
   color: #808080;
+  justify-content: space-between;
 }
 
-.login-option label {
-  padding-left: 3px;
+.login-option div:first-child {
+  display: flex;
+  align-items: center;
 }
-.login-finding {
-  margin-left: 30%;
+.login-option label {
+  cursor: pointer;
+}
+
+.login-option input {
+  cursor: pointer;
 }
 
 .login-finding a:first-child {

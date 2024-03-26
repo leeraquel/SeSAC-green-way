@@ -51,43 +51,53 @@
       <div class="categoryFilter popOnTheMap">
         <ul class="categoryFilterList">
           <li id="allFilter" class="flexRow">
-            <span>모두 보기</span><span id="categoryToggle"> ▼</span>
+            <span>모두 보기</span
+            ><img
+              src="./src/assets/icon/dropDown.svg"
+              id="categoryToggle"
+              class="rotate"
+              alt="dropDown"
+            />
           </li>
           <li id="FilterSeoulBikeOnly" class="flexRow">
-            <div>따릉이</div>
+            <span>따릉이</span>
             <img src="./src/assets/icon/seoulBikeMarker.svg" />
           </li>
           <li id="FilterElecleOnly" class="flexRow">
-            <div>일레클</div>
+            <span>일레클</span>
             <img src="./src/assets/icon/elecleMarker.svg" />
           </li>
           <li id="FilterKickgoingOnly" class="flexRow">
-            <div>킥고잉</div>
+            <span>킥고잉</span>
             <img src="./src/assets/icon/kickgoingMarker.svg" />
           </li>
         </ul>
       </div>
-      <div id="findCurrentLocation" class="popOnTheMap">
-        <img
-          src="./src/assets/icon/currentLocation.svg"
-          alt="currentLocation"
-        />
-      </div>
-      <div id="infoCardWrapper" class="popOnTheMap">
-        <div id="infoCard" class="flexRow spaceBetween">
-          <div class="imgWrapper">
-            <img id="bikeImg" src="/" alt="bike이미지" />
+      <div class="popOnTheMap onBottom">
+        <div class="currentLocationWrapper">
+          <div id="findCurrentLocation">
+            <img
+              src="./src/assets/icon/currentLocation.svg"
+              alt="currentLocation"
+            />
           </div>
-          <div class="infoTextWrapper">
-            <div class="titleWrapper flexRow spaceBetween">
-              <div class="titleLogoTextWrapper flexRow">
-                <img id="logo" src="/" alt="logo" />
-                <div id="title">타이틀 주소명</div>
-              </div>
-              <div id="count">13</div>
+        </div>
+        <div id="infoCardWrapper">
+          <div id="infoCard" class="flexRow spaceBetween">
+            <div class="imgWrapper">
+              <img id="bikeImg" src="/" alt="bike이미지" />
             </div>
-            <div class="subTitleWrapper flexRow spaceBetween">
-              <a href="./" id="reservation">예약하기</a>
+            <div class="infoTextWrapper">
+              <div class="titleWrapper flexRow spaceBetween">
+                <div class="titleLogoTextWrapper flexRow">
+                  <img id="logo" src="/" alt="logo" />
+                  <div id="title">타이틀 주소명</div>
+                </div>
+                <div id="count">13</div>
+              </div>
+              <div class="subTitleWrapper flexRow spaceBetween">
+                <a href="./" id="reservation">예약하기</a>
+              </div>
             </div>
           </div>
         </div>

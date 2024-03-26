@@ -86,11 +86,11 @@ main {
 .categoryFilter {
   top: 130px;
   min-width: 100px;
-  /* width: calc(100vw - 10px); */
   background-color: white;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: flex-end; */
+  /* padding: 8px; */
+  border-radius: 4px;
+  border: solid 1px rgb(235, 235, 235);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
 }
 
 .categoryFilterList {
@@ -99,14 +99,27 @@ main {
   align-items: center;
 }
 
-.categoryFilterList #categoryToggle {
-  margin-left: 20px;
+.categoryFilterList > li {
+  width: 100%;
+  justify-content: space-between;
+  padding: 4px 4px 4px 8px;
+  border-bottom: solid 1px rgb(235, 235, 235);
+}
+
+.categoryFilterList > li > span {
+  font-size: var(--font-sub);
+}
+
+.onBottom {
+  width: calc(100vw - 10px);
+  bottom: 70px;
+  padding: 0 10px;
 }
 
 #infoCardWrapper {
   display: none;
-  bottom: 70px;
-  width: calc(100vw - 10px);
+  /* bottom: 70px; */
+  /* width: calc(100vw - 10px); */
   background: white;
   padding: 20px;
   box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.3);

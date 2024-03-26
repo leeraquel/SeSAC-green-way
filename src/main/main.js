@@ -412,13 +412,14 @@ Promise.all([
 // 즐겨찾기 초기 로딩 함수
 fetchFavoritesAndUpdateIcon();
 
+//카테고리 토글 관련 DOM
 const categoryToggle = document.getElementById('categoryToggle');
 const filterOptions = document.querySelectorAll(
   '.categoryFilterList > li:not(:first-child)'
 ); // 첫 번째 li를 제외한 나머지 li 선택
 
+//카테고리 토글에 display 변환효과
 categoryToggle.addEventListener('click', function () {
-  // display 속성을 토글하여 li 태그들을 표시하거나 숨깁니다.
   filterOptions.forEach(function (option) {
     if (option.style.display === 'none' || option.style.display === '') {
       option.style.display = 'flex';
@@ -428,10 +429,12 @@ categoryToggle.addEventListener('click', function () {
   });
 
   // 토글 아이콘을 180도 회전
-  if (categoryToggle.innerHTML.trim() === '▼') {
-    categoryToggle.innerHTML = '▲';
+  if (categoryToggle.classList.contains('rotated')) {
+    categoryToggle.style.transform = 'rotate(0deg)';
+    categoryToggle.classList.remove('rotated');
   } else {
-    categoryToggle.innerHTML = '▼';
+    categoryToggle.style.transform = 'rotate(180deg)';
+    categoryToggle.classList.add('rotated');
   }
 });
 

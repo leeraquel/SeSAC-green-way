@@ -25,7 +25,9 @@ export async function fetchDustForecast() {
       throw new Error('API 호출에 실패했습니다.');
     }
     const data = await response.json(); // 응답을 JSON으로 변환
-    return data.ListAirQualityByDistrictService.row[0].GRADE; // 변환된 데이터를 콘솔에 출력
+    if (data.ListAirQualityByDistrictService.row[0].GRADE !== '') {
+      return data.ListAirQualityByDistrictService.row[0].GRADE;
+    } else return '보통';
   } catch (error) {
     console.error('에러가 발생했습니다:', error);
   }

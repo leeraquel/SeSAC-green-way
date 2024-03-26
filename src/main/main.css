@@ -144,10 +144,29 @@ main {
 .infoTextWrapper {
   width: 70%;
 }
+
 .vehicleIcon {
   width: 24px;
 }
 
+#title {
+  font-size: var(--font-main);
+  font-weight: 500;
+}
+
+#count {
+  font-size: var(--font-large);
+  font-weight: 800;
+}
+
 .firstLine {
   width: 100%;
+}
+
+.titleLogoTextWrapper {
+  gap: 4px;
+}
+
+#brand {
+  font-size: var(--font-sub);
 }

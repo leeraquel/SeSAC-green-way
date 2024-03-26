@@ -332,14 +332,14 @@ filterKickgoing.addEventListener('click', function () {
 });
 
 // 카카오 지도 생성 및 마커링 관련 기능들
-// 지도 컨테이너를 선택합니다.
+// 지도 컨테이너를 선택.
 let mapContainer = document.getElementById('map'), // 지도를 표시할 div
   mapOption = {
     center: new kakao.maps.LatLng(storedAddress.y, storedAddress.x), // 지도의 중심좌표
     level: 3, // 지도의 확대 레벨
   };
 
-// 지도를 생성합니다.
+// 지도를 생성.
 let map = new kakao.maps.Map(mapContainer, mapOption);
 
 // 지도 생성 후 사용자의 현재 위치에 마커 추가
@@ -411,3 +411,31 @@ Promise.all([
 
 // 즐겨찾기 초기 로딩 함수
 fetchFavoritesAndUpdateIcon();
+
+const categoryToggle = document.getElementById('catagoryToggle');
+const filterOptions = document.querySelectorAll(
+  '.categoryFilterList > li:not(:first-child)'
+); // 첫 번째 li를 제외한 나머지 li 선택
+
+categoryToggle.addEventListener('click', function () {
+  // display 속성을 토글하여 li 태그들을 표시하거나 숨깁니다.
+  filterOptions.forEach(function (option) {
+    if (option.style.display === 'none' || option.style.display === '') {
+      option.style.display = 'flex';
+    } else {
+      option.style.display = 'none';
+    }
+  });
+
+  // 토글 아이콘을 180도 회전
+  if (categoryToggle.innerHTML.trim() === '▼') {
+    categoryToggle.innerHTML = '▲';
+  } else {
+    categoryToggle.innerHTML = '▼';
+  }
+});
+
+// 초기 상태에서는 하위 li 태그들을 숨깁니다.
+filterOptions.forEach(function (option) {
+  option.style.display = 'none';
+});

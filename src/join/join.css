@@ -4,8 +4,9 @@
 
 body {
   background-color: var(--main-color);
-  margin-top: 15vh;
+  margin-top: 30px;
   padding-bottom: 60px;
+  height: 80vh;
 }
 
 body * {
@@ -14,8 +15,8 @@ body * {
 
 .join-logo {
   display: block;
-  width: 184px;
-  height: 184px;
+  width: 150px;
+  height: 150px;
   margin: 0 auto;
 }
 
@@ -117,6 +118,11 @@ body * {
   font-size: var(--font-content);
   text-align: left;
   width: 100%;
+  padding-bottom: 3px;
+}
+
+.agree-text input {
+  margin: 0;
 }
 
 .agree-form {
@@ -145,6 +151,14 @@ body * {
 .all {
   margin-top: 20px;
   color: #132f2d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.all input {
+  margin: 0;
+  margin-left: 5px;
 }
 .finish-btn {
   background-color: #132f2d;

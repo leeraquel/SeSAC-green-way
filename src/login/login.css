@@ -4,8 +4,9 @@
 
 body {
   background-color: var(--main-color);
-  margin-top: 15vh;
+  margin-top: 30px;
   padding-bottom: 60px;
+  height: 80vh;
 }
 
 body * {
@@ -14,15 +15,15 @@ body * {
 
 .login-logo {
   display: block;
-  width: 184px;
-  height: 184px;
+  width: 150px;
+  height: 150px;
   margin: 0 auto;
 }
 
 .login-container {
   background-color: #fff;
   width: 308px;
-  margin: 7vh auto;
+  margin: 7vh auto 0 auto;
   height: 348px;
   border-radius: 10px;
   text-align: center;

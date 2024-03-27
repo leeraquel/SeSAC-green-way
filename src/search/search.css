@@ -80,7 +80,6 @@ button {
   }
 
   .flexRow {
-    padding: -1px;
     display: flex;
     flex-direction: row;
   }
@@ -99,8 +98,8 @@ button {
   
   .vehicleImg {
     width: 100px;
-    height: 80px;
-    padding: 5px;
+    height: 70px;
+    margin-top: 6px;
   }
   
   .logo {
@@ -117,27 +116,28 @@ button {
     margin: 20px;
     background-color: white;
     margin-bottom: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
   }
  
   /* 검색 결과를 숨김 */
-.searchResultWrapper {
+/* .searchResultWrapper {
   display: none;
-}
+} */
 
 .reservation-btn {
-    width: 100px;
-    height: 30px;
+    width: 60px;
+    height: 25px;
     display: inline-block;
     align-content: center;
-    padding: 10px; /* 원하는 패딩값 설정 */
-    font-size: var(--font-sub);
+    text-align: center;
+    padding: 4px 8px; /* 원하는 패딩값 설정 */
+    font-size: var(--font-content);
     background-color: #132F2D; /* 배경색 설정 */
     color: #fff; /* 텍스트 색상 설정 */
     border: 1px solid #ccc; /* 테두리 설정 */
-    border-radius: 25px; /* 모서리 둥글게 설정 */
+    border-radius: 4px; /* 모서리 둥글게 설정 */
     text-decoration: none; /* 밑줄 제거 */
-    margin-left: 110px;
+    margin: 0 0 5px 150px
 }
 
 a:hover {
@@ -208,4 +208,11 @@ a:hover {
   justify-content: space-between;
   padding: 4px 8px;
   margin-top: 10px;
+}
+
+.countBox {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  margin-left: 10px;
 }

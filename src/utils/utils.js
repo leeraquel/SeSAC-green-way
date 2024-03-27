@@ -14,6 +14,6 @@ const isloginFavoritePage = function () {
     window.location.href = '../bookmark/favorite.html';
   } else {
     alert('로그인이 필요합니다.');
-    window.location.href = '/src/login/login.html';
+    window.location.href = '../login/login.html';
   }
 };

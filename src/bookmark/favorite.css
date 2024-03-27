@@ -5,15 +5,15 @@ body {
 p {
   font-size: var(--font-sub);
   flex-direction: row;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  margin-right: 8px;
+  margin-bottom: 8px;
 }
 
 .text-warp section {
   display: flex;
   flex-direction: row;
   border-bottom: 0.5px solid gray;
-  margin: 10px;
+  margin: 8px;
 }
 
 .container {
@@ -27,18 +27,18 @@ p {
 .card {
   position: relative;
   display: inline-block;
-  margin: 10px;
+  margin: 8px;
   width: 350px;
-  height: 140px;
   background-color: white;
   border-radius: 15px;
   border: 0.5px solid black;
   align-content: center;
+  padding: 8px;
 }
 
 h2 {
   font-size: var(--font-main);
-  margin: 10px;
+  margin: 8px;
   white-space: nowrap; /* 줄 바꿈 금지 */
   overflow: hidden; /* 넘치는 부분을 숨김 */
   text-overflow: ellipsis; /* 넘치는 부분을 ... 으로 표시 */
@@ -46,18 +46,19 @@ h2 {
 
 h3 {
   font-size: var(--font-large);
-  margin: 10px;
+  margin: 8px;
   font-weight: 700;
 }
 
 .click-icon {
   display: flex;
   flex-direction: row;
-  margin: 10px;
+  margin: 8px;
+  margin-bottom: 0;
 }
 
 .mark-up {
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 img.favorite,
@@ -80,11 +81,11 @@ img.map {
 
 .icon-wrapper {
   display: flex;
-  align-items: center; /* 아이콘과 텍스트를 수직 정렬 */
+  align-items: center;
 }
 
 .icon-wrapper img {
-  height: 1em; /* 아이콘 이미지의 높이를 텍스트 글꼴 크기에 맞춤 */
-  margin-right: 1px; /* 아이콘과 텍스트 사이에 공간을 조절 */
-  margin-bottom: 10px;
+  height: 1em;
+  margin-right: 1px;
+  margin-bottom: 8px;
 }

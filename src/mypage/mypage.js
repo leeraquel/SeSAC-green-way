@@ -36,19 +36,25 @@ function changePassword() {
 
   // 비밀번호 유효성 검사
   var errorMessage = validatePassword(newPassword);
+  var unmatchMsg = document.getElementById('unmatchMsg');
 
   if (newPassword !== confirmNewPassword) {
     // 새 비밀번호와 새 비밀번호 확인이 일치하지 않을 때
-    // alert('새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다.');
-    let unmatchMsg = document.getElementById('unmatchMsg');
-
     unmatchMsg.textContent =
       '새 비밀번호와 새 비밀번호 확인이 일치하지 않습니다.';
     unmatchMsg.style.display = 'block';
+
+    // 비밀번호 입력 필드 초기화
+    document.getElementById('newPassword').value = '';
+    document.getElementById('confirmNewPassword').value = '';
   } else if (errorMessage) {
     // 유효성 검사에서 오류가 발생한 경우
     unmatchMsg.textContent = errorMessage;
     unmatchMsg.style.display = 'block';
+
+    // 비밀번호 입력 필드 초기화
+    document.getElementById('newPassword').value = '';
+    document.getElementById('confirmNewPassword').value = '';
   } else {
     // 비밀번호 변경 로직 추가
     // 여기에 새 비밀번호를 서버에 전송하고 변경하는 로직을 추가해야 합니다.
@@ -60,6 +66,10 @@ function changePassword() {
     var newPasswordModal = document.getElementById('newPasswordModal');
     var modalInstance = bootstrap.Modal.getInstance(newPasswordModal);
     modalInstance.hide();
+
+    // 비밀번호 초기화
+    document.getElementById('newPassword').value = '';
+    document.getElementById('confirmNewPassword').value = '';
   }
 }
 
@@ -87,12 +97,15 @@ function checkPassword() {
   var userPassword = 'Test123#'; // 실제 사용자의 비밀번호 (서버에서 가져와야 함)
 
   if (currentPassword === userPassword) {
-    currentPassword = '';
     // 비밀번호가 일치할 때 새 비밀번호 입력 모달을 보여줌
     showNewPasswordModal();
+    // 비밀번호 입력 필드 초기화
+    document.getElementById('currentPassword').value = '';
   } else {
     // 비밀번호가 일치하지 않을 때 알림 메시지 표시
     alert('비밀번호를 다시 확인해주세요.');
+    // 비밀번호 입력 필드 초기화
+    document.getElementById('currentPassword').value = '';
   }
 }
 
@@ -113,7 +126,7 @@ function showNewPasswordModal() {
 function logout() {
   var confirmation = confirm('정말 로그아웃 하시겠습니까?');
   if (confirmation) {
-    sessionStorage.setItem('is로그인', 'false');
+    sessionStorage.setItem('isLogin', 'false');
 
     alert('로그아웃 되었습니다.');
 
@@ -134,14 +147,23 @@ fetch('../api/favorite.json')
 
       div.innerHTML = `
       <div class="text-warp">
-      <div class="first-line">
+        <div class="first-line">
           <h2>${element.addressName}</h2>
           <h3>${element.totalQuantity}</h3>
         </div>
         <section class="brand">
-          <p>따릉이 ${element.seoulBike}</p>
-          <p>킥고잉 ${element.kickgoing}</p>
-          <p>일레클 ${element.elecle}</p>
+        <div class="icon-wrapper"> 
+          <img src="../assets/img/seoulBikeLogo.png" alt="따릉이로고">
+          <p>따릉이 <b>${element.seoulBike}</b></p>
+        </div>
+        <div class="icon-wrapper">
+          <img src="../assets/img/kickgoingLogo.png" alt="킥고잉로고">
+          <p>킥고잉 <b>${element.kickgoing}</b></p>
+         </div>
+         <div class="icon-wrapper"> 
+          <img src="../assets/img/elecleLogo.png" alt="일레클로고">
+          <p>일레클 <b>${element.elecle}</b></p>
+          </div>
         </section>
       </div>
       <div class="click-icon">
@@ -197,6 +219,7 @@ function moveToLocation(latitude, longitude) {
 
   alert(`Moving to coordinates: Latitude ${latitude}, Longitude ${longitude}`);
 }
+
 //-----------사용자 아이디 표시
 // 사용자의 ID 값을 표시하는 함수
 function displayUsername(userId) {

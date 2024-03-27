@@ -59,8 +59,8 @@ button {
 .current-location-button {
   text-transform: lowercase;
   position: relative;
-  margin-top: 10px;
-  margin-left: 240px;
+  /* margin-top: 10px; */
+  /* margin-left: 240px; */
 }
 .current-location-icon {
   width: 18px;
@@ -211,4 +211,25 @@ button {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+}
+
+.currentLocation {
+  width: 100%;
+  padding: 0 6% 0 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.popOnThePage {
+  position: absolute;
+  top: 450px;
+  left: 100px;
+}
+
+.modalWrapper {
+  display: none;
+  padding: 16px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.1);
 }

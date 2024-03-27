@@ -152,23 +152,20 @@ a:hover {
   background-color: rgb(249, 248, 248);
   border-radius: 10px;
   position: relative;
-  box-shadow: 0 5px 6px rgb(100, 95, 95); /* 그림자 설정 */
+  box-shadow: 0 5px 3px rgb(88, 82, 82);
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
 }
 
-
-#nowLocationName {
-  width: 200px;
-  justify-content: space-around;
-  padding: 10px 10px 0 0;
-  margin-top: 15px;
-}
+/* #nowLocationName {
+  margin-top: 10px;
+  padding: 10px;
+} */
 
 #isFavorite {
-  
-  width: 20px; /* 너비 설정 */
-  height: 20px; /* 높이 설정 */
-  margin-left: 300px;
-  margin-top: 0;
+  width: 20px;
+  height: 20px;
 }
 
 .searchMap {
@@ -203,4 +200,12 @@ a:hover {
 .searchResults p {
   padding: 5px;
   overflow-x: hidden;
+}
+
+.nowLocationWrapper {
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  margin-top: 10px;
 }

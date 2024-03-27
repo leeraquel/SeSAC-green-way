@@ -15,9 +15,18 @@ fetch('../api/favorite.json')
           <h3>${element.totalQuantity}</h3>
         </div>
         <section class="brand">
-          <p>따릉이 ${element.seoulBike}</p>
-          <p>킥고잉 ${element.kickgoing}</p>
-          <p>일레클 ${element.elecle}</p>
+        <div class="icon-wrapper"> 
+          <img src="../assets/img/seoulBikeLogo.png" alt="따릉이로고">
+          <p>따릉이 <b>${element.seoulBike}</b></p>
+        </div>
+        <div class="icon-wrapper">
+          <img src="../assets/img/kickgoingLogo.png" alt="킥고잉로고">
+          <p>킥고잉 <b>${element.kickgoing}</b></p>
+         </div>
+         <div class="icon-wrapper"> 
+          <img src="../assets/img/elecleLogo.png" alt="일레클로고">
+          <p>일레클 <b>${element.elecle}</b></p>
+          </div>
         </section>
       </div>
       <div class="click-icon">

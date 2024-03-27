@@ -221,3 +221,12 @@ img.map {
   text-align: center;
   cursor: pointer;
 }
+/* 인풋창 간격 두기 */
+.modal-body input {
+  margin-bottom: 10px;
+}
+
+#unmatchMsg {
+  display: none;
+  color: red;
+}

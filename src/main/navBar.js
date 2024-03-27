@@ -2,10 +2,10 @@
 const isLoginMyPage = function () {
   var value = sessionStorage.getItem('islogin');
   if (value === 'true') {
-    window.location.href = '../mypage/mypage.html';
+    window.location.href = '/src/mypage/mypage.html';
   } else {
     alert('로그인이 필요합니다.');
-    window.location.href = '../login/login.html';
+    window.location.href = '/src/login/login.html';
   }
 };
 
@@ -13,7 +13,7 @@ const isLoginMyPage = function () {
 const isloginFavoritePage = function () {
   var value = sessionStorage.getItem('islogin');
   if (value === 'true') {
-    window.location.href = '../bookmark/favorite.html';
+    window.location.href = 'src/bookmark/favorite.html';
   } else {
     alert('로그인이 필요합니다.');
     window.location.href = '/src/login/login.html';

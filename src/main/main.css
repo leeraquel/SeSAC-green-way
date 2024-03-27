@@ -211,3 +211,12 @@ a:visited {
   border-radius: 4px;
   font-size: var(--font-content);
 }
+
+.modalWrapper {
+  display: none;
+  top: 400px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.1);
+}

@@ -10,6 +10,7 @@ body {
   margin-top: 20px;
   background-color: var(--main-color);
   justify-content: center;
+  padding-bottom: 70px;
 }
 .search {
   text-align: center;

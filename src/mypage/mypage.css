@@ -106,6 +106,11 @@ header {
 
 .container {
   text-align: left;
+  padding-top: 20px;
+  padding-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 p {
   font-size: var(--font-sub);
@@ -116,13 +121,16 @@ p {
 .card {
   position: relative;
   display: inline-block;
-  margin: 8px;
   width: 350px;
   background-color: white;
   border-radius: 15px;
   border: 0.5px solid black;
   align-content: center;
   padding: 8px;
+}
+
+.brand * {
+  font-size: var(--font-content);
 }
 
 h2 {
@@ -175,13 +183,10 @@ img.map {
 
 .icon-wrapper img {
   height: 1em;
-  margin-right: 1px;
-  margin-bottom: 8px;
+  margin-right: 4px;
+  /* margin-bottom: 8px; */
 }
 
-.container {
-  padding-bottom: 40px;
-}
 .btn-primary:focus,
 .btn-primary.focus,
 .btn-primary:active,
@@ -234,8 +239,8 @@ img.map {
 /* 플러스 버튼 */
 .add-button {
   position: absolute;
-  top: 20px;
-  right: 160px;
+  top: 15px;
+  right: 155px;
   transform: translateY(-50%);
   width: 30px;
   height: 30px;
@@ -260,4 +265,13 @@ img.map {
 
 .myPageBtn {
   width: 100%;
+}
+
+.icon-wrapper p {
+  margin: 0;
+  padding: 0px;
+}
+
+.brand {
+  gap: 8px;
 }

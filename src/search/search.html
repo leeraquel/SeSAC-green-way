@@ -26,117 +26,125 @@
     </header>
 
     <div class="search">
-        <input id="searchInput" type="text" name="" placeholder="장소를 입력해주세요.">
-        <button class="searchIcon" id="searchIcon">
-          <img src="../assets/icon/searchBlack.svg" alt="Search Icon">
-        </button>
-        <div id="searchResults" class="searchResults"></div>
+      <input
+        id="searchInput"
+        type="text"
+        name=""
+        placeholder="장소를 입력해주세요."
+      />
+      <button class="searchIcon" id="searchIcon">
+        <img src="../assets/icon/searchBlack.svg" alt="Search Icon" />
+      </button>
+      <div id="searchResults" class="searchResults"></div>
     </div>
     <ul id="resultsList"></ul>
-    <button class="current-location-button" id="current-location-button">
-      <img
-        src="../assets/icon/location.svg"
-        alt="Current Location Icon"
-        class="current-location-icon"
-      />
-      현 위치로 검색
-    </button>
-    
+    <div class="alignRigth currentLocation">
+      <button class="current-location-button" id="current-location-button">
+        <img
+          src="../assets/icon/location.svg"
+          alt="Current Location Icon"
+          class="current-location-icon"
+        />
+        현 위치로 검색
+      </button>
+    </div>
+
     <div class="nosearch">검색 결과가 없습니다.</div>
     <div class="nowLocationInfo" id="nowLocationInfo">
       <div class="flexRow nowLocationWrapper">
         <div id="nowLocationName"></div>
         <img id="isFavorite" src="/" alt="star" />
+      </div>
+    </div>
+    <!-- ---------------결과 코드------------------ -->
+    <div class="searchResultWrapper" id="resultBox">
+      <div class="searchResult flexRow">
+        <img
+          class="vehicleImg"
+          src="../assets/img/seoulBikeImg.png"
+          alt="따릉이"
+        />
+        <div class="flexColumn spaceBetween resultTextWrapper">
+          <div class="flexRow spaceBetween">
+            <div class="flexRow">
+              <img
+                class="logo"
+                src="../assets/img/seoulBikeLogo.png"
+                alt="따릉이로고"
+              />
+              <span>따릉이</span>
+            </div>
+            <div class="countBox">
+              <div id="seoulBikeCount" class="countNumber"></div>
+            </div>
+          </div>
+          <div class="alignRight">
+            <a href="https://www.bikeseoul.com/main.do" class="reservation-btn"
+              >예약하기</a
+            >
+          </div>
+        </div>
+      </div>
 
+      <div class="searchResult flexRow">
+        <img
+          class="vehicleImg"
+          src="../assets/img/elecleImg.png"
+          alt="일레클"
+        />
+        <div class="flexColumn spaceBetween resultTextWrapper">
+          <div class="flexRow spaceBetween">
+            <div class="flexRow">
+              <img
+                class="logo"
+                src="../assets/img/elecleLogo.png"
+                alt="일레클로고"
+              />
+              <span>일레클</span>
+            </div>
+            <div class="countBox">
+              <div id="elecleCount" class="countNumber"></div>
+            </div>
+          </div>
+          <div class="alignRight">
+            <a
+              href="https://play.google.com/store/apps/details?id=org.nine2one.elecle"
+              class="reservation-btn"
+              >예약하기</a
+            >
+          </div>
+        </div>
       </div>
+      <div class="searchResult flexRow">
+        <img
+          class="vehicleImg"
+          src="../assets/img/kickgoingImg.png"
+          alt="킥고잉"
+        />
+        <div class="flexColumn spaceBetween resultTextWrapper">
+          <div class="flexRow spaceBetween">
+            <div class="flexRow">
+              <img
+                class="logo"
+                src="../assets/img/kickgoingLogo.png"
+                alt="킥고잉로고"
+              />
+              <span>킥고잉</span>
+            </div>
+            <div class="countBox">
+              <div id="kickgoingCount" class="countNumber"></div>
+            </div>
+          </div>
+          <div class="alignRight">
+            <a href="https://kickgoing.io/" class="reservation-btn">예약하기</a>
+          </div>
+        </div>
+      </div>
+      <a href="../../index.html" class="searchMap"> 지도에서 결과 확인하기 </a>
     </div>
-<!-- ---------------결과 코드------------------ -->
-<div class="searchResultWrapper" id="resultBox">
-  <div class="searchResult flexRow">
-    <img
-      class="vehicleImg"
-      src="../assets/img/seoulBikeImg.png"
-      alt="따릉이"
-    />
-    <div class="flexColumn spaceBetween resultTextWrapper">
-      <div class="flexRow spaceBetween">
-        <div class="flexRow">
-          <img
-            class="logo"
-            src="../assets/img/seoulBikeLogo.png"
-            alt="따릉이로고"
-          />
-          <span>따릉이</span>
-        </div>
-        <div class="countBox">
-          <div id="seoulBikeCount" class="countNumber"></div>
-          
-        </div>
-      </div>
-      <div class="alignRight">
-        <a href="https://www.bikeseoul.com/main.do" class="reservation-btn">예약하기</a>
-      </div>
+    <div class="popOnThePage modalWrapper" id="modal">
+      <p>현재 위치를 불러오는 중입니다...</p>
     </div>
-  </div>
-
-  <div class="searchResult flexRow">
-    <img
-      class="vehicleImg"
-      src="../assets/img/elecleImg.png"
-      alt="일레클"
-    />
-    <div class="flexColumn spaceBetween resultTextWrapper">
-      <div class="flexRow spaceBetween">
-        <div class="flexRow">
-          <img
-            class="logo"
-            src="../assets/img/elecleLogo.png"
-            alt="일레클로고"
-          />
-          <span>일레클</span>
-        </div>
-        <div class="countBox">
-          <div id="elecleCount" class="countNumber"></div>
-        </div>
-      </div>
-      <div class="alignRight">
-        <a
-          href="https://play.google.com/store/apps/details?id=org.nine2one.elecle"
-          class="reservation-btn"
-          >예약하기</a
-        >
-      </div>
-    </div>
-  </div>
-  <div class="searchResult flexRow">
-    <img
-      class="vehicleImg"
-      src="../assets/img/kickgoingImg.png"
-      alt="킥고잉"
-    />
-    <div class="flexColumn spaceBetween resultTextWrapper">
-      <div class="flexRow spaceBetween">
-        <div class="flexRow">
-          <img
-            class="logo"
-            src="../assets/img/kickgoingLogo.png"
-            alt="킥고잉로고"
-          />
-          <span>킥고잉</span>
-        </div>
-        <div class="countBox">
-          <div id="kickgoingCount" class="countNumber"></div>
-          
-        </div>
-      </div>
-      <div class="alignRight">
-        <a href="https://kickgoing.io/" class="reservation-btn">예약하기</a>
-      </div>
-      
-    </div>
-  </div>
-  <a href="../../index.html" class="searchMap"> 지도에서 결과 확인하기 </a>
-</div>
     <nav>
       <ul class="tab-bar">
         <li class="tab">

@@ -1,142 +1,141 @@
- *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: var(--font-sub);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: var(--font-sub);
 }
 
 body {
-    width: 390px;
-    margin-top: 20px;
-    background-color: var(--main-color);
-    justify-content: center;
+  /* width: 390px; */
+  margin-top: 20px;
+  background-color: var(--main-color);
+  justify-content: center;
 }
 .search {
-    text-align: center;
-    width: 90%;
-    margin: 0 auto;
-    font-size: var(--font-sub);
-    background-color: rgb(240, 240, 240);
-    border-radius: 25px;
-    position: relative;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  font-size: var(--font-sub);
+  background-color: rgb(240, 240, 240);
+  border-radius: 25px;
+  position: relative;
 }
-.searchIcon{
-    width: 20px;
-    height: 30px;
-    margin: 8px;
+.searchIcon {
+  width: 20px;
+  height: 30px;
+  margin: 8px;
 }
 input {
-    width: 100%;
-    height: 100%;
-    display: block;
-    border-radius: 25px;
-    font-size: var(--font-sub);
-    margin-top: 30px;
-    padding: 10px 20px 10px 20px;
-    border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 25px;
+  font-size: var(--font-sub);
+  margin-top: 30px;
+  padding: 10px 20px 10px 20px;
+  border: 1px solid black;
 }
 button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
-    background: none;
-    font-size: 18px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 18px;
 }
 
 .nosearch {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    color: rgb(228, 226, 226);
-    font-size: var(--font-sub);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  color: rgb(228, 226, 226);
+  font-size: var(--font-sub);
 }
 
 .current-location-button {
-    text-transform: lowercase;
-    position: relative;
-    margin-top: 10px;
-    margin-left: 240px;
+  text-transform: lowercase;
+  position: relative;
+  /* margin-top: 10px; */
+  /* margin-left: 240px; */
 }
- .current-location-icon {
-    width: 18px;
-    height: 18px;
-    vertical-align: middle;
-    margin-top: -5px;
+.current-location-icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-top: -5px;
 }
 
-  #nowLocationInfo{
-    display: none;
-  }
+#nowLocationInfo {
+  display: none;
+}
 
-  .flexRow {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
-  .flexColumn {
-    /* padding: 15px; */
-    width: 100%;
-    /* height: 100px; */
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .spaceBetween {
-    justify-content: space-between;
-    margin: 0 4px;
+.flexColumn {
+  /* padding: 15px; */
+  width: 100%;
+  /* height: 100px; */
+  display: flex;
+  flex-direction: column;
+}
 
-  }
-  .countNumber {
-    font-size: 25px;
-  }
-  
-  .vehicleImg {
-    width: 130px;
-    /* height: 70px;
+.spaceBetween {
+  justify-content: space-between;
+  margin: 0 4px;
+}
+.countNumber {
+  font-size: 25px;
+}
+
+.vehicleImg {
+  width: 130px;
+  /* height: 70px;
     margin-top: 6px; */
-  }
-  
-  .logo {
-    width: 24px;
-    height: 24px;
-    margin-top: -5px;
-    margin-right: 5px;
-  }
-  
-  .searchResult {
-    width: 90%;
-    height: 100px;
-    padding: 10px;
-    margin: 20px;
-    background-color: white;
-    margin-bottom: 20px;
-    border-radius: 10px;
-  }
- 
-  /* 검색 결과를 숨김 */
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+  margin-top: -5px;
+  margin-right: 5px;
+}
+
+.searchResult {
+  width: 90%;
+  height: 100px;
+  padding: 10px;
+  margin: 20px;
+  background-color: white;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+/* 검색 결과를 숨김 */
 .searchResultWrapper {
   display: none;
 }
 
 .reservation-btn {
-    width: 60px;
-    height: 25px;
-    display: inline-block;
-    align-content: center;
-    text-align: center;
-    padding: 4px 8px; 
-    font-size: var(--font-content);
-    background-color: #132F2D; 
-    color: #fff;
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    text-decoration: none; 
+  width: 60px;
+  height: 25px;
+  display: inline-block;
+  align-content: center;
+  text-align: center;
+  padding: 4px 8px;
+  font-size: var(--font-content);
+  background-color: #132f2d;
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-decoration: none;
 }
 
 .nowLocationInfo {
@@ -148,8 +147,8 @@ button {
   border-radius: 10px;
   position: relative;
   box-shadow: 0 3px 4px rgb(61, 71, 62);
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -163,9 +162,9 @@ button {
   display: inline-block; /* 인라인 요소로 표시하여 텍스트와 같은 줄에 표시되도록 함 */
   padding: 8px; /* 내부 여백 설정 */
   text-align: center;
-  background-color: #132F2D; /* 배경색 설정 */
+  background-color: #132f2d; /* 배경색 설정 */
   color: #fff; /* 텍스트 색상 설정 */
-  border: 1px solid #132F2D; /* 테두리 설정 */
+  border: 1px solid #132f2d; /* 테두리 설정 */
   border-radius: 15px; /* 모서리 둥글게 설정 */
 
   text-decoration: none; /* 밑줄 제거 */
@@ -206,10 +205,31 @@ button {
 }
 .resultTextWrapper {
   height: 100%;
-} 
+}
 
 .alignRight {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+}
+
+.currentLocation {
+  width: 100%;
+  padding: 0 6% 0 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.popOnThePage {
+  position: absolute;
+  top: 450px;
+  left: 100px;
+}
+
+.modalWrapper {
+  display: none;
+  padding: 16px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.1);
 }

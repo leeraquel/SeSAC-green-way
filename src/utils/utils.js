@@ -7,7 +7,7 @@ const isLoginMyPage = function () {
   }
 };
 // 로그인 여부 확인 후 즐겨찾기 페이지로 이동
-const isloginFavoritePage = function () {
+const isLoginFavoritePage = function () {
   var value = sessionStorage.getItem('isLogin');
   if (value === 'true') {
     window.location.href = '../bookmark/favorite.html';

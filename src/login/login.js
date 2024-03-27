@@ -24,7 +24,7 @@ form.addEventListener('submit', async (event) => {
     const userData = await response.json();
 
     if (userData.id === userId && userData.password === password) {
-      sessionStorage.setItem('islogin', 'true');
+      sessionStorage.setItem('isLogin', 'true');
       window.location.href = '../../../index.html';
       // histroy.go(-1);
     } else {

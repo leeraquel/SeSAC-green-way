@@ -21,7 +21,7 @@
   <body>
     <header class="header">
       <a class="header-logo" href="../../index.html"
-        ><img class="header-logo-img" src="../assets/logo/logo_greenway_01.svg"
+        ><img class="header-logo-img" src="../assets/logo/LOGO_th.svg"
       /></a>
     </header>
 
@@ -51,14 +51,14 @@
       </div>
     </div>
 <!-- ---------------결과 코드------------------ -->
-<div class="searchResultWrapper">
+<div class="searchResultWrapper" id="resultBox">
   <div class="searchResult flexRow">
     <img
       class="vehicleImg"
       src="../assets/img/seoulBikeImg.png"
       alt="따릉이"
     />
-    <div class="flexColumn spaceBetween">
+    <div class="flexColumn spaceBetween resultTextWrapper">
       <div class="flexRow spaceBetween">
         <div class="flexRow">
           <img
@@ -69,11 +69,13 @@
           <span>따릉이</span>
         </div>
         <div class="countBox">
-          <div id="seoulBikeCount"></div>
-          <p>이용 가능 수량</p>
+          <div id="seoulBikeCount" class="countNumber"></div>
+          
         </div>
       </div>
-      <a href="https://www.bikeseoul.com/main.do" class="reservation-btn">예약하기</a>
+      <div class="alignRight">
+        <a href="https://www.bikeseoul.com/main.do" class="reservation-btn">예약하기</a>
+      </div>
     </div>
   </div>
 
@@ -83,7 +85,7 @@
       src="../assets/img/elecleImg.png"
       alt="일레클"
     />
-    <div class="flexColumn spaceBetween">
+    <div class="flexColumn spaceBetween resultTextWrapper">
       <div class="flexRow spaceBetween">
         <div class="flexRow">
           <img
@@ -94,15 +96,16 @@
           <span>일레클</span>
         </div>
         <div class="countBox">
-          <div id="elecleCount"></div>
-          <p>이용 가능 수량</p>
+          <div id="elecleCount" class="countNumber"></div>
         </div>
       </div>
-      <a
-        href="https://play.google.com/store/apps/details?id=org.nine2one.elecle"
-        class="reservation-btn"
-        >예약하기</a
-      >
+      <div class="alignRight">
+        <a
+          href="https://play.google.com/store/apps/details?id=org.nine2one.elecle"
+          class="reservation-btn"
+          >예약하기</a
+        >
+      </div>
     </div>
   </div>
   <div class="searchResult flexRow">
@@ -111,7 +114,7 @@
       src="../assets/img/kickgoingImg.png"
       alt="킥고잉"
     />
-    <div class="flexColumn spaceBetween">
+    <div class="flexColumn spaceBetween resultTextWrapper">
       <div class="flexRow spaceBetween">
         <div class="flexRow">
           <img
@@ -122,11 +125,14 @@
           <span>킥고잉</span>
         </div>
         <div class="countBox">
-          <div id="kickgoingCount"></div>
-          <p>이용 가능 수량</p>
+          <div id="kickgoingCount" class="countNumber"></div>
+          
         </div>
       </div>
-      <a href="https://kickgoing.io/" class="reservation-btn">예약하기</a>
+      <div class="alignRight">
+        <a href="https://kickgoing.io/" class="reservation-btn">예약하기</a>
+      </div>
+      
     </div>
   </div>
   <a href="../../index.html" class="searchMap"> 지도에서 결과 확인하기 </a>
@@ -150,7 +156,7 @@
           /></a>
         </li>
         <li class="tab">
-          <div onclick="isloginFavoritePage()">
+          <div onclick="isLoginFavoritePage()">
             <img
               id="favorite"
               class="tab-icon"

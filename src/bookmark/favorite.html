@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="./favorite.css" />
     <link rel="stylesheet" href="../utils/tabBar/tabBar.css" />
 
-    <script type="module" defer src="./favorite.js"></script>
+    <script defer src="./favorite.js"></script>
   </head>
   <body>
     <header class="header">
       <a class="header-logo" href="../../index.html"
-        ><img class="header-logo-img" src="../assets/img/logo_greenway_01.png"
+        ><img class="header-logo-img" src="../assets/logo/LOGO_th.svg"
       /></a>
     </header>
     <div class="container">
@@ -186,24 +186,24 @@
           /></a>
         </li>
         <li class="tab">
-          <a onclick="isloginFavoritePage()">
+          <div onclick="isloginFavoritePage()">
             <img
               id="favorite"
               class="tab-icon"
               src="../assets/icon/favorite.svg"
               alt="즐겨찾기 아이콘"
             />
-          </a>
+          </div>
         </li>
         <li class="tab">
-          <a onclick="isLoginMyPage()">
+          <div onclick="isLoginMyPage()">
             <img
               id="mypage"
               class="tab-icon"
               src="../assets/icon/my.svg"
               alt="마이페이지 아이콘"
             />
-          </a>
+          </div>
         </li>
       </ul>
     </nav>

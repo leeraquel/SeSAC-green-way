@@ -114,8 +114,8 @@ if (window.kakao && kakao.maps) {
             sessionStorage.setItem('address', JSON.stringify(defaultLocation));
             storedAddress = defaultLocation;
             document.getElementById('nowLocationInfo').style.display = 'block';
-            document.getElementById('nowLocationName').textContent =
-              storedAddress.address;
+            document.getElementById('nowLocationName').textContent = storedAddress.address;
+            document.getElementById('resultBox').style.display = 'block';
 
             await fetchFavoritesAndUpdateIcon();
 

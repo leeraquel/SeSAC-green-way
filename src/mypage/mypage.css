@@ -104,22 +104,27 @@ header {
 .container {
   text-align: left;
 }
-
+p {
+  font-size: var(--font-sub);
+  flex-direction: row;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
 .card {
   position: relative;
   display: inline-block;
-  margin: 10px;
+  margin: 8px;
   width: 350px;
-  height: 140px;
   background-color: white;
   border-radius: 15px;
   border: 0.5px solid black;
   align-content: center;
+  padding: 8px;
 }
 
 h2 {
   font-size: var(--font-main);
-  margin: 10px;
+  margin: 8px;
   white-space: nowrap; /* 줄 바꿈 금지 */
   overflow: hidden; /* 넘치는 부분을 숨김 */
   text-overflow: ellipsis; /* 넘치는 부분을 ... 으로 표시 */
@@ -127,18 +132,19 @@ h2 {
 
 h3 {
   font-size: var(--font-large);
-  margin: 10px;
-  font-weight: 500px;
+  margin: 8px;
+  font-weight: 700;
 }
 
 .click-icon {
   display: flex;
   flex-direction: row;
-  margin: 10px;
+  margin: 8px;
+  margin-bottom: 0;
 }
 
 .mark-up {
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 img.favorite,
@@ -152,6 +158,24 @@ img.map {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.icon-wrapper img {
+  height: 1em;
+  margin-right: 1px;
+  margin-bottom: 8px;
+}
+
 .container {
   padding-bottom: 40px;
 }

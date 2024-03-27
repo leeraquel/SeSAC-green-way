@@ -243,7 +243,7 @@ finishBtn.addEventListener('click', () => {
   const agreeChecked = document.querySelectorAll('.nec-item:checked');
   if (selectAllCheckbox.checked == true || agreeChecked.length === 3) {
     alert('회원가입이 완료되었습니다.');
-    sessionStorage.setItem('islogin', 'false');
+    sessionStorage.setItem('isLogin', 'false');
     window.location.href = '../../../index.html';
   } else {
     alert('필수약관에 동의해주세요.');

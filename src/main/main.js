@@ -267,10 +267,13 @@ async function reloadMarkers() {
 
 // 현재 위치 잡아서 결과 반영하는 함수
 async function getCurrentLocation() {
+  //로딩모달
+  document.getElementById('modal').style.display = 'block';
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       async function (position) {
         // 이 함수 내에서 비동기 로직을 사용하기 때문에 async 추가
+
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude;
         let geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${googleKey}&language=ko`;
@@ -292,6 +295,8 @@ async function getCurrentLocation() {
           sessionStorage.setItem('address', JSON.stringify(currentLocation));
           storedAddress = currentLocation;
 
+          //로딩모달
+          document.getElementById('modal').style.display = 'none';
           // 지도 중심 재설정 및 마커 다시 로드
           map.setCenter(new kakao.maps.LatLng(latitude, longitude));
           reloadMarkers();

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>green-way-seoul</title>
     <script
       type="text/javascript"
       src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=501ce2874cb0fbaf11fc7e0dbdae1c99"
@@ -11,98 +11,107 @@
     <script defer src="./src/main/navBar.js"></script>
     <script type="module" defer src="./src/main/main.js"></script>
     <script type="module" defer src="./src/main/weather.js"></script>
+    <link rel="icon" href="./src/assets/img/logo_greenway_01.png" />
+    <link rel="apple-touch-icon" href="./src/assets/img/logo_greenway_01.png" />
     <link rel="stylesheet" type="text/css" href="./src/styles/reset.css" />
     <link rel="stylesheet" type="text/css" href="./src/styles/globals.css" />
-    <!-- 헤더 css 불러오기 -->
     <link rel="stylesheet" href="./src/utils/header/header.css" />
-    <!-- 텝바 css 불러오기 -->
     <link rel="stylesheet" href="./src/utils/tabBar/tabBar.css" />
     <link rel="stylesheet" type="text/css" href="./src/main/main.css" />
   </head>
   <body>
     <header class="header">
       <a class="header-logo" href="./"
-        ><img
-          class="header-logo-img"
-          src="./src/assets/img/logo_greenway_01.png"
+        ><img class="header-logo-img" src="./src/assets/logo/LOGO_th.svg"
       /></a>
     </header>
     <main>
-      <div id="map" style="width: 390px; height: 800px; z-index: -1"></div>
-      <div class="nowLocationInfo">
-        <div id="nowLocationName"></div>
-        <img id="isFavorite" src="/" alt="star" />
-      </div>
-      <div class="weatherWrapper flexRow">
-        <div class="weatherTextWrapper">
-          <p class="weatherText">현재 날씨 :</p>
-          <img id="weatherIcon" src="/" alt="weatherIcon" />
-          <p class="weatherText" id="weatherTemp"></p>
-          <p class="weatherText" id="weatherDesc"></p>
+      <div
+        id="map"
+        style="width: calc(100vw - 10px); height: calc(100vh - 140px)"
+      ></div>
+      <div class="nowLocationInfo popOnTheMap">
+        <div class="nowLocationInfoWrapper flexRow spaceBetween">
+          <div id="nowLocationName"></div>
+          <img id="isFavorite" src="/" alt="star" />
         </div>
-        <div class="weatherTextWrapper">
-          <p class="weatherText">통합대기환경 등급 :</p>
-          <p class="weatherText" id="dustContent"></p>
+        <div class="weatherWrapper flexRow spaceBetween">
+          <div class="weatherTextWrapper flexRow">
+            <p class="weatherText">현재 날씨 :</p>
+            <img id="weatherIcon" src="/" alt="weatherIcon" />
+            <p class="weatherText" id="weatherTemp"></p>
+            <p class="weatherText" id="weatherDesc"></p>
+          </div>
+          <div class="weatherTextWrapper flexRow">
+            <p class="weatherText">대기환경 :</p>
+            <p class="weatherText" id="dustContent">보통</p>
+          </div>
         </div>
       </div>
-      <div class="categoryFilter">
-        <ul>
-          <li id="allFilter">
-            <span>모두 보기</span><span id="catagoryToggle">▼</span>
+      <div class="categoryFilter popOnTheMap">
+        <ul class="categoryFilterList">
+          <li class="flexRow">
+            <span id="allFilter">모두 보기</span
+            ><img
+              src="./src/assets/icon/dropDown.svg"
+              id="categoryToggle"
+              class="rotate"
+              alt="dropDown"
+            />
           </li>
-          <li id="FilterSeoulBikeOnly">
-            <div>따릉이</div>
+          <li id="FilterSeoulBikeOnly" class="flexRow">
+            <span>따릉이</span>
             <img src="./src/assets/icon/seoulBikeMarker.svg" />
           </li>
-          <li id="FilterElecleOnly">
-            <div>일레클</div>
+          <li id="FilterElecleOnly" class="flexRow">
+            <span>일레클</span>
             <img src="./src/assets/icon/elecleMarker.svg" />
           </li>
-          <li id="FilterKickgoingOnly">
-            <div>킥고잉</div>
+          <li id="FilterKickgoingOnly" class="flexRow">
+            <span>킥고잉</span>
             <img src="./src/assets/icon/kickgoingMarker.svg" />
           </li>
         </ul>
       </div>
-      <div id="findCurrentLocation">
-        <img
-          src="./src/assets/icon/currentLocation.svg"
-          alt="currentLocation"
-        />
-      </div>
-      <div
-        id="infoCardWrapper"
-        style="
-          display: none;
-          /* position: absolute; */
-          bottom: 0;
-          width: 100%;
-          background: white;
-          padding: 20px;
-          box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.3);
-        "
-      >
-        <div id="infoCard">
-          <div class="imgWrapper">
-            <img id="bikeImg" src="/" alt="bike이미지" />
+      <div class="popOnTheMap onBottom">
+        <div class="currentLocationWrapper">
+          <div id="findCurrentLocation">
+            <img
+              src="./src/assets/icon/currentLocation.svg"
+              alt="currentLocation"
+            />
           </div>
-          <div class="infoTextWrapper">
-            <div class="titleWrapper flexRowSpaceBetween">
-              <div class="titleLogoTextWrapper flexRow">
-                <img id="logo" src="/" alt="logo" />
-                <div id="title">타이틀 주소명</div>
-              </div>
-              <div id="count">13</div>
+        </div>
+        <div id="infoCardWrapper">
+          <div id="infoCard" class="flexRow">
+            <div class="imgWrapper">
+              <img id="bikeImg" src="/" alt="bike이미지" />
             </div>
-            <div class="subTitleWrapper flexRowSpaceBetween">
-              <a href="./" id="reservation">예약하기</a>
+            <div class="infoTextWrapper">
+              <div class="flexRow spaceBetween firstLine">
+                <div id="title">주소명</div>
+                <div class="titleLogoTextWrapper flexRow">
+                  <img class="vehicleIcon" id="logo" src="/" alt="logo" />
+                  <div id="brand">브랜드</div>
+                </div>
+              </div>
+              <div class="titleWrapper flexRow spaceBetween">
+                <div class="countTextWrapper flexRow">
+                  <div id="count">13</div>
+                  <div id="countText">개 이용 가능</div>
+                </div>
+                <a href="./" id="reservation">예약하기</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="popOnTheMap modalWrapper" id="modal">
+        <p>현재 위치를 불러오는 중입니다...</p>
+      </div>
     </main>
     <nav>
-      <ul class="tab-bar">
+      <ul class="tab-bar" style="z-index: 99">
         <li class="tab">
           <a href="../../index.html"
             ><img
@@ -112,7 +121,7 @@
           /></a>
         </li>
         <li class="tab">
-          <a href="../search/search.html"
+          <a href="./src/search/search.html"
             ><img
               class="tab-icon"
               src="./src/assets/icon/search.svg"
@@ -120,7 +129,7 @@
           /></a>
         </li>
         <li class="tab">
-          <div onclick="isloginFavoritePage()">
+          <div onclick="isLoginFavoritePage()">
             <img
               id="favorite"
               class="tab-icon"

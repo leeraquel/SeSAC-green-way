@@ -8,163 +8,56 @@
     <link rel="stylesheet" href="../styles/globals.css" />
     <link rel="stylesheet" href="../utils/header/header.css" />
     <link rel="stylesheet" href="./favorite.css" />
-
-    <script type="module" defer src="./favorite.js"></script>
+    <link rel="stylesheet" href="../utils/tabBar/tabBar.css" />
+    <script defer src="../utils/utils.js"></script>
+    <script defer src="./favorite.js"></script>
   </head>
   <body>
     <header class="header">
       <a class="header-logo" href="../../index.html"
-        ><img class="header-logo-img" src="../assets/img/logo_greenway_01.png"
+        ><img class="header-logo-img" src="../assets/logo/LOGO_th.svg"
       /></a>
     </header>
-    <div class="container">
-      <!-- <div class="card">
-        <div class="text-warp">
-          <div class="first-line">
-            <h2>천호역 효성해링턴타워</h2>
-            <h3>14</h3>
-          </div>
-          <section class="brand">
-            <p>따릉이 6</p>
-            <p>킥고잉 5</p>
-            <p>일레클 3</p>
-          </section>
-        </div>
-        <div class="click-icon">
-          <div class="mark-up">
+    <div class="container"></div>
+    <nav>
+      <ul class="tab-bar">
+        <li class="tab">
+          <a href="../../index.html"
+            ><img
+              class="tab-icon"
+              src="../assets/icon/map.svg"
+              alt="지도 아이콘"
+          /></a>
+        </li>
+        <li class="tab">
+          <a href="../search/search.html"
+            ><img
+              class="tab-icon"
+              src="../assets/icon/search.svg"
+              alt="검색 아이콘"
+          /></a>
+        </li>
+        <li class="tab">
+          <div onclick="isLoginFavoritePage()">
             <img
-              src="../assets/icon/Star_checked.svg"
-              class="favorite"
-              alt="favorite-marked"
+              id="favorite"
+              class="tab-icon"
+              src="../assets/icon/favorite.svg"
+              alt="즐겨찾기 아이콘"
             />
           </div>
-          <div class="map-click">
+        </li>
+        <li class="tab">
+          <div onclick="isLoginMyPage()">
             <img
-              src="../assets/icon/map_marked.svg"
-              class="map"
-              alt="map-marked"
+              id="mypage"
+              class="tab-icon"
+              src="../assets/icon/my.svg"
+              alt="마이페이지 아이콘"
             />
           </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="text-warp">
-          <div class="first-line">
-            <h2>강일역 3번출구</h2>
-            <h3>16</h3>
-          </div>
-          <section class="brand">
-            <p>따릉이 7</p>
-            <p>킥고잉 6</p>
-            <p>일레클 3</p>
-          </section>
-        </div>
-        <div class="click-icon">
-          <div class="mark-up">
-            <img
-              src="../assets/icon/Star_checked.svg"
-              class="favorite"
-              alt="favorite-marked"
-            />
-          </div>
-          <div class="map-click">
-            <img
-              src="../assets/icon/map_marked.svg"
-              class="map"
-              alt="map-marked"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="text-warp">
-          <div class="first-line">
-            <h2>상일동역 2번출구 앞</h2>
-            <h3>63</h3>
-          </div>
-          <section class="brand">
-            <p>따릉이 56</p>
-            <p>킥고잉 5</p>
-            <p>일레클 2</p>
-          </section>
-        </div>
-        <div class="click-icon">
-          <div class="mark-up">
-            <img
-              src="../assets/icon/Star_checked.svg"
-              class="favorite"
-              alt="favorite-marked"
-            />
-          </div>
-          <div class="map-click">
-            <img
-              src="../assets/icon/map_marked.svg"
-              class="map"
-              alt="map-marked"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="text-warp">
-          <div class="first-line">
-            <h2>KT&G타워 옆</h2>
-            <h3>34</h3>
-          </div>
-          <section class="brand">
-            <p>따릉이 19</p>
-            <p>킥고잉 8</p>
-            <p>일레클 7</p>
-          </section>
-        </div>
-        <div class="click-icon">
-          <div class="mark-up">
-            <img
-              src="../assets/icon/Star_checked.svg"
-              class="favorite"
-              alt="favorite-marked"
-            />
-          </div>
-          <div class="map-click">
-            <img
-              src="../assets/icon/map_marked.svg"
-              class="map"
-              alt="map-marked"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="text-warp">
-          <div class="first-line">
-            <h2>잠실역 6번출구</h2>
-            <h3>43</h3>
-          </div>
-          <section class="brand">
-            <p>따릉이 37</p>
-            <p>킥고잉 2</p>
-            <p>일레클 4</p>
-          </section>
-        </div>
-        <div class="click-icon">
-          <div class="mark-up">
-            <img
-              src="../assets/icon/Star_checked.svg"
-              class="favorite"
-              alt="favorite-marked"
-            />
-          </div>
-          <div class="map-click">
-            <img
-              src="../assets/icon/map_marked.svg"
-              class="map"
-              alt="map-marked"
-            />
-          </div>
-        </div>
-      </div> -->
-    </div>
+        </li>
+      </ul>
+    </nav>
   </body>
 </html>

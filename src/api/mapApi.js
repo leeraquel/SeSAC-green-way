@@ -1,11 +1,12 @@
 import { seoulKey } from '../../config.js';
+const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+const URL = `${PROXY}/${seoulKey}/json/bikeList/1/100/`;
+const LocalURL = `http://openapi.seoul.go.kr:8088/${seoulKey}/json/bikeList/1/100`;
 
 // 따릉이 api 호출에서 자전거 정보 배열만 받아오는 함수
 async function fetchBikeStatus() {
   try {
-    const response = await fetch(
-      `http://openapi.seoul.go.kr:8088/${seoulKey}/json/bikeList/1/100/`
-    );
+    const response = await fetch(URL);
     const data = await response.json();
 
     return data.rentBikeStatus.row;
@@ -53,9 +54,9 @@ export async function getSeoulBikeStatusWithin500m() {
   }
 }
 
-async function fetchKickgoingStatus() {
+async function fetchKickgoingStatus(url) {
   try {
-    const response = await fetch('src/api/kickgoing.json'); // JSON 파일의 위치
+    const response = await fetch(url); // JSON 파일의 위치
     const data = await response.json(); // 응답을 JSON으로 변환
     return data; // 변환된 데이터 반환
   } catch (error) {
@@ -64,9 +65,9 @@ async function fetchKickgoingStatus() {
   }
 }
 
-export async function getKickgoingStatusWithin500m() {
+export async function getKickgoingStatusWithin500m(url) {
   try {
-    const stations = await fetchKickgoingStatus(); // 위에서 정의한 fetchBikeStatus 함수 호출
+    const stations = await fetchKickgoingStatus(url); // 위에서 정의한 fetchBikeStatus 함수 호출
     const userLocation = JSON.parse(sessionStorage.getItem('address')); // 세션 스토리지에서 사용자 위치 가져오기
 
     const nearbyStations = stations.filter((station) => {
@@ -86,9 +87,9 @@ export async function getKickgoingStatusWithin500m() {
   }
 }
 
-async function fetchElecleStatus() {
+async function fetchElecleStatus(url) {
   try {
-    const response = await fetch('src/api/elecle.json'); // JSON 파일의 위치
+    const response = await fetch(url); // JSON 파일의 위치
     const data = await response.json(); // 응답을 JSON으로 변환
     return data; // 변환된 데이터 반환
   } catch (error) {
@@ -97,9 +98,9 @@ async function fetchElecleStatus() {
   }
 }
 
-export async function getElecleStatusWithin500m() {
+export async function getElecleStatusWithin500m(url) {
   try {
-    const stations = await fetchElecleStatus(); // 위에서 정의한 fetchBikeStatus 함수 호출
+    const stations = await fetchElecleStatus(url); // 위에서 정의한 fetchBikeStatus 함수 호출
     const userLocation = JSON.parse(sessionStorage.getItem('address')); // 세션 스토리지에서 사용자 위치 가져오기
 
     const nearbyStations = stations.filter((station) => {

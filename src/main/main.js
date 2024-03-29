@@ -6,6 +6,9 @@ import {
 
 import { googleKey } from '../../config.js';
 
+const elecleURL = 'src/api/elecle.json';
+const kickgoingURL = 'src/api/kickgoing.json';
+
 // session storage 불러올 변수 선언
 let storedAddress;
 
@@ -75,6 +78,7 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
     let logo = document.getElementById('logo');
     let title = document.getElementById('title');
     let count = document.getElementById('count');
+    let brandName = document.getElementById('brand');
     let reservation = document.getElementById('reservation');
 
     //카드 띄우기
@@ -85,12 +89,14 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
       logo.setAttribute('src', 'src/assets/img/seoulBikeLogo.png');
       title.textContent = info.stationName;
       count.textContent = info.parkingBikeTotCnt;
+      brandName.textContent = '따릉이';
       reservation.setAttribute('href', 'https://www.bikeseoul.com/main.do');
     } else if (brand === 'elecle') {
       bikeImg.setAttribute('src', 'src/assets/img/elecleImg.png');
       logo.setAttribute('src', 'src/assets/img/elecleLogo.png');
       title.textContent = info.road_address_name;
       count.textContent = 1;
+      brandName.textContent = '일레클';
       reservation.setAttribute(
         'href',
         'https://play.google.com/store/apps/details?id=org.nine2one.elecle'
@@ -100,6 +106,7 @@ function createAndAddMarker(position, imageSrc, map, info, brand) {
       logo.setAttribute('src', 'src/assets/img/kickgoingLogo.png');
       title.textContent = info.road_address_name;
       count.textContent = 1;
+      brandName.textContent = '킥고잉';
       reservation.setAttribute('href', 'https://kickgoing.io/');
     }
   });
@@ -189,7 +196,6 @@ async function reloadMarkers() {
   markersMap.clear();
   // 세션 스토리지에서 사용자의 현재 위치 정보 가져오기
   const storedAddress = JSON.parse(sessionStorage.getItem('address'));
-  console.log(storedAddress);
 
   // 사용자의 현재 위치에 마커 추가
   const userPosition = new kakao.maps.LatLng(storedAddress.y, storedAddress.x);
@@ -198,11 +204,11 @@ async function reloadMarkers() {
   // 지도의 중심을 사용자의 현재 위치로 이동
   map.setCenter(userPosition);
 
-  // 모든 서비스의 상태를 확인합니다.
+  // 모든 서비스의 상태를 확인.
   Promise.all([
     getSeoulBikeStatusWithin500m(),
-    getKickgoingStatusWithin500m(),
-    getElecleStatusWithin500m(),
+    getKickgoingStatusWithin500m(kickgoingURL),
+    getElecleStatusWithin500m(elecleURL),
   ])
     .then(([seoulBikeStations, kickgoingLocations, elecleLocations]) => {
       // 모든 호출 결과가 빈 배열인 경우
@@ -260,10 +266,13 @@ async function reloadMarkers() {
 
 // 현재 위치 잡아서 결과 반영하는 함수
 async function getCurrentLocation() {
+  //로딩모달
+  document.getElementById('modal').style.display = 'block';
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       async function (position) {
         // 이 함수 내에서 비동기 로직을 사용하기 때문에 async 추가
+
         let latitude = position.coords.latitude;
         let longitude = position.coords.longitude;
         let geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${googleKey}&language=ko`;
@@ -273,7 +282,6 @@ async function getCurrentLocation() {
           const response = await fetch(geocodingUrl);
           const data = await response.json();
           const addressName = data.results[0].formatted_address;
-          console.log(data.results[0].formatted_address);
 
           // 세션 스토리지 업데이트
           let currentLocation = {
@@ -285,6 +293,8 @@ async function getCurrentLocation() {
           sessionStorage.setItem('address', JSON.stringify(currentLocation));
           storedAddress = currentLocation;
 
+          //로딩모달
+          document.getElementById('modal').style.display = 'none';
           // 지도 중심 재설정 및 마커 다시 로드
           map.setCenter(new kakao.maps.LatLng(latitude, longitude));
           reloadMarkers();
@@ -309,7 +319,9 @@ const filterElecle = document.getElementById('FilterElecleOnly');
 const filterKickgoing = document.getElementById('FilterKickgoingOnly');
 
 // 현재위치 관련 dom 지정
-const findCurrentLocation = document.getElementById('findCurrentLocation');
+const findCurrentLocation = document.querySelector(
+  '#findCurrentLocation > img'
+);
 
 // 현재위치 온클릭 이벤트 추가
 findCurrentLocation.addEventListener('click', getCurrentLocation);
@@ -329,14 +341,14 @@ filterKickgoing.addEventListener('click', function () {
 });
 
 // 카카오 지도 생성 및 마커링 관련 기능들
-// 지도 컨테이너를 선택합니다.
+// 지도 컨테이너를 선택.
 let mapContainer = document.getElementById('map'), // 지도를 표시할 div
   mapOption = {
     center: new kakao.maps.LatLng(storedAddress.y, storedAddress.x), // 지도의 중심좌표
-    level: 3, // 지도의 확대 레벨
+    level: 4, // 지도의 확대 레벨
   };
 
-// 지도를 생성합니다.
+// 지도를 생성.
 let map = new kakao.maps.Map(mapContainer, mapOption);
 
 // 지도 생성 후 사용자의 현재 위치에 마커 추가
@@ -346,8 +358,8 @@ createAndAddUserMarker(userPosition, userMarkerSrc, map);
 // Promise.all을 사용하여 모든 API 호출을 동시에 실행
 Promise.all([
   getSeoulBikeStatusWithin500m(),
-  getKickgoingStatusWithin500m(),
-  getElecleStatusWithin500m(),
+  getKickgoingStatusWithin500m(kickgoingURL),
+  getElecleStatusWithin500m(elecleURL),
 ])
   .then((results) => {
     // results는 각 함수 호출 결과를 담은 배열
@@ -408,3 +420,34 @@ Promise.all([
 
 // 즐겨찾기 초기 로딩 함수
 fetchFavoritesAndUpdateIcon();
+
+//카테고리 토글 관련 DOM
+const categoryToggle = document.getElementById('categoryToggle');
+const filterOptions = document.querySelectorAll(
+  '.categoryFilterList > li:not(:first-child)'
+); // 첫 번째 li를 제외한 나머지 li 선택
+
+//카테고리 토글에 display 변환효과
+categoryToggle.addEventListener('click', function () {
+  filterOptions.forEach(function (option) {
+    if (option.style.display === 'none' || option.style.display === '') {
+      option.style.display = 'flex';
+    } else {
+      option.style.display = 'none';
+    }
+  });
+
+  // 토글 아이콘을 180도 회전
+  if (categoryToggle.classList.contains('rotated')) {
+    categoryToggle.style.transform = 'rotate(0deg)';
+    categoryToggle.classList.remove('rotated');
+  } else {
+    categoryToggle.style.transform = 'rotate(180deg)';
+    categoryToggle.classList.add('rotated');
+  }
+});
+
+// 초기 상태에서는 하위 li 태그들을 숨깁니다.
+filterOptions.forEach(function (option) {
+  option.style.display = 'none';
+});

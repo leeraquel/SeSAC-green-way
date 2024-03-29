@@ -26,9 +26,6 @@ function validatePassword(password) {
 
 // 비밀번호 입력란 변경 시 호출되는 함수
 
-// 비밀번호 입력란에 이벤트 리스너 추가
-// document.getElementById('newPassword').addEventListener('input', handlePasswordChange);
-
 // 비밀번호 변경 함수
 function changePassword() {
   var newPassword = document.getElementById('newPassword').value;
@@ -204,8 +201,6 @@ fetch('../api/favorite.json')
       });
     });
   });
-
-console.log(document.querySelectorAll('.favorite'));
 
 function hideCard(index) {
   const card = document.querySelectorAll('.card')[index];

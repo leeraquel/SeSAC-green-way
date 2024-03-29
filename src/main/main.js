@@ -196,7 +196,6 @@ async function reloadMarkers() {
   markersMap.clear();
   // 세션 스토리지에서 사용자의 현재 위치 정보 가져오기
   const storedAddress = JSON.parse(sessionStorage.getItem('address'));
-  console.log(storedAddress);
 
   // 사용자의 현재 위치에 마커 추가
   const userPosition = new kakao.maps.LatLng(storedAddress.y, storedAddress.x);
@@ -283,7 +282,6 @@ async function getCurrentLocation() {
           const response = await fetch(geocodingUrl);
           const data = await response.json();
           const addressName = data.results[0].formatted_address;
-          console.log(data.results[0].formatted_address);
 
           // 세션 스토리지 업데이트
           let currentLocation = {

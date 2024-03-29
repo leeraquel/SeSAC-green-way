@@ -45,7 +45,6 @@ idForm.addEventListener('submit', async (e) => {
 
 idNextBtn.addEventListener('click', async () => {
   const userId = inputId.value;
-  console.log((await validateUserId(userId)) == true);
 
   // 유효성 검사 실행
   if ((await validateUserId(userId)) == true) {
@@ -131,7 +130,6 @@ pwForm.addEventListener('submit', (e) => {
   const CheckedPwValue = inputPwCheck.value;
   // 유효성 검사 실행
   if (checkedPassword(pwValue, CheckedPwValue) == true) {
-    console.log('submit 성공');
     // 유효성 검사를 통과하면 제출 이벤트 핸들러 다시 등록
     sectionPw.style.display = 'none';
     sectionAg.style.display = 'block';

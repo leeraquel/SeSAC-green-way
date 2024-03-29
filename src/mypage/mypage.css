@@ -3,8 +3,6 @@
 }
 body {
   background-color: var(--main-color);
-  /* width: 390px; */
-
   position: relative;
 }
 
@@ -64,7 +62,6 @@ header {
   margin: 0 auto;
 }
 .bookmark {
-  /* margin-bottom: 20px; */
   width: 100%;
 }
 
@@ -184,7 +181,6 @@ img.map {
 .icon-wrapper img {
   height: 1em;
   margin-right: 4px;
-  /* margin-bottom: 8px; */
 }
 
 .btn-primary:focus,

@@ -1,5 +1,6 @@
 # SeSAC-green-way-Seoul
-사용자 위치 기반 공유 이동수단 정보를 제공하는 웹 페이지
+사용자 위치 기반 공유 이동수단 정보를 제공하는 '스마트 모빌리티 플랫폼' 웹 페이지입니다. 
+
 ## index
 - [Description](#Description)
 - [Folder Structure](#Folder-Structure)
@@ -21,60 +22,22 @@ API를 연동하여 사용자의 현 위치 또는 검색한 위치를 기반으
 📦SeSAC-green-way-Seoul
  ┣ 📂src
  ┃ ┣ 📂api  // 오픈 API 및 Mock-Data 저장 폴더
- ┃ ┃ ┣ 📜elecle.json
- ┃ ┃ ┣ 📜favorite.json
- ┃ ┃ ┣ 📜kickgoing.json
- ┃ ┃ ┣ 📜mapApi.js
- ┃ ┃ ┣ 📜test.html
- ┃ ┃ ┣ 📜user.json
- ┃ ┃ ┗ 📜weatherApi.js
  ┃ ┣ 📂assets  // 이미지, 아이콘, 로고로 구분하여 저장
  ┃ ┃ ┣ 📂icon
  ┃ ┃ ┣ 📂img
  ┃ ┃ ┣ 📂logo
+      // 페이지별 폴더 관리 
  ┃ ┣ 📂bookmark // 기능별로 폴더를 구분하여 html, css, js 저장
- ┃ ┃ ┣ 📜.gitkeep
- ┃ ┃ ┣ 📜favorite.css
- ┃ ┃ ┣ 📜favorite.html
- ┃ ┃ ┗ 📜favorite.js
  ┃ ┣ 📂join
- ┃ ┃ ┣ 📜join.css
- ┃ ┃ ┣ 📜join.html
- ┃ ┃ ┗ 📜join.js
  ┃ ┣ 📂login
- ┃ ┃ ┣ 📜login.css
- ┃ ┃ ┣ 📜login.html
- ┃ ┃ ┗ 📜login.js
  ┃ ┣ 📂main
- ┃ ┃ ┣ 📜.gitkeep
- ┃ ┃ ┣ 📜main.css
- ┃ ┃ ┣ 📜main.js
- ┃ ┃ ┣ 📜navBar.js
- ┃ ┃ ┗ 📜weather.js
  ┃ ┣ 📂mypage
- ┃ ┃ ┣ 📜.gitkeep
- ┃ ┃ ┣ 📜mypage.css
- ┃ ┃ ┣ 📜mypage.html
- ┃ ┃ ┗ 📜mypage.js
  ┃ ┣ 📂search
- ┃ ┃ ┣ 📜.gitkeep
- ┃ ┃ ┣ 📜ip-script.js
- ┃ ┃ ┣ 📜search.css
- ┃ ┃ ┣ 📜search.html
- ┃ ┃ ┗ 📜search.js
  ┃ ┣ 📂styles // 공통 style css를 저장   
- ┃ ┃ ┣ 📜globals.css
- ┃ ┃ ┗ 📜reset.css
  ┃ ┗ 📂utils  // 공통 부분 js 및 css 저장
  ┃ ┃ ┣ 📂header
- ┃ ┃ ┃ ┗ 📜header.css
  ┃ ┃ ┣ 📂tabBar
- ┃ ┃ ┃ ┗ 📜tabBar.css
  ┃ ┃ ┗ 📜utils.js
- ┣ 📜.gitignore
- ┣ 📜.prettierrc
- ┣ 📜config.js  // api 키 값을 저장
- ┣ 📜git
  ┣ 📜index.html  // 첫 화면에 로딩 될 html 
  ┣ 📜netlify.toml  // netlify 배포를 위한 환경변수 파일
  ┣ 📜README.md
@@ -94,10 +57,11 @@ API를 연동하여 사용자의 현 위치 또는 검색한 위치를 기반으
 프로젝트에서는 외부 API를 사용하여 데이터를 가져왔습니다.
 
 - 카카오 지도 - [키워드로 장소검색하고 목록으로 표출하기 - Kakao 지도 Web API](https://apis.map.kakao.com/web/sample/keywordList/)
-- 따릉이 - [서울시 공공자전거 대여소 정보 api](https://data.seoul.go.kr/dataList/OA-13252/F/1/datasetView.do)
+- 따릉이 - [서울시 공공자전거 대여소 정보 api]([https://data.seoul.go.kr/dataList/OA-13252/F/1/datasetView.do](https://data.seoul.go.kr/dataList/OA-2219/S/1/datasetView.do))
 - 날씨 - [Openweather API](https://openweathermap.org/api)
        - [미세먼지 API](https://data.seoul.go.kr/dataList/OA-1200/A/1/datasetView.do)
 - 위치 - [Geolocation API](httpps://ipapi.co/)
+- 좌표 값 주소명으로 변경 - [GeoCoding] (https://zrr.kr/4Z2L)
 
 ### Mock Data
 오픈 api로 제공해주지 않는 데이터는 프로젝트의 초기 개발 및 테스트를 위해 모의 데이터를 사용하였습니다.
@@ -216,6 +180,9 @@ API를 연동하여 사용자의 현 위치 또는 검색한 위치를 기반으
   export const seoulKey = '공공데이터 API 키 값';
   export const googleKey = '구글 API 키 값';
   export const openWeatherKey = '날씨 API 키 값';
+
+ ### 🚨현재 kakao api와 서울시 공공데이터 api 도메인이 배포 링크로 되어있어 로컬 실행 시 메인 화면 지도와 따릉이, 대기정보가 표시되지 않습니다.🚨
+       동작 구현을 보시려면 배포 링크를 참고해주세요. 
   ```
   ### 배포
    - 이 프로젝트는 [Nelfty](https://nelfty.com/)를 사용하여 배포되었습니다.

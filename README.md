@@ -181,9 +181,10 @@ API를 연동하여 사용자의 현 위치 또는 검색한 위치를 기반으
   export const googleKey = '구글 API 키 값';
   export const openWeatherKey = '날씨 API 키 값';
 
- ### 🚨현재 kakao api와 서울시 공공데이터 api 도메인이 배포 링크로 되어있어 로컬 실행 시 메인 화면 지도와 따릉이, 대기정보가 표시되지 않습니다.🚨
-       동작 구현을 보시려면 배포 링크를 참고해주세요. 
+
   ```
+### 🚨현재 kakao api와 서울시 공공데이터 api 도메인이 배포 링크로 되어있어 로컬 실행 시 메인 화면 지도와 따릉이, 대기정보가 표시되지 않습니다.🚨
+       동작 구현을 보시려면 배포 링크를 참고해주세요. 
   ### 배포
    - 이 프로젝트는 [Nelfty](https://nelfty.com/)를 사용하여 배포되었습니다.
      - **URL**: [green-way-seoul(https://green-way-seoul.netlify.app/)

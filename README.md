@@ -52,6 +52,8 @@ API를 연동하여 사용자의 현 위치 또는 검색한 위치를 기반으
 
 ## Data Sources
 이 프로젝트에서는 다음과 같은 데이터 소스를 사용하였습니다.
+- 서울시 공공 포털 데이터의 인덱싱 문제로 실시간 공유 자전거 데이터를 100개만 이용하였습니다.
+- 마포구, 서대문구, 영등포 일대에 대한 검색 및 출력만 가능합니다. 
 
 ### API
 프로젝트에서는 외부 API를 사용하여 데이터를 가져왔습니다.
@@ -60,7 +62,7 @@ API를 연동하여 사용자의 현 위치 또는 검색한 위치를 기반으
 - 따릉이 - [서울시 공공자전거 대여소 정보 api]([https://data.seoul.go.kr/dataList/OA-13252/F/1/datasetView.do](https://data.seoul.go.kr/dataList/OA-2219/S/1/datasetView.do))
 - 날씨 - [Openweather API](https://openweathermap.org/api)
        - [미세먼지 API](https://data.seoul.go.kr/dataList/OA-1200/A/1/datasetView.do)
-- 위치 - [Geolocation API](httpps://ipapi.co/)
+- 위치 - [Geolocation API](https://ipapi.co/)
 - 좌표 값 주소명으로 변경 - [GeoCoding] (https://zrr.kr/4Z2L)
 
 ### Mock Data
@@ -176,12 +178,11 @@ API를 연동하여 사용자의 현 위치 또는 검색한 위치를 기반으
    - 또는 로컬 웹 서버를 사용하여 `index.html` 파일을 엽니다.
   ### 5. 오픈 API 사용
    이 프로젝트는 외부 API를 사용하여 데이터를 가져옵니다. 프로젝트에서 사용하는 오픈 API는 키 값을 필요로 합니다. config.js 파일을 생성해서 아래와 같이 작성해주세요.
+   해당 웹 페이지를 가입한 후 키를 발급받으셔야 합니다. 
   ``` Javascript
   export const seoulKey = '공공데이터 API 키 값';
   export const googleKey = '구글 API 키 값';
   export const openWeatherKey = '날씨 API 키 값';
-
-
   ```
  ### 🚨현재 kakao api와 서울시 공공데이터 api 도메인이 배포 링크로 되어있어 
  ### 로컬 실행 시 메인 화면 지도와 따릉이, 대기정보가 표시되지 않습니다.🚨

@@ -68,8 +68,6 @@ fetch('../api/favorite.json')
     });
   });
 
-console.log(document.querySelectorAll('.favorite'));
-
 function hideCard(index) {
   const card = document.querySelectorAll('.card')[index];
   if (card) {

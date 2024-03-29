@@ -27,7 +27,6 @@ async function getCurrentLocation() {
           const response = await fetch(geocodingUrl);
           const data = await response.json();
           const addressName = data.results[0].formatted_address;
-          console.log(data.results[0].formatted_address);
 
           // 세션 스토리지 업데이트
           let currentLocation = {
@@ -74,7 +73,6 @@ if (window.kakao && kakao.maps) {
           alert('검색 키워드를 입력해주세요.');
           return false;
         }
-
         // 키워드로 장소 검색 실행
         ps.keywordSearch(keyword, placesSearchCB);
 
@@ -95,12 +93,12 @@ if (window.kakao && kakao.maps) {
     // 장소 검색 완료 시 호출되는 콜백 함수
     function placesSearchCB(data, status) {
       if (status === kakao.maps.services.Status.OK) {
-        // 검색 결과가 있으면 콘솔에 출력
-        console.log(data);
-
         // 검색 결과를 div에 표시 (예시)
         var resultsDiv = document.getElementById('searchResults');
         resultsDiv.innerHTML = ''; // 이전 결과 초기화
+        resultsDiv.style.display = 'block';
+        document.getElementById('nowLocationInfo').style.display = 'none';
+        document.getElementById('resultBox').style.display = 'none';
         data.forEach(function (place) {
           var name = document.createElement('p');
           name.textContent = place.place_name; // 장소 이름 출력
@@ -127,12 +125,9 @@ if (window.kakao && kakao.maps) {
               (acc, station) => acc + parseInt(station.parkingBikeTotCnt, 10),
               0
             );
-            console.log(seoulBikeStations);
-            console.log(totalSeoulBikes);
             const kickgoingStations = await getKickgoingStatusWithin500m(
               kickgoingURL
             );
-            console.log(kickgoingStations);
 
             const elecleStations = await getElecleStatusWithin500m(elecleURL);
 

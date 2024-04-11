@@ -143,7 +143,10 @@ API를 연동하여 사용자의 현 위치 또는 검색한 위치를 기반으
   6. Sign-up Page
       - 회원가입
         - 유효성 검사 오류 시 즉각적인 경고 알림
-        - 정보 제공 필수 항목 동의 시 가입 완료 
+        - 정보 제공 필수 항목 동의 시 가입 완료
+
+![greenWayFull](https://github.com/leeraquel/SeSAC-green-way-Seoul/assets/121611906/dc195689-313b-4795-b23a-dc52800a5e9a)
+
         
 ## How To Use
 
